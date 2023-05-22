@@ -1,8 +1,17 @@
+LevelRun currentLevel;
+
+
 
 void setup(){
- System.out.println("setup:"); 
+  
+  size(1800, 1800);
+  
+  
+ System.out.println("setup:  running level 1."); 
+ currentLevel = new LevelRun(1);
+ currentLevel.levelSetup();
 }
 
 void draw(){
-  System.out.println("hello");
+  currentLevel.levelRun();
 }    

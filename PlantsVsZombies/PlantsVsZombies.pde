@@ -8,8 +8,7 @@
   Level activeLevel;
 
 
-void nextLevel(){
-  
+void enterNextLevel(){
   if (activeLevel.getID() + 1 > 5){
     changeLevel(MENU);
     return;
@@ -54,16 +53,20 @@ void changeLevel(int levelID){
 
 void setup(){
   size(1100, 600);
- System.out.println("setup:  running level menu."); 
- activeLevel = new MainMenu();
- changeLevel(activeLevel.getID());
+   System.out.println("setup:  running level menu."); 
+   activeLevel = new MainMenu();
+   activeLevel.configure();
+
 }
 
 void draw(){
   activeLevel.run();
+  if (activeLevel.isFinished() == true){
+    enterNextLevel();
+  }
 }    
 
 public void mouseClicked(){
-  nextLevel();
+  activeLevel.deload();
   System.out.println(" " + activeLevel.getID());
 }

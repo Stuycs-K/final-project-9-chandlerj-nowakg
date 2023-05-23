@@ -3,6 +3,12 @@ public class Level{
   int levelID;
   PImage background;
   int stage;
+  boolean finished = false;
+  int sun;
+  boolean isDay;
+  
+  
+  
   //TO BE DONE: incorporate music into each level
   //TO BE DONE: 
   
@@ -26,10 +32,17 @@ public class Level{
   
   public void win(){
     
+    
+    //if (win)
+    deload();
   }
    
   public void deload(){
-    
+   finished = true;
+  }
+  
+  public boolean isFinished(){
+    return finished;
   }
   
   public int getID(){

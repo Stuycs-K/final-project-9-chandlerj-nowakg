@@ -53,7 +53,7 @@ void changeLevel(int levelID){
 
 
 void setup(){
-  size(1100, 600);
+  size(1920, 1040);
    System.out.println("setup:  running level menu."); 
    activeLevel = new MainMenu();
    activeLevel.configure();

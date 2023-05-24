@@ -37,6 +37,7 @@
   
   public void configure(){
     image(background,0,0);
+    background.resize(1920,1040);
     sun = 0;
     
   }

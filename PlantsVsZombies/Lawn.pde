@@ -9,15 +9,14 @@ private static final int PLANT = 1;
 private static final int PUMPKIN = 2;
 public class Lawn{
   private int[][] lawn;
-  int screenSize = 1100 * 600; 
   int tileXSize;
   int tileYSize;
   
   
   public Lawn(int[][] levelLawn){
     lawn = levelLawn;
-    tileXSize = 1100 / lawn.length;
-    tileYSize = 600 / lawn[0].length;  
+    tileXSize = 1920 / lawn.length;
+    tileYSize = 1040 / lawn[0].length;  
   }
 
   public boolean placePlant(int row, int col){ //will have a Plant plant

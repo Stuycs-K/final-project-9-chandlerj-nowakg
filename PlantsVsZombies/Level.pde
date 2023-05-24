@@ -6,6 +6,7 @@ public class Level{
   boolean finished = false;
   int sun;
   boolean isDay;
+  Lawn lawn;
   
   
   
@@ -13,13 +14,13 @@ public class Level{
   //TO BE DONE: 
   
   public Level(int id, PImage b){
-    this(id, b, 0);
+    this(id, b, new Lawn(new int[1][1]));
   }
   
-  public Level(int id, PImage b, int s){
+  public Level(int id, PImage b, Lawn l){
     levelID = id;
     background = b;
-    stage = s;
+    lawn = l;
   }
   
   public void configure(){

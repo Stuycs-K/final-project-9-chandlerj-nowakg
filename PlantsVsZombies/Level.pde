@@ -5,7 +5,7 @@ public class Level{
   int sun;
   boolean isDay;
   Lawn lawn;
-  
+
   //TO BE DONE: incorporate music into each level
   //TO BE DONE: 
 
@@ -23,6 +23,7 @@ public class Level{
     lawn = l;
     isDay = d;
   }
+  
   
   public void configure(){
     image(background,0,0);

@@ -12,14 +12,15 @@ public class Lawn{
   int screenSize = 1100 * 600; 
   int tileXSize;
   int tileYSize;
+  
+  
   public Lawn(int[][] levelLawn){
     lawn = levelLawn;
     tileXSize = 1100 / lawn.length;
     tileYSize = 600 / lawn[0].length;  
-
   }
-  public boolean isOccupied(int row, int col){
 
+  public boolean placePlant(int row, int col){ //will have a Plant plant
     if (col <= 0 || col > lawn[0].length){
      return false; //its less than or equal to 0 because you can't place on a mower tile 
     }
@@ -33,5 +34,5 @@ public class Lawn{
     //if plant is aquatic, can't be placed on SOIL or lilypad
     //if plant is a pumpkin, it can be placed on plants
     //if plant is a coffeebean, it can be placed on plants but wont update the number of lawn
-}  
+  }  
 }

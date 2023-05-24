@@ -6,6 +6,7 @@
   private static final int ROOF = 5;
   
   Level activeLevel;
+  int coins = 0;
 
 
 void enterNextLevel(){
@@ -60,13 +61,14 @@ void setup(){
 }
 
 void draw(){
+  
+  
   activeLevel.run();
-  if (activeLevel.isFinished() == true){
-    enterNextLevel();
+  if (activeLevel.isFinished() == true && activeLevel.getID() != MENU){
+     enterNextLevel();  
   }
 }    
 
 public void mouseClicked(){
-  activeLevel.deload();
-  System.out.println(" " + activeLevel.getID());
+  activeLevel.mouseClicked();
 }

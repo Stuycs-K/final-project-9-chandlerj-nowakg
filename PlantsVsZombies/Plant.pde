@@ -1,10 +1,8 @@
 public class Plant{
    String name;
+   Timer ICD;
    int cost;
-<<<<<<< HEAD
-=======
    int Health;
->>>>>>> lawnWork
    PImage sprite;
 
 
@@ -15,8 +13,6 @@ public Plant(String name, int cost){
    this.sprite = loadImage(name+".jpg");
 }
 
-
-<<<<<<< HEAD
 
 }
 /*

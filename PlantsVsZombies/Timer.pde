@@ -11,12 +11,13 @@ public class Timer{
    interval--;
    
    if(interval == 0){
-     izZero = true;
+     isZero = true;
    }
+   return false;
   }
   
   public int getTime(){
-    return this.time();
+    return this.interval;
   }
   
   public boolean checkFinished(){

@@ -44,7 +44,7 @@
   
   
   public void configure(){
-    background.resize(3000,1040);
+    background.resize(3100,1040);
     image(background, -300,10);
     seedSlots.resize(940,130);
     image(seedSlots,180,0);
@@ -57,6 +57,7 @@
     
     if (gameState == SEEDSELECTION){
       image(seedSelect, 300, 300);
+      
     }
     
     if (gameState == INVASION){

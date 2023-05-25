@@ -8,7 +8,6 @@
   Level activeLevel;
   int coins = 0;
 
-
 void enterNextLevel(){
   if (activeLevel.getID() + 1 > 5){
     changeLevel(MENU);
@@ -53,7 +52,7 @@ void changeLevel(int levelID){
 
 
 void setup(){
-  size(1920, 1040);
+   size(1920, 1040);
    System.out.println("setup:  running level menu."); 
    activeLevel = new MainMenu();
    activeLevel.configure();

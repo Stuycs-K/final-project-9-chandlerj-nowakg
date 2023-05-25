@@ -3,10 +3,9 @@ public class MainMenu extends Level{
    super(0, loadImage("Sprites/main_menu_background.jpg"));
  }
   
-  
   public void configure(){
+    background.resize(1920,1040);
     image(background,0,0);
-    //create all the buttons
   }
   
   public void run(){

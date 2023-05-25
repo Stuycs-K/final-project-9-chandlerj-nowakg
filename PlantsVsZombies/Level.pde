@@ -4,6 +4,7 @@
   int levelID;
   PImage background;
   PImage seedSelect = loadImage("Sprites/seedselect.jpg");
+  PImage seedSlots = loadImage("Sprites/seedslots.jpg");
   boolean finished = false;
   int sun;
   boolean isDay;
@@ -43,8 +44,10 @@
   
   
   public void configure(){
-    background.resize(1920,1040);
-    image(background,0,0);
+    background.resize(3000,1040);
+    image(background, -300,10);
+    seedSlots.resize(940,130);
+    image(seedSlots,180,0);
     sun = 0;
     
     gameState = SEEDSELECTION;
@@ -53,7 +56,7 @@
   public void run(){
     
     if (gameState == SEEDSELECTION){
-      image(seedSelect, 100, 20);
+      image(seedSelect, 300, 300);
     }
     
     if (gameState == INVASION){

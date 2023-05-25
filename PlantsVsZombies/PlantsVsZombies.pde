@@ -55,6 +55,7 @@ void setup(){
   size(1100, 600);
    System.out.println("setup:  running level menu."); 
    activeLevel = new MainMenu();
+   UniversalTimer = new Timer(1000);
    activeLevel.configure();
 
 }
@@ -64,6 +65,16 @@ void draw(){
   if (activeLevel.isFinished() == true){
     enterNextLevel();
   }
+  
+  public runTime
+  for(int i=0; i < plantGrid.length; i++){
+    for(int j=0; j < plantGrid[i].length; j++){
+     if(plantGrid[i][j] != null){
+        //take into account each plant's ICD and create a countdown method that adjusts as necessary 
+     }
+    }
+  }
+  
 }    
 
 public void mouseClicked(){

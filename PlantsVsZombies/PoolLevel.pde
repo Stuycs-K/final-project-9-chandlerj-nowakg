@@ -1,5 +1,13 @@
 public class PoolLevel extends Level{
   public PoolLevel(){
-   super(3, loadImage("Sprites/main_menu_background.jpg"));
+   super(3, loadImage("Sprites/main_menu_background.jpg"), new Lawn(new int[][]{
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL},
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL},
+      {MOWER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER},
+      {MOWER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER},
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL},
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL}
+    })
+    );
  }
 }

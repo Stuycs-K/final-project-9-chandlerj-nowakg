@@ -34,4 +34,4 @@ public class Lawn{
     //if plant is a pumpkin, it can be placed on plants
     //if plant is a coffeebean, it can be placed on plants but wont update the number of lawn
   }  
-}
+}  

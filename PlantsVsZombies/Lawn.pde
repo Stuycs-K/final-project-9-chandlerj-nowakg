@@ -8,20 +8,15 @@ private static final int SOIL = 0;
 private static final int PLANT = 1;
 private static final int PUMPKIN = 2;
 public class Lawn{
-<<<<<<< HEAD
-  int[][] map;
-  private static final int MODE = 1;
-  private static final int EMPTY = 0;
-  private static final int OCCUPIED = 1;
-=======
   private int[][] lawn;
-  int screenSize = 1100 * 600; 
   int tileXSize;
   int tileYSize;
+  
+  
   public Lawn(int[][] levelLawn){
     lawn = levelLawn;
-    tileXSize = 1100 / lawn.length;
-    tileYSize = 600 / lawn[0].length;  
+    tileXSize = 1920 / lawn.length;
+    tileYSize = 1040 / lawn[0].length;  
   }
 
   public boolean placePlant(int row, int col){ //will have a Plant plant
@@ -38,7 +33,5 @@ public class Lawn{
     //if plant is aquatic, can't be placed on SOIL or lilypad
     //if plant is a pumpkin, it can be placed on plants
     //if plant is a coffeebean, it can be placed on plants but wont update the number of lawn
+  }  
 }  
-
->>>>>>> f248c48b3dba537a47570dbc32c41b44221aec71
-}

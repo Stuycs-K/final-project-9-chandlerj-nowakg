@@ -1,5 +1,9 @@
 import java.util.*;
 public class Level{
+  static final int  SUN = 0;
+  static final int  COIN = 1;
+  
+  
   int levelID;
   PImage background;
   PImage seedSelect = loadImage("Sprites/seedselect.jpg");
@@ -44,27 +48,28 @@ public class Level{
   
   public void configure(){
     background.resize(3100,1040);
-    image(background, -300,10);
-    seedSlots.resize(940,130);
-    image(seedSlots,180,0);
+    image(background, -300,10);  
     sun = 0;
     
     gameState = SEEDSELECTION;
   }
   
   public void run(){
-    
+    mouseInput();
     if (gameState == SEEDSELECTION){
+      seedSlots.resize(940,130);
+      image(seedSlots,180,0);
       image(seedSelect, 300, 300);
       //this is just for testing purposes
       Collectable coin = new Coin(seed, seedSlots);
       coin.spawn(800, 800, 200);
       
+      
     }
     
     if (gameState == INVASION){
       if (isDay){
-       generateSun(); 
+
       }
       //tell zombies to move
       //tell plants to fire
@@ -94,13 +99,9 @@ public class Level{
    //get rid of all zombies and plants
    //
   }
+
   
-  public void generateSun(){
-    // will generate sun at a semi random rate 
-    // if seed mod 10 is like 3 or something
-  }
-  
-  public void mousePressed(){
+  public void mouseInput(){
     System.out.println("this method is not getting overridden");
   }
   
@@ -113,5 +114,24 @@ public class Level{
   public int getID(){
    return levelID; 
   }
+  
+  ///COLLECTABLE STUFF VVVV //////////////////////////
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //COLLECTABLE STUFF ^^^^^^^^^^^ /////////////////////////
+  
+  
+  
+  
+  
 
 }

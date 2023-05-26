@@ -13,11 +13,11 @@ class Controller {
   }
 
   void press(int code) {
-    if(code == 'CLICK')
-      inputs[CLICK] = true;
+    if(code == MOUSECLICK)
+      inputs[MOUSECLICK] = true;
   }
   void release(int code) {
-    if(code == 'CLICK')
-    inputs[CLICK] = false;
+    if(code == MOUSECLICK)
+    inputs[MOUSECLICK] = false;
   }
 }

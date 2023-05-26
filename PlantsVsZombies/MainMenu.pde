@@ -9,6 +9,7 @@ public class MainMenu extends Level{
   }
   
   public void run(){
+    mouseInput();
    return; //override just so it doens't do regular level stuff like spawning sun and zombies 
   }
    
@@ -21,11 +22,11 @@ public class MainMenu extends Level{
     return true;
   }
   
-  public void mousePressed(){
-    //if on a button or something...
-    deload();
-    System.out.println(" " + activeLevel.getID());
-    changeLevel(DAY);
-  }
+  public void mouseInput(){
+    if (userInput.isPressed(Controller.MOUSECLICK)){
+        deload();
+        changeLevel(DAY);
+     }
   
+}
 }

@@ -5,7 +5,6 @@
   private static final int POOL = 3;
   private static final int FOG = 4;
   private static final int ROOF = 5;
-  private boolean clicked = false;
   
   Controller userInput;
   

@@ -1,6 +1,5 @@
-  import java.util.Random;
-  
-  public class Level{
+import java.util.*;
+public class Level{
   int levelID;
   PImage background;
   PImage seedSelect = loadImage("Sprites/seedselect.jpg");
@@ -57,6 +56,9 @@
     
     if (gameState == SEEDSELECTION){
       image(seedSelect, 300, 300);
+      //this is just for testing purposes
+      Collectable coin = new Coin(seed, seedSlots);
+      coin.spawn(800, 800, 200);
       
     }
     
@@ -98,7 +100,7 @@
     // if seed mod 10 is like 3 or something
   }
   
-  public void mouseClicked(){
+  public void mousePressed(){
     System.out.println("this method is not getting overridden");
   }
   

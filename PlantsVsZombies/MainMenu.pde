@@ -21,7 +21,7 @@ public class MainMenu extends Level{
     return true;
   }
   
-  public void mouseClicked(){
+  public void mousePressed(){
     //if on a button or something...
     deload();
     System.out.println(" " + activeLevel.getID());

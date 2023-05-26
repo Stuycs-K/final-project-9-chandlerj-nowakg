@@ -1,9 +1,13 @@
+  import java.util.*;
   private static final int MENU = 0;
   private static final int DAY = 1;
   private static final int NIGHT = 2;
   private static final int POOL = 3;
   private static final int FOG = 4;
   private static final int ROOF = 5;
+  private boolean clicked = false;
+  
+  Controller userInput;
   
   Level activeLevel;
   int coins = 0;
@@ -54,6 +58,7 @@ void changeLevel(int levelID){
 void setup(){
    size(1920, 1040);
    System.out.println("setup:  running level menu."); 
+   userInput = new Controller();
    activeLevel = new MainMenu();
    activeLevel.configure();
 
@@ -61,6 +66,7 @@ void setup(){
 
 void draw(){
   
+  //level stuff
   
   activeLevel.run();
   if (activeLevel.isFinished() == true && activeLevel.getID() != MENU){
@@ -71,6 +77,11 @@ void draw(){
   
 }    
 
-public void mouseClicked(){
-  activeLevel.mouseClicked();
+
+//KEY PRESSING AND RELEASING
+public void mousePressed(){
+  userInput.press(Controller.MOUSECLICK);
+}
+public void mouseReleased(){
+  userInput.release(Controller.MOUSECLICK);
 }

@@ -1,4 +1,5 @@
   import java.util.*;
+  import Green.*;
   private static final int MENU = 0;
   private static final int DAY = 1;
   private static final int NIGHT = 2;
@@ -6,8 +7,7 @@
   private static final int FOG = 4;
   private static final int ROOF = 5;
   
-  Controller userInput;
-  
+  Green green;
   Level activeLevel;
   int coins = 0;
 
@@ -49,7 +49,7 @@ void changeLevel(int levelID){
   }
   
    activeLevel = newLevel;
-   activeLevel.configure();
+   green.loadWorld(activeLevel);
 
 }
 
@@ -57,30 +57,51 @@ void changeLevel(int levelID){
 void setup(){
    size(1920, 1040);
    System.out.println("setup:  running level menu."); 
-   userInput = new Controller();
-   activeLevel = new MainMenu();
-   activeLevel.configure();
+   
+   
+  green = new Green(this);
+  //activeLevel = new Level(MENU, loadImage("Sprites/main_menu_background.jpg")); // By default, the world boundaries will be set to the viewport dimensions
+  activeLevel = new MainMenu();
+  green.loadWorld(activeLevel);
+  
+  //userInput = new Controller();
+
 
 }
 
 void draw(){
+  green.handleAct();
+  green.handleDraw();
+  green.handleMousePosition(pmouseX, pmouseY, mouseX, mouseY);
+  green.handleInput();
+  // Add draw() code below here!
   
   //level stuff
   
-  activeLevel.run();
   if (activeLevel.isFinished() == true && activeLevel.getID() != MENU){
      enterNextLevel();  
-  }
-  
-
-  
+  } 
 }    
 
 
-//KEY PRESSING AND RELEASING
-public void mousePressed(){
-  userInput.press(Controller.MOUSECLICK);
+// Allows for easy input-checking - ignore everything below!
+void mousePressed()
+{
+  green.handleMouseDown(mouseButton);
 }
-public void mouseReleased(){
-  userInput.release(Controller.MOUSECLICK);
+void mouseReleased()
+{
+  green.handleMouseUp(mouseButton);
+}
+void mouseWheel(MouseEvent event)
+{
+  green.handleMouseWheel(event.getCount());
+}
+void keyPressed()
+{
+  green.handleKeyDown(key, keyCode);
+}
+void keyReleased()
+{
+  green.handleKeyUp(key, keyCode);
 }

@@ -1,5 +1,5 @@
 import java.util.*;
-public class Level{
+public class Level extends World{
   int levelID;
   PImage background;
   PImage seedSelect = loadImage("Sprites/seedselect.jpg");
@@ -10,7 +10,6 @@ public class Level{
   Lawn lawn;
   Random seed;
   int gameState;
-  public List<Collectable> collectables = new ArrayList();
   
   private static final int SEEDSELECTION = 0;
   private static final int INVASION = 1; 
@@ -19,8 +18,7 @@ public class Level{
   //TO BE DONE: incorporate music into each level
   //TO BE DONE: 
 
- 
-  
+
   public Level(int id, PImage b){
     this(id, b, new Lawn(new int[1][1]));
   }
@@ -28,12 +26,12 @@ public class Level{
   public Level(int id, PImage b, Lawn l){
     this(id, b, l, false);
   }
-  
   public Level(int id, PImage b, Lawn l, boolean d){
     this(id, b, l, d, new Random());
   }
   
   public Level(int id, PImage b, Lawn l, boolean d, Random sd){
+    super(1920, 1040, b); //WE are hard coding the screen to 1920 by 1040
     seed = sd;
     levelID = id;
     background = b;
@@ -43,7 +41,7 @@ public class Level{
   }
   
   
-  public void configure(){
+  public void prepare(){
     background.resize(3100,1040);
     image(background, -300,10);  
     sun = 0;
@@ -52,15 +50,14 @@ public class Level{
     gameState = INVASION; //for testing purposes
   }
   
-  public void run(){
-    mouseInput();
+  public void act(float deltaTime){  
     if (gameState == SEEDSELECTION){
       seedSlots.resize(940,130);
       image(seedSlots,180,0);
       image(seedSelect, 300, 300);
       //this is just for testing purposes
       
-      spawnCollectable(500, 500, Collectable.SUN);
+      spawnCoin(500, 500, Collectable.SUN);
       
     }
     
@@ -98,10 +95,6 @@ public class Level{
   }
 
   
-  public void mouseInput(){
-    System.out.println("this method is not getting overridden");
-  }
-  
   
   
   public boolean isFinished(){
@@ -133,13 +126,11 @@ public class Level{
         collectable = new MoneyBag();
         break;          
     }
-    collectables.add(collectable);
     collectable.spawn(x, y, 100);
   }
   
   public void generateSun(int x, int y, boolean fromSky){
     Collectable sun = new Sun(fromSky);
-    collectables.add(sun);
     if (fromSky){
       sun.spawn(seed.nextInt(width/2), -10, 100);
     }

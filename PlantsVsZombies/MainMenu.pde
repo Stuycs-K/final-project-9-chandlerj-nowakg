@@ -3,14 +3,16 @@ public class MainMenu extends Level{
    super(0, loadImage("Sprites/main_menu_background.jpg"));
  }
   
-  public void configure(){
+  public void prepare(){
     background.resize(1920,1040);
     image(background,0,0);
   }
   
-  public void run(){
-    mouseInput();
-   return; //override just so it doens't do regular level stuff like spawning sun and zombies 
+  public void act(float deltaTime){
+    if (green.isMouseButtonDown(LEFT)){
+        deload();
+        changeLevel(DAY);
+     }
   }
    
   public void deload(){
@@ -22,11 +24,4 @@ public class MainMenu extends Level{
     return true;
   }
   
-  public void mouseInput(){
-    if (userInput.isPressed(Controller.MOUSECLICK)){
-        deload();
-        changeLevel(DAY);
-     }
-  
-}
 }

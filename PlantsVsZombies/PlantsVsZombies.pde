@@ -60,7 +60,6 @@ void setup(){
    
    
   green = new Green(this);
-  //activeLevel = new Level(MENU, loadImage("Sprites/main_menu_background.jpg")); // By default, the world boundaries will be set to the viewport dimensions
   activeLevel = new MainMenu();
   green.loadWorld(activeLevel);
   
@@ -74,17 +73,17 @@ void draw(){
   green.handleDraw();
   green.handleMousePosition(pmouseX, pmouseY, mouseX, mouseY);
   green.handleInput();
-  // Add draw() code below here!
+  //dont touch these 4
   
   //level stuff
-  
   if (activeLevel.isFinished() == true && activeLevel.getID() != MENU){
      enterNextLevel();  
   } 
+  
 }    
 
 
-// Allows for easy input-checking - ignore everything below!
+// these control inputs dont touch these
 void mousePressed()
 {
   green.handleMouseDown(mouseButton);

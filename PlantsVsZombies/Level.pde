@@ -32,6 +32,8 @@ public class Level extends World{
   
   public Level(int id, PImage b, Lawn l, boolean d, Random sd){
     super(1920, 1040, b); //WE are hard coding the screen to 1920 by 1040
+    //setResizeFormat(Green.NEAREST_NEIGHBOR);
+    setUnbounded(true);
     seed = sd;
     levelID = id;
     background = b;
@@ -42,29 +44,25 @@ public class Level extends World{
   
   
   public void prepare(){
-    background.resize(3100,1040);
-    image(background, -300,10);  
-    sun = 0;
-    
-    //gameState = SEEDSELECTION;
-    gameState = INVASION; //for testing purposes
+    //background.resize(3100,1040);  KEEP THIS HERE SO I CAN REMEMBER THE SIZE FOR THE BACKGFROUND
+    //image(background, -300,0);  
+      sun = 0;
+    //seedSlots.resize(940,130);
+    //image(seedSlots,180,0);
+    //image(seedSelect, 300, 300);
+    gameState = SEEDSELECTION;
+    //gameState = INVASION; //for testing purposes
   }
   
   public void act(float deltaTime){  
     if (gameState == SEEDSELECTION){
-      seedSlots.resize(940,130);
-      image(seedSlots,180,0);
-      image(seedSelect, 300, 300);
+      
       //this is just for testing purposes
       
-      spawnCoin(500, 500, Collectable.SUN);
       
     }
     
     if (gameState == INVASION){
-      if (isDay){
-
-      }
       //tell zombies to move
       //tell plants to fire
     }
@@ -73,7 +71,13 @@ public class Level extends World{
       
     }
     
-    
+    if (green.isMouseButtonDown(LEFT)){
+      spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
+     }
+     if (green.isMouseButtonDown(RIGHT)){
+     // generateSun(mouseX, mouseY, false);
+        
+     }
     
    
   }
@@ -109,40 +113,44 @@ public class Level extends World{
   
 
   
-  public void spawnCoin(int x, int y, int type){
-    Collectable collectable = new Collectable(seedSlots);
+  public void spawnCoin(float x, float y, int type){
+    Collectable collectable;
     
     switch (type){
       case Collectable.SILVERCOIN:
-        collectable = new SilverCoin();
+        collectable = new SilverCoin(x, y);
         break;
       case Collectable.GOLDCOIN:
-        collectable = new GoldCoin();
+        collectable = new GoldCoin(x,y);
         break;
       case Collectable.DIAMOND:
-        collectable = new Diamond();
+        collectable = new Diamond(x,y);
         break;
       case Collectable.MONEYBAG:
-        collectable = new MoneyBag();
-        break;          
+        collectable = new MoneyBag(x,y,250);
+        break;
+      default:
+        collectable = new MoneyBag(x,y, 0); 
+        System.out.println("error: spawnCoin() tried spawning a coin with NO TYPE PARAMETER");
+        break;
     }
-    collectable.spawn(x, y, 100);
+
+    collectable.draw();
   }
   
-  public void generateSun(int x, int y, boolean fromSky){
-    Collectable sun = new Sun(fromSky);
+  public void generateSun(float x, float y, boolean fromSky){
+    
     if (fromSky){
-      sun.spawn(seed.nextInt(width/2), -10, 100);
+     x = seed.nextInt(width/2);
+     y = -10;
     }
     else{
-     sun.spawn(x + seed.nextInt(10), y, 100); 
+     x += seed.nextInt(10); //so there's a little variation on where it spawns 
     }
     
+    Collectable sun = new Sun(x, y, fromSky);
 
-
-        
-
-    
+    sun.draw();
   }
   
   
@@ -161,7 +169,7 @@ public class Level extends World{
 
 public class DayLevel extends Level{
  public DayLevel(){
-    super(1, loadImage("Sprites/Frontyard.jpg"), 
+    super(1, loadImage("Sprites/Frontyard.png"), 
     new Lawn(
     new int[][]{
       {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL},

@@ -21,7 +21,6 @@ public class Collectable extends Actor{
   }
   
   public void act(float deltaTime){
-    System.out.println(getX() + "");
     if(this.isMouseButtonDownHere(LEFT)){
       //System.out.println("ive been clicked!");
       

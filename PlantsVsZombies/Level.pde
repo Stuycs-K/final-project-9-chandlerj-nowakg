@@ -76,6 +76,8 @@ public class Level extends World{
      }
      if (green.isMouseButtonDown(RIGHT)){
      // generateSun(mouseX, mouseY, false);
+     ExampleActor actor1 = new ExampleActor(50, 50, 100, 100);
+    addObject(actor1);
         
      }
     
@@ -134,8 +136,6 @@ public class Level extends World{
         System.out.println("error: spawnCoin() tried spawning a coin with NO TYPE PARAMETER");
         break;
     }
-
-    collectable.draw();
   }
   
   public void generateSun(float x, float y, boolean fromSky){
@@ -149,8 +149,6 @@ public class Level extends World{
     }
     
     Collectable sun = new Sun(x, y, fromSky);
-
-    sun.draw();
   }
   
   

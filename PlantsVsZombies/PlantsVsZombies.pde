@@ -69,7 +69,6 @@ void draw(){
      enterNextLevel();  
   }
   
-  public runTime
   for(int i=0; i < plantGrid.length; i++){
     for(int j=0; j < plantGrid[i].length; j++){
      if(plantGrid[i][j] != null){

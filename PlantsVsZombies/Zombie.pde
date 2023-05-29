@@ -18,13 +18,8 @@ public Zombie(){
 }
 
 public void death(){
-<<<<<<< HEAD
-  
-=======
-  //ended up removing this; it works in the same way that the plant grid would.
->>>>>>> lawnWork
-}
 
+}
 public int getHealth(){
   return this.health;
 }

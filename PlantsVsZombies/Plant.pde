@@ -16,9 +16,6 @@ public Plant(String name, int cost){
 
 }
 /*
-void placePlant(Plant plant, int xPos, int yPos){
-  List<List<Plant>> plantGrid = new ArrayList<List<Plant>>(size); 
-=======
 public int getHealth(){
  return this.health; 
 }
@@ -30,9 +27,8 @@ public int getCost(){
 
 
 void placePlant(Plant plant, int xPos, int yPos){
-  List<List<Plant>> plantGrid = new ArrayList<List<Plant>>(5);
+  Plant[][] plantGrid = new Plant[5][10];
   for(int i = 0; i < size; i++){
-    plantGrid.add(new ArrayList<Plant>(10));
    }
 >>>>>>> lawnWork
   int row = 0;

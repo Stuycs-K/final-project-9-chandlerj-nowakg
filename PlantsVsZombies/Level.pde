@@ -1,5 +1,4 @@
-  import java.util.Random;
-  
+  import java.util.Random; 
   public class Level{
   int levelID;
   PImage background;

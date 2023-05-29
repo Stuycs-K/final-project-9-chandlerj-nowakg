@@ -1,76 +1,58 @@
-
-public class Plant{
+import java.lang.reflect.*;
+public class Plant extends Actor{
    String name;
    Timer ICD;
    int cost;
-   int Health;
+   int health;
+   boolean grounded;
+   boolean aquatic;
    PImage sprite;
+   Green green;
 
 
 
-public Plant(String name, int cost){
+public Plant(String name, float x, float y, int cost){
+   this(name, x, y, cost, false, false);
+}
+
+public Plant(String name, float x, float y, int cost, boolean aquatic, boolean grounded){
+   super(x, y, loadImage("Sprites/Plants/" + name + ".png"));
+   green = Green.getInstance(); 
    this.name = name;
    this.cost = cost;
-   this.sprite = loadImage(name+".jpg");
+   this.aquatic = aquatic;
+   this.grounded = grounded;
 }
 
-
-}
-/*
-void placePlant(Plant plant, int xPos, int yPos){
-  List<List<Plant>> plantGrid = new ArrayList<List<Plant>>(size); 
-=======
-public int getHealth(){
- return this.health; 
-}
-
-public int getCost(){
-  return this.cost;
-}
-/* METHODS I ORIGINALLY INTENDED FOR PLANT BUT WOULD WORK BETTER IN LAWN
-
-
-void placePlant(Plant plant, int xPos, int yPos){
-  List<List<Plant>> plantGrid = new ArrayList<List<Plant>>(5);
-  for(int i = 0; i < size; i++){
-    plantGrid.add(new ArrayList<Plant>(10));
-   }
->>>>>>> lawnWork
-  int row = 0;
-  int col = 0;
-  while(xPos > 180){
-      xPos -= 180;
-      row++;
+  public void spawn(){
+    Green.getWorld().addObject(this); 
   }
 
-  while(yPos > 360){
-   yPos -= 360;
-   col++;
+  public int getHealth(){
+   return this.health; 
   }
-<<<<<<< HEAD
-  if(row > map.length && col < map[0].
-  int placementX = (row*180)+90;
-  int placementY = (col*360)+180;
-  //if map[row][col] is vacant, place a plant there.  
+  
+  public int getCost(){
+    return this.cost;
   }
-=======
-  if(row > plantGrid.size() && col < plantGrid.get(0).size(){
-  int placementX = (row*180)+90;
-  int placementY = (col*360)+180;
-  image(this.sprite,placementX,placementY);
-  map[row][col] = OCCUPIED;
-  //if map[row][col] is vacant, place a plant there.  
+  
+  
+  public void shoot(){
+    
   }
-  for(int i = 0; i < size; i++){
-    for(int j=0; j < plantGrid.get(i).size(); j++){
-      if(plantGrid.get(i).get(j).getHealth() == 0){
-       plantGrid.get(i).remove(j); 
-      }
-      
-    }
-   }
+  
+  
+  public void act(float deltaTime){
+   //if see zombie then shoot
+   //animate
+  }
+
+
 }
 
-
->>>>>>> lawnWork
-*/
+public class Peashooter extends Plant{
+ public Peashooter(float x, float y){
+   super("Peashooter",x,y,100);
+ }
+  
+}

@@ -13,7 +13,8 @@ public class Camera extends Actor{
   }
   
   
-  public void act(float deltaTime){
+  public void act(float deltaTime){   
+    
     if (green.isKeyDown(RIGHT) && getX() + width/2 < Green.getWorld().getWidth()){
       moveGlobal(8, 0);
     }

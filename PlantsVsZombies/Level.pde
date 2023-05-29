@@ -11,6 +11,7 @@ public class Level extends World{
   Random seed;
   int gameState;
   Camera cam;
+  DebugCamera debugCam;
   
   private static final int SEEDSELECTION = 0;
   private static final int INVASION = 1; 
@@ -39,17 +40,14 @@ public class Level extends World{
     lawn = l;
     isDay = d;
     sun = 0;
-    
-    //camera stuff
-    
-    
   }
   
   
   public void prepare(){
     //camera stuff
     cam = new Camera();
-    setCamFollowActor(cam);
+    debugCam = new DebugCamera();
+    setCamFollowActor(debugCam);
     setUnbounded(true);
     
     
@@ -60,9 +58,7 @@ public class Level extends World{
     
     gameState = SEEDSELECTION;
     //gameState = INVASION; //for testing purposes
-    
-    //setUnbounded(true);
-    
+
     
   }
   
@@ -88,8 +84,8 @@ public class Level extends World{
     }
     
     if (green.isMouseButtonDown(LEFT)){
-      //spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
-      generateSkySun();
+     // spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
+      lawn.placePlant("Peashooter", mouseX, mouseY, true);
      }
      if (green.isMouseButtonDown(RIGHT)){
       generateSun(mouseX, mouseY, false, seed);      
@@ -105,6 +101,10 @@ public class Level extends World{
   
   public int getID(){
    return levelID; 
+  }
+  
+  public Random getSeed(){
+   return seed; 
   }
   
   ///COLLECTABLE STUFF VVVVVVVVVVVVVVV //////////////////////////

@@ -22,7 +22,6 @@ void enterNextLevel(){
 
 void changeLevel(int levelID){
   Level newLevel;
-  activeLevel.deload();
   
   switch(levelID){
     case(MENU):
@@ -78,7 +77,26 @@ void draw(){
   //level stuff
   if (activeLevel.isFinished() == true && activeLevel.getID() != MENU){
      enterNextLevel();  
-  } 
+  }
+  
+  if (green.isKeyDown('m')){
+   changeLevel(MENU); 
+  }
+  if (green.isKeyDown('g')){
+   changeLevel(DAY); 
+  }
+  if (green.isKeyDown('h')){
+   changeLevel(NIGHT); 
+  }
+  if (green.isKeyDown('j')){
+   changeLevel(POOL); 
+  }
+  if (green.isKeyDown('k')){
+   changeLevel(FOG); 
+  }
+  if (green.isKeyDown('l')){
+   changeLevel(ROOF); 
+  }
   
 }    
 

@@ -10,6 +10,7 @@ public class Level extends World{
   Lawn lawn;
   Random seed;
   int gameState;
+  Camera cam;
   
   private static final int SEEDSELECTION = 0;
   private static final int INVASION = 1; 
@@ -31,27 +32,38 @@ public class Level extends World{
   }
   
   public Level(int id, PImage b, Lawn l, boolean d, Random sd){
-    super(1920, 1040, b); //WE are hard coding the screen to 1920 by 1040
-    //setResizeFormat(Green.NEAREST_NEIGHBOR);
-    setUnbounded(true);
+    super(b.pixelWidth, b.pixelHeight, b); //the SCREEN SIZE is 1920 by 1040. the GAME AREA is going to be whatever the background's pixels are (day has 3000 by 1040)
     seed = sd;
     levelID = id;
     background = b;
     lawn = l;
     isDay = d;
+    sun = 0;
+    
+    //camera stuff
+    
     
   }
   
   
   public void prepare(){
-    //background.resize(3100,1040);  KEEP THIS HERE SO I CAN REMEMBER THE SIZE FOR THE BACKGFROUND
-    //image(background, -300,0);  
-      sun = 0;
+    //camera stuff
+    cam = new Camera();
+    setCamFollowActor(cam);
+    setUnbounded(true);
+    
+    
+      
     //seedSlots.resize(940,130);
     //image(seedSlots,180,0);
     //image(seedSelect, 300, 300);
+    
     gameState = SEEDSELECTION;
     //gameState = INVASION; //for testing purposes
+    
+    //setUnbounded(true);
+    
+    
   }
   
   public void act(float deltaTime){  
@@ -69,39 +81,23 @@ public class Level extends World{
     
     if (gameState == REWARD){
       
+      //spawn a moneybag
+      //when the money bag is clicked... 
+          //enter the coins (cool animation maybe)
+      finished = true;
     }
     
     if (green.isMouseButtonDown(LEFT)){
-      spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
+      //spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
+      generateSkySun();
      }
      if (green.isMouseButtonDown(RIGHT)){
-     // generateSun(mouseX, mouseY, false);
-     ExampleActor actor1 = new ExampleActor(50, 50, 100, 100);
-    addObject(actor1);
-        
+      generateSun(mouseX, mouseY, false, seed);      
      }
     
    
   }
-  
-  public void win(){
-    
-    //this method stops zombie spawns and stops firing plants and puts the end reward (moneybag)
-    //if (win), 
-    deload();
-    
-  }
-   
-  public void deload(){
-   finished = true;
-   //get rid of all sun objects
-   //get rid of all coins
-   //get rid of all zombies and plants
-   //
-  }
 
-  
-  
   
   public boolean isFinished(){
     return finished;
@@ -136,19 +132,17 @@ public class Level extends World{
         System.out.println("error: spawnCoin() tried spawning a coin with NO TYPE PARAMETER");
         break;
     }
+    collectable.spawn();
   }
   
-  public void generateSun(float x, float y, boolean fromSky){
-    
-    if (fromSky){
-     x = seed.nextInt(width/2);
-     y = -10;
-    }
-    else{
-     x += seed.nextInt(10); //so there's a little variation on where it spawns 
-    }
-    
-    Collectable sun = new Sun(x, y, fromSky);
+  public void generateSkySun(){
+   generateSun(seed.nextInt(width), -10, true, seed); 
+  }
+  
+  public void generateSun(float x, float y, boolean fromSky, Random seed){
+    x += seed.nextInt(10); //so there's a little variation on where it spawns from the sky and from the plant 
+    Collectable sun = new Sun(x, y, fromSky, seed);
+    sun.spawn();
   }
   
   

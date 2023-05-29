@@ -13,12 +13,16 @@ public class Collectable extends Actor{
   public Collectable(float x, float y, PImage sp, int val){
     super(x, y, sp);
     value = val;
-    Green.getWorld().addObject(this);
   }
   
   public int getValue(){
    return value; 
   }
+  
+  public void spawn(){
+    Green.getWorld().addObject(this); 
+  }
+  
   
   public void act(float deltaTime){
     if(this.isMouseButtonDownHere(LEFT)){
@@ -31,9 +35,25 @@ public class Collectable extends Actor{
     
 
 public class Sun extends Collectable{
- public Sun(float x, float y, boolean fromSky){
+  boolean fromSky;
+  int yFloor = 20;
+  Random seed;
+  int gameHeight = Green.getWorld().getHeight();
+  
+ public Sun(float x, float y, boolean sky, Random s){
    super(x, y, loadImage("Sprites/Collectables/sun.png"), 25);
+   fromSky = sky;
+   seed = s;
+   yFloor = gameHeight - 100 - seed.nextInt(gameHeight * 2 / 3); //added the -100 so sun doesn't fall on the very very bottom
  }
+ 
+ 
+ public void act(float deltaTime){
+   if (fromSky && getY() < yFloor){
+     moveGlobal(0, 8);
+   }
+ }
+ 
 }
 
 public class SilverCoin extends Collectable{

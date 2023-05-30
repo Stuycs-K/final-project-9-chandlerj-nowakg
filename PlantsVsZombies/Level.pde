@@ -46,17 +46,18 @@ public class Level extends World{
   public void prepare(){
     //camera stuff
     cam = new Camera();
-    debugCam = new DebugCamera();
-    setCamFollowActor(debugCam);
+    //debugCam = new DebugCamera();
+    setCamFollowActor(cam);
     setUnbounded(true);
-    
+    cam.setX(width/2);
+    System.out.println("hello");
     
       
     //seedSlots.resize(940,130);
     //image(seedSlots,180,0);
     //image(seedSelect, 300, 300);
     
-    gameState = SEEDSELECTION;
+    gameState = INVASION;
     //gameState = INVASION; //for testing purposes
 
     
@@ -71,8 +72,11 @@ public class Level extends World{
     }
     
     if (gameState == INVASION){
+      cam.setX(1300);
       //tell zombies to move
       //tell plants to fire
+      
+      
     }
     
     if (gameState == REWARD){
@@ -89,12 +93,15 @@ public class Level extends World{
      }
      if (green.isMouseButtonDown(RIGHT)){
     //  generateSun(mouseX, mouseY, false, seed); 
-         System.out.println(" " + cam.worldMouseX() + " ");
+         System.out.println(" " + mouseX + " ");
      }
     
    
   }
 
+
+
+  
   
   public boolean isFinished(){
     return finished;

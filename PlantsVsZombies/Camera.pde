@@ -28,10 +28,6 @@ public class Camera extends Actor{
     }
   }
   
-  public int worldMouseX(){
-   return mouseX - ((int) getX() - width/2);
-  }
-  
   
 }
 

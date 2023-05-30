@@ -13,7 +13,7 @@ public class Lawn{
   public int[][] lawn;
   int tileXSize;
   int tileYSize;
-  int[] topLeftCoord = {376, 148}; //includes mowers
+  int[] topLeftCoord = {209, 148}; //includes mowers
   int[] bottomRightCoord = {2128, 1000};
   
   public Lawn(int[][] levelLawn){
@@ -31,12 +31,12 @@ public class Lawn{
   
   
   public boolean placePlant(String name, int x, int y, boolean mouse){
-    if (mouse) return placePlant(name, (y - topLeftCoord[1]) / tileYSize,(x - topLeftCoord[0]) / tileXSize);
+    if (mouse) return placePlant(name, (y / tileYSize) - topLeftCoord[1], (x / tileXSize) - topLeftCoord[0]);
     else return placePlant(name, x, y);
   }
   
 
-  private boolean placePlant(String name, int row, int col){ //will have a Plant plant
+  private boolean placePlant(String name, int row, int col){ 
   //System.out.println(" x? " + row );
    //System.out.println(" y? " + col); 
 

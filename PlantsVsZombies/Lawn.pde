@@ -37,8 +37,9 @@ public class Lawn{
   
 
   private boolean placePlant(String name, int row, int col){ //will have a Plant plant
-  System.out.println(" x? " + row );
-   System.out.println(" y? " + col); 
+  //System.out.println(" x? " + row );
+   //System.out.println(" y? " + col); 
+
     if (col <= 0 || col >= lawn[0].length){
      return false; //its less than or equal to 0 because you can't place on a mower tile 
     }
@@ -51,8 +52,8 @@ public class Lawn{
   
 
     
-    float placementX = col * tileXSize + topLeftCoord[0] - 0.5 * tileXSize;
-    float placementY = row * tileYSize + topLeftCoord[1] - 0.5 * tileYSize;
+    float placementX = col * tileXSize + topLeftCoord[0] + 0.5 * tileXSize;
+    float placementY = row * tileYSize + topLeftCoord[1] + 0.5 * tileYSize;
     
     System.out.println("x tile " + tileXSize);
     System.out.println("y tile " + tileYSize);

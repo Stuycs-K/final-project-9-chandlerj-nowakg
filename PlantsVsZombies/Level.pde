@@ -88,7 +88,8 @@ public class Level extends World{
       lawn.placePlant("Peashooter", mouseX, mouseY, true);
      }
      if (green.isMouseButtonDown(RIGHT)){
-      generateSun(mouseX, mouseY, false, seed);      
+    //  generateSun(mouseX, mouseY, false, seed); 
+         System.out.println(" " + cam.worldMouseX() + " ");
      }
     
    

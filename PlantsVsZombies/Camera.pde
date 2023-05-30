@@ -1,6 +1,11 @@
 public class Camera extends Actor{
 
   Green green;
+  public Camera(boolean dot){
+    super(width/2, height/2, 10, 10);
+    green = Green.getInstance();
+     Green.getWorld().addObject(this); 
+  }
   
   public Camera(){
    super(width/2, height/2, 0, 0);
@@ -21,6 +26,47 @@ public class Camera extends Actor{
     if (green.isKeyDown(LEFT) && getX() > width/2){
       moveGlobal(-8, 0);
     }
+  }
+  
+  public int worldMouseX(){
+   return mouseX - ((int) getX() - width/2);
+  }
+  
+  
+}
+
+public class DebugCamera extends Camera{
+
+  Green green;
+  
+  public DebugCamera(){
+   super(true);
+   green = Green.getInstance();
+   Green.getWorld().addObject(this); 
+  }
+  
+  public void prepare(){
+    
+  }
+  
+  
+  public void act(float deltaTime){
+      if (green.isKeyDown(RIGHT)){
+      moveGlobal(8, 0);
+    }
+    if (green.isKeyDown(LEFT)){
+      moveGlobal(-8, 0);
+    }
+    if (green.isKeyDown(UP)){
+      moveGlobal(0, -12);
+    }
+    if (green.isKeyDown(DOWN)){
+      moveGlobal(0, 12);
+    }
+    if (green.isKeyDown('z')){
+      System.out.println(getX() + ", " + getY());
+    }
+    
   }
   
   

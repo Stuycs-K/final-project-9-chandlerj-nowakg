@@ -17,8 +17,11 @@ public Zombie(){
   //sprite = "Basic.png"; //placeholder name for the gif we end up using
 }
 
-public void death(){
-
+public void takeDamage(int damage){
+  this.health - damage;
+  if(this.health < 0){
+   this.die() 
+  }
 }
 
 }

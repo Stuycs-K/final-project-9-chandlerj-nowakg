@@ -46,7 +46,7 @@ public class Level extends World{
   public void prepare(){
     //camera stuff
     cam = new Camera();
-    //debugCam = new DebugCamera();
+    debugCam = new DebugCamera();
     setCamFollowActor(cam);
     setUnbounded(true);
     cam.setX(width/2);

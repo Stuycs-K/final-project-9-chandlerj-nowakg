@@ -98,6 +98,10 @@ void draw(){
    changeLevel(ROOF); 
   }
   
+  fill(255);   
+  text(frameRate, width/2, height/2);
+  
+  
 }    
 
 

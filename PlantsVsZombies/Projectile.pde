@@ -1,11 +1,9 @@
-public class Projectile{
+public class Projectile extends Actor{
   private int damage;
   private int[][]map;
-  private int xPos;
-  private int yPos;
   private PImage sprite;
   
-  public Projectile(int dmg, int[][] map, int spawnX, int spawnY, PImage sprite){
+  public Projectile(float x, float y, PImage image, float scaleMultiplier){
     this.damage = dmg;
     this.map = map;
     this.sprite = sprite;
@@ -13,6 +11,13 @@ public class Projectile{
     yPos = spawnY;
   }
   
+  public abstract void act(){
+    while (this.getOneIntersectingObject == false){
+      this.draw();
+      xPos++;
+      yPos++;
+    }
+  }
   public void dealDamage(){
    for(int i=spawnY; i < map.length; i++){
     if(map[spawnX][i] == ZOMBIE){
@@ -22,8 +27,3 @@ public class Projectile{
    }
    this.die();
   }
-  
-  public void die(){
-    
-  }
-    

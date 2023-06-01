@@ -23,6 +23,11 @@ public Plant(String name, float x, float y, int cost, int health, boolean aquati
    this.aquatic = aquatic;  
    this.grounded = grounded;
 } 
+  public void prepare(){
+    sprite = getImage();
+    sprite.resize(100,100);
+   setImage(sprite);
+  }
   
   public void shoot(){
     

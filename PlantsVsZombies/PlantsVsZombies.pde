@@ -94,7 +94,9 @@ void draw(){
   if (green.isKeyDown('l')){
    changeLevel(ROOF); 
   }
+
 text(frameRate, 40, 120); 
+
 }    
 
 

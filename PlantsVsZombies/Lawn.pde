@@ -17,7 +17,6 @@ public class Lawn{
   int tileXSize;
   int tileYSize;
   
-  
   public Lawn(int[][] levelLawn){
     originalLawn = levelLawn; //dont change this one because this will be the reference that it will go back to when a plant is killed 
     lawn = levelLawn; 
@@ -48,38 +47,14 @@ public class Lawn{
   
 
     
-    float placementX = col * tileXSize + topLeftCoord[0] + 0.5 * tileXSize;
-    float placementY = row * tileYSize + topLeftCoord[1] + 0.5 * tileYSize;
+    float placementX = col * tileXSize + topLeftCoord[0];
+    float placementY = row * tileYSize + topLeftCoord[1];
     
     System.out.println("x tile " + tileXSize);
     System.out.println("y tile " + tileYSize);
     System.out.println("placementX " + placementX);
     System.out.println("placementY " + placementY);
-   /* 
-    try{
-     // Constructor<Peashooter> construct = Peashooter.class.getConstructor(float.class, float.class);
-      //System.out.println(construct);
-      //Plant plant = construct.newInstance(placementX, placementY);
-      //Plant plant = (Plant) Class.forName("PlantsVsZombies$" + name).getDeclaredConstructor(float.class, float.class).newInstance(placementX, placementY);   //this here is some java sorcery known as reflection, i hope this doens't crash the computer or something
-      
-     
-    Class cls = Class.forName("PlantsVsZombies$" + name);
-    Constructor constructor = cls.getDeclaredConstructor(float.class, float.class);
-    Plant plant = (Plant) constructor.newInstance(0.5f, 0.5f);
-      
-      plant.spawn();
-    }  catch (InstantiationException e){
-     e.printStackTrace();
-    } catch (IllegalAccessException e){
-     e.printStackTrace();
-    } catch (NoSuchMethodException e){
-      e.printStackTrace();
-    } catch (InvocationTargetException e){
-      e.printStackTrace();
-    }catch (ClassNotFoundException e){
-      e.printStackTrace();
-    }
-    */
+    
     Plant plant = new Peashooter(placementX, placementY);
     Green.getWorld().addObject(plant); 
     lawn[row][col] = PLANT;

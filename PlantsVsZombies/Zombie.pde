@@ -23,14 +23,14 @@ public Zombie(String name, float x, float y, int health, float walkSpeed){
 public void setHealth(int health){
  this.health = health;
 }
-public abstract void act(){
+public  void act(){
  //gotta make the zombies actually move
  if(this.health < 0){
   getWorld().removeObject(this);
  }
 }
 
-public boolean inflictDamage(Plant plant, int amount){
+public void inflictDamage(Plant plant, int amount){
     plant.health -= amount;
   }
 }

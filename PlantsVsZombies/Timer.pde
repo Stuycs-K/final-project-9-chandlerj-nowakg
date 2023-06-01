@@ -1,24 +1,23 @@
 public class Timer{
-  int holdTime;
-  int interval;
-  boolean isZero;
+  int internalCooldown;
+  int currentTime;
   
   public Timer(int interval){
-    this.interval = (interval * 60);
-    holdTime = interval;
-    isZero = false;
+    this.internalCooldown = interval;
+    currentTime = (internalCooldown*60);
   }
   
-  public abstract void act(){
-    if(isZero = true){
-      isZero = false;
-      interval = holdTime * 60;
-    }
-    interval--;
-    if(interval == 0){
-      isZero = true;
-      interval = holdTime;
-    }
-    
+  public boolean getStatus(){
+   if(this.currentTime == 0){
+    return true; 
+   }
+    return false;
   }
   
+  public void act(float deltaTime){
+    currentTime--;
+    if(currentTime == 0){
+     currentTime = (internalCooldown*60); 
+    }
+  }
+}

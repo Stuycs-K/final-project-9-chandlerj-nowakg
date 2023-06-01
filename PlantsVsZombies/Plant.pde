@@ -11,16 +11,16 @@ public class Plant extends Actor{
 
 
 
-public Plant(String name, float x, float y, int cost){
-   this(name, x, y, cost, false, false);
+public Plant(String name, float x, float y, int cost, int health){
+   this(name, x, y, cost, health, false, false);
 }
 
-public Plant(String name, float x, float y, int cost, boolean aquatic, boolean grounded){
+public Plant(String name, float x, float y, int cost, int health, boolean aquatic, boolean grounded){
    super(x, y, loadImage("Sprites/Plants/" + name + ".png"), 0.333333f);
    green = Green.getInstance(); 
    this.name = name;
    this.cost = cost;
-   this.aquatic = aquatic;
+   this.aquatic = aquatic;  
    this.grounded = grounded;
 } 
   
@@ -29,10 +29,12 @@ public Plant(String name, float x, float y, int cost, boolean aquatic, boolean g
   }
   
   
-  
   public void act(float deltaTime){
    //if see zombie then shoot
    //animate
+   
+   
+   
   }
 
 
@@ -40,7 +42,7 @@ public Plant(String name, float x, float y, int cost, boolean aquatic, boolean g
 
 public class Peashooter extends Plant{
  public Peashooter(float x, float y){
-   super("Peashooter",x,y,100);
+   super("Peashooter",x,y,100,);
  }
   
 }

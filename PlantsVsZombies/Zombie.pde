@@ -1,24 +1,41 @@
 //list of zombies that can only go in 1 direction
 //list of projectiles similarly to zombies
-public class Zombie{
+public class Zombie extends Actor{
+  Green green;
   String name;
   int health;
-  int walkSpeed;
+  float walkSpeed;
   int biteSpeed;
+  int biteDamage = 10; //i think..? 
   PImage sprite;
   PImage deathAnim;
   
   
-public Zombie(){
-  name = "Zombie";
-  health = 10;
-  walkSpeed = 1;
-  biteSpeed = 1;
-  //sprite = "Basic.png"; //placeholder name for the gif we end up using
+  
+  public Zombie(String name, float x, float y, int health, float walkSpeed){
+    super(1300, height/2, loadImage("Sprites/Plants/Peashooter.png"));
+    this.name = name;
+    this.health = health;
+    this.walkSpeed = walkSpeed;
+    this.biteSpeed = 1;
+    //sprite = "Basic.png"; //placeholder name for the gif we end up using
+  }
+  
+  public void act(float deltaTime){
+    
+  }
+  
+  public boolean inflictDamage(Plant plant, int amount){
+    plant.health -= amount;
+  }
+
 }
 
-public void death(){
-
-}
-
-}
+public class Regular extends Zombie{
+ public Regular(float x, float y){
+   super("Peashooter",x,y, 200, 10);
+ }
+public class Conehead extends Zombie{
+ public Conehead(float x, float y){
+   super("Peashooter",x,y, 640, 20);
+ }

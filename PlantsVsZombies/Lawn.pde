@@ -8,14 +8,15 @@ private static final int SOIL = 0;
 private static final int LILYPAD = 1;
 private static final int PLANT = 2;
 private static final int PUMPKIN = 3;
+private static final int[] topLeftCoord = {30, 110}; //includes mowers
+private static final int[] bottomRightCoord = {1130, 750};
 
 public class Lawn{
   private int[][] originalLawn;
   public int[][] lawn;
   int tileXSize;
   int tileYSize;
-  int[] topLeftCoord = {30, 110}; //includes mowers
-  int[] bottomRightCoord = {1130, 750};
+  
   
   public Lawn(int[][] levelLawn){
     originalLawn = levelLawn; //dont change this one because this will be the reference that it will go back to when a plant is killed 

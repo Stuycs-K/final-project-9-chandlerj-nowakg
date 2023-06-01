@@ -157,7 +157,14 @@ public class Level extends World{
   
   //COLLECTABLE STUFF ^^^^^^^^^^^ /////////////////////////
   
+  //ZOMBIE STUFF VVVVVVV /////
   
+  public void spawnZombie(String name, int row){
+    int rowThickness = (bottomRightCoord[1] - bottomLeftCoord[1]) / 5;
+    Zombie zombie = new Regular(rowThickness * row + bottomLeftCoord[1]);
+  }
+  
+  //ZOMBIE STUFF ^^^^^^ ///////
 
 
   

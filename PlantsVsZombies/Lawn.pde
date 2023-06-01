@@ -13,8 +13,8 @@ public class Lawn{
   public int[][] lawn;
   int tileXSize;
   int tileYSize;
-  int[] topLeftCoord = {209, 148}; //includes mowers
-  int[] bottomRightCoord = {2128, 1000};
+  int[] topLeftCoord = {112, 148}; //includes mowers
+  int[] bottomRightCoord = {1824, 1000};
   
   public Lawn(int[][] levelLawn){
     originalLawn = levelLawn;
@@ -31,7 +31,7 @@ public class Lawn{
   
   
   public boolean placePlant(String name, int x, int y, boolean mouse){
-    if (mouse) return placePlant(name, (y / tileYSize) - topLeftCoord[1], (x / tileXSize) - topLeftCoord[0]);
+    if (mouse) return placePlant(name, (y  - topLeftCoord[1]) / tileYSize, ((x - topLeftCoord[0])/ tileXSize));
     else return placePlant(name, x, y);
   }
   
@@ -52,38 +52,14 @@ public class Lawn{
   
 
     
-    float placementX = col * tileXSize + topLeftCoord[0] + 0.5 * tileXSize;
-    float placementY = row * tileYSize + topLeftCoord[1] + 0.5 * tileYSize;
+    float placementX = col * tileXSize + topLeftCoord[0];
+    float placementY = row * tileYSize + topLeftCoord[1];
     
     System.out.println("x tile " + tileXSize);
     System.out.println("y tile " + tileYSize);
     System.out.println("placementX " + placementX);
     System.out.println("placementY " + placementY);
-   /* 
-    try{
-     // Constructor<Peashooter> construct = Peashooter.class.getConstructor(float.class, float.class);
-      //System.out.println(construct);
-      //Plant plant = construct.newInstance(placementX, placementY);
-      //Plant plant = (Plant) Class.forName("PlantsVsZombies$" + name).getDeclaredConstructor(float.class, float.class).newInstance(placementX, placementY);   //this here is some java sorcery known as reflection, i hope this doens't crash the computer or something
-      
-     
-    Class cls = Class.forName("PlantsVsZombies$" + name);
-    Constructor constructor = cls.getDeclaredConstructor(float.class, float.class);
-    Plant plant = (Plant) constructor.newInstance(0.5f, 0.5f);
-      
-      plant.spawn();
-    }  catch (InstantiationException e){
-     e.printStackTrace();
-    } catch (IllegalAccessException e){
-     e.printStackTrace();
-    } catch (NoSuchMethodException e){
-      e.printStackTrace();
-    } catch (InvocationTargetException e){
-      e.printStackTrace();
-    }catch (ClassNotFoundException e){
-      e.printStackTrace();
-    }
-    */
+    
     Plant plant = new Peashooter(placementX, placementY);
     plant.spawn();
     lawn[row][col] = PLANT;

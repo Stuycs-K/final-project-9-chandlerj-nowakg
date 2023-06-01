@@ -19,11 +19,6 @@ public class Collectable extends Actor{
    return value; 
   }
   
-  public void spawn(){
-    Green.getWorld().addObject(this); 
-  }
-  
-  
   public void act(float deltaTime){
     if(this.isMouseButtonDownHere(LEFT)){
       //System.out.println("ive been clicked!");

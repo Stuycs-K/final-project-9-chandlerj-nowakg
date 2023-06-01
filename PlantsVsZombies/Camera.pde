@@ -4,13 +4,11 @@ public class Camera extends Actor{
   public Camera(boolean dot){
     super(width/2, height/2, 10, 10);
     green = Green.getInstance();
-     Green.getWorld().addObject(this); 
   }
   
   public Camera(){
    super(width/2, height/2, 0, 0);
    green = Green.getInstance();
-   Green.getWorld().addObject(this); 
   }
   
   public void prepare(){

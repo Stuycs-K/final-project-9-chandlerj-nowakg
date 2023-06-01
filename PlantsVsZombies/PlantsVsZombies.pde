@@ -49,21 +49,18 @@ void changeLevel(int levelID){
   
    activeLevel = newLevel;
    green.loadWorld(activeLevel);
-
+ 
 }
 
 
 void setup(){
-   size(1920, 1040);
+   size(1280, 800);
    System.out.println("setup:  running level menu."); 
    
    
   green = new Green(this);
   activeLevel = new MainMenu();
   green.loadWorld(activeLevel);
-  
-  //userInput = new Controller();
-
 
 }
 
@@ -97,7 +94,7 @@ void draw(){
   if (green.isKeyDown('l')){
    changeLevel(ROOF); 
   }
-  
+text(frameRate, 40, 120); 
 }    
 
 

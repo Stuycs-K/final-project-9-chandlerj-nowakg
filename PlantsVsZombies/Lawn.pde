@@ -8,37 +8,32 @@ private static final int SOIL = 0;
 private static final int LILYPAD = 1;
 private static final int PLANT = 2;
 private static final int PUMPKIN = 3;
+
 public class Lawn{
   private int[][] originalLawn;
   public int[][] lawn;
   int tileXSize;
   int tileYSize;
-  int[] topLeftCoord = {209, 148}; //includes mowers
-  int[] bottomRightCoord = {2128, 1000};
+  int[] topLeftCoord = {30, 110}; //includes mowers
+  int[] bottomRightCoord = {1130, 750};
   
   public Lawn(int[][] levelLawn){
-    originalLawn = levelLawn;
-    lawn = new int[originalLawn.length][originalLawn[0].length];
-    
-    for(int r = 0; r < originalLawn.length; r++){
-      for(int c=0; c < originalLawn[r].length; c++){
-        lawn[r][c] = originalLawn[r][c];
-      }
-     }
-     tileXSize = (bottomRightCoord[0] - topLeftCoord[0]) / lawn[0].length;
+    originalLawn = levelLawn; //dont change this one because this will be the reference that it will go back to when a plant is killed 
+    lawn = levelLawn; 
+    tileXSize = (bottomRightCoord[0] - topLeftCoord[0]) / lawn[0].length;
     tileYSize = (bottomRightCoord[1] - topLeftCoord[1]) / lawn.length; 
   }
   
   
   public boolean placePlant(String name, int x, int y, boolean mouse){
-    if (mouse) return placePlant(name, (y / tileYSize) - topLeftCoord[1], (x / tileXSize) - topLeftCoord[0]);
+    if (mouse) return placePlant(name, (y - topLeftCoord[1]) / tileYSize, (x  - topLeftCoord[0])/ tileXSize);
     else return placePlant(name, x, y);
   }
   
 
   private boolean placePlant(String name, int row, int col){ 
-  //System.out.println(" x? " + row );
-   //System.out.println(" y? " + col); 
+    System.out.println(" x? " + row );
+   System.out.println(" y? " + col); 
 
     if (col <= 0 || col >= lawn[0].length){
      return false; //its less than or equal to 0 because you can't place on a mower tile 
@@ -85,7 +80,7 @@ public class Lawn{
     }
     */
     Plant plant = new Peashooter(placementX, placementY);
-    plant.spawn();
+    Green.getWorld().addObject(plant); 
     lawn[row][col] = PLANT;
     
     

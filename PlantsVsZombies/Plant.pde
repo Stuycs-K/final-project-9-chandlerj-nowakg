@@ -16,30 +16,18 @@ public Plant(String name, float x, float y, int cost){
 }
 
 public Plant(String name, float x, float y, int cost, boolean aquatic, boolean grounded){
-   super(x, y, loadImage("Sprites/Plants/" + name + ".png"));
+   super(x, y, loadImage("Sprites/Plants/" + name + ".png"), 0.333333f);
    green = Green.getInstance(); 
    this.name = name;
    this.cost = cost;
    this.aquatic = aquatic;
    this.grounded = grounded;
-}
-
-  public void spawn(){
-    Green.getWorld().addObject(this); 
-  }
-
-  public int getHealth(){
-   return this.health; 
-  }
-  
-  public int getCost(){
-    return this.cost;
-  }
-  
+} 
   
   public void shoot(){
     
   }
+  
   
   
   public void act(float deltaTime){

@@ -46,11 +46,11 @@ public class Level extends World{
   public void prepare(){
     //camera stuff
     cam = new Camera();
-    //debugCam = new DebugCamera();
-    setCamFollowActor(cam);
+    debugCam = new DebugCamera();
+    setCamFollowActor(debugCam);
     setUnbounded(true);
     cam.setX(width/2);
-    System.out.println("hello");
+    addObject(debugCam);
     
       
     //seedSlots.resize(940,130);
@@ -88,12 +88,12 @@ public class Level extends World{
     }
     
     if (green.isMouseButtonDown(LEFT)){
-     // spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
+      //spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
       lawn.placePlant("Peashooter", mouseX, mouseY, true);
      }
      if (green.isMouseButtonDown(RIGHT)){
-    //  generateSun(mouseX, mouseY, false, seed); 
-         System.out.println(" " + mouseX + " ");
+      //generateSun(mouseX, mouseY, false, seed); 
+         System.out.println(" " + mouseX + " " + mouseY);
      }
     
    
@@ -140,7 +140,7 @@ public class Level extends World{
         System.out.println("error: spawnCoin() tried spawning a coin with NO TYPE PARAMETER");
         break;
     }
-    collectable.spawn();
+    addObject(collectable); 
   }
   
   public void generateSkySun(){
@@ -150,7 +150,7 @@ public class Level extends World{
   public void generateSun(float x, float y, boolean fromSky, Random seed){
     x += seed.nextInt(10); //so there's a little variation on where it spawns from the sky and from the plant 
     Collectable sun = new Sun(x, y, fromSky, seed);
-    sun.spawn();
+    addObject(sun);
   }
   
   

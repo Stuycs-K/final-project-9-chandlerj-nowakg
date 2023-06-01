@@ -1,27 +1,24 @@
 public class Timer{
+  int holdTime;
   int interval;
   boolean isZero;
   
   public Timer(int interval){
     this.interval = (interval * 60);
+    holdTime = interval;
     isZero = false;
   }
   
-  public boolean runTime(){
-   interval--;
-   
-   if(interval == 0){
-     isZero = true;
-   }
-   return false;
+  public abstract void act(){
+    if(isZero = true){
+      isZero = false;
+      interval = holdTime * 60;
+    }
+    interval--;
+    if(interval == 0){
+      isZero = true;
+      interval = holdTime;
+    }
+    
   }
   
-  public int getTime(){
-    return this.interval;
-  }
-  
-  public boolean checkFinished(){
-    return isZero;
-  }
-}
- 

@@ -28,19 +28,12 @@ public Plant(String name, float x, float y, int cost, int health, boolean aquati
     sprite.resize(100,100);
    setImage(sprite);
   }
-  
-  public void shoot(){
-    
+
+public void act(float deltaTime){
+  if(Timer == 0){
+   this.projectile = new Projectile(this.x, this.y, PImage image); 
   }
-  
-  
-  public void act(float deltaTime){
-   //if see zombie then shoot
-   //animate
-   
-   
-   
-  }
+ }
 
 
 }

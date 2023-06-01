@@ -36,15 +36,13 @@ public Plant(String name, float x, float y, int cost, boolean aquatic, boolean g
     return this.cost;
   }
   
-  
-  public void shoot(){
-    
-  }
-  
-  
   public void act(float deltaTime){
    //if see zombie then shoot
    //animate
+  if(Timer == 0){
+   this.projectile = new Projectile(this.x, this.y, PImage image); 
+  }
+  
   }
 
 

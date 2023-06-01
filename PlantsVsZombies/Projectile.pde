@@ -1,9 +1,8 @@
 public class Projectile extends Actor{
   private int damage;
-  private int[][]map;
   private PImage sprite;
-  
-  public Projectile(float x, float y, PImage image){
+    public Projectile(float x, float y, PImage image, int dmg){
+    super(x, y, image);
     this.damage = dmg;
     this.map = map;
     this.sprite = sprite;
@@ -20,4 +19,12 @@ public class Projectile extends Actor{
    victim.setHealth(victim.health - damage);
    getWorld().removeObject(this);
   }
+  
+ }
+ 
+ public class Pea extends Projectile{
+  public Pea(float x, float y){
+   super(x, y, loadImage("ENTER IMAGE HERE"), 20); //it does 20 damage. 
+  }
+   
  }

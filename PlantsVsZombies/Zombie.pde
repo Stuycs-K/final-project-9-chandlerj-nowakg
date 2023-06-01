@@ -7,7 +7,7 @@ public class Zombie extends Actor{
   int health;
   float walkSpeed;
   int biteSpeed;
-  int biteDamage = 10; //i think..? 
+  int biteDamage = 10; //i think this is the same for all zombies except guarantuar..? 
   PImage sprite;
   
   

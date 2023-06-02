@@ -15,6 +15,7 @@ public class Plant extends Actor{
    PImage sprite;
    int projectileID;
    Green green;
+   World level;
 
 
 
@@ -28,17 +29,27 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
    this.aquatic = aquatic;  
    this.grounded = grounded;
    this.ICD = Cooldown;
+   level = Green.getWorld();
 } 
   public void addedToWorld(World world){
     sprite = getImage();
     sprite.resize(100,100);
     setImage(sprite);
   }
+  
+  public void setHealth(int health){
+ this.health = health;
+}
 
 public void act(float deltaTime){
+  if(health <= 0){
+    level.removeObject(this);
+   }
+  
+  
    if(ICD.done() == true){
      Projectile x = new Projectile(projectileTemplates[projectileID]);
-     getWorld().addObject(x);
+     level.addObject(x);
      x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      ICD.reset();

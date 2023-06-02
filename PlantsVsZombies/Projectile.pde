@@ -6,6 +6,7 @@ public class Projectile extends Actor {
   private boolean armed;
   private float speed;
   Green green;
+  World level;
   
   public Projectile(Projectile template){
     this(template.damage,template.speed,template.getImage());
@@ -20,6 +21,7 @@ public class Projectile extends Actor {
     this.sprite = image;
     this.speed = speed;
     armed = false;
+    level = Green.getWorld();
   }
   
   public void arm(int xPos, int yPos){
@@ -33,7 +35,7 @@ public class Projectile extends Actor {
   public void act(float deltaTime){
     if (armed){
        if(isAtEdge()){
-        getWorld().removeObject(this);
+        level.removeObject(this);
         return; //Since this no longer 'exists'
       }
       
@@ -43,7 +45,7 @@ public class Projectile extends Actor {
       
       if(victim != null){ //on hit
         victim.setHealth(victim.health - damage);
-        getWorld().removeObject(this);
+        level.removeObject(this);
       }
 
       move(speed);
@@ -54,7 +56,7 @@ public class Projectile extends Actor {
  
  public class Pea extends Projectile{
   public Pea(){
-   super(20, 10, loadImage("Sprites/Projectiles/Pea.png")); //it does 20 damage. speed of 10
+   super(20, 7, loadImage("Sprites/Projectiles/Pea.png")); //it does 20 damage. speed of 10
   }
    
  }

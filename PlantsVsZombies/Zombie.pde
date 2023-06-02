@@ -6,9 +6,11 @@ public class Zombie extends Actor{
   String name;
   int health;
   float walkSpeed;
-  int biteSpeed;
+  int biteCoolDown;
+  Timer biteTimer;
   int biteDamage = 10; //i think this is the same for all zombies except guarantuar..? 
   PImage sprite;
+  World level;
   
   
 public Zombie(String name, float y, int health, float walkSpeed){
@@ -16,24 +18,44 @@ public Zombie(String name, float y, int health, float walkSpeed){
   this.name = name;
   this.health = health;
   this.walkSpeed = walkSpeed;
-  this.biteSpeed = 1;
+  this.biteCoolDown = 1;
+  biteTimer= new Timer(biteCoolDown);
+  level = Green.getWorld();
+
   //sprite = "Basic.png"; //placeholder name for the gif we end up using
 }
 
 public void setHealth(int health){
  this.health = health;
- System.out.println("set: "+health);
 }
 
 public  void act(float deltaTime){
- move(-1 * walkSpeed);
- if(health <= 0){
-  getWorld().removeObject(this);
- }
+
+   if(health <= 0){
+    level.removeObject(this);
+    
+   }
+   
+ 
+  Plant victim = getOneIntersectingObject(Plant.class);
+      
+    if(victim != null){ //on hit
+      bite(victim);
+      //play eating animation?
+    }
+    else{
+      move(-1 * walkSpeed);
+      //play walking animation?
+    }
+ 
+
 }
 
-public void inflictDamage(Plant plant, int amount){
-    plant.health -= amount;
+public void bite(Plant plant){
+    if(biteTimer.done()){
+      plant.setHealth(plant.health - biteDamage);
+      biteTimer.reset();
+    }
   }
 }
 

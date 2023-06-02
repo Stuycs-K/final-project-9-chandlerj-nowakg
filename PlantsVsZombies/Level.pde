@@ -88,14 +88,20 @@ public class Level extends World{
     }
     
     if (green.isMouseButtonDown(LEFT)){
-      //spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
+      //
       lawn.placePlant("Peashooter", mouseX, mouseY, true);
      }
      if (green.isMouseButtonDown(RIGHT)){
       //generateSun(mouseX, mouseY, false, seed); 
         spawnZombie("regular", seed.nextInt(5));
      }
-    
+       if (green.isKeyDown('s')){
+      generateSun(mouseX, 0, true, seed);
+      }
+      if (green.isKeyDown('c')){
+        spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
+      }
+      
    
   }
 
@@ -146,7 +152,6 @@ public class Level extends World{
   
   public void spawnZombie(String name, int row){
     int rowThickness = (bottomRightCoord[1] - topLeftCoord[1]) / lawn.lawn.length;
-    System.out.println(rowThickness * row + topLeftCoord[1]);
     Zombie zombie = new Regular(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
     addObject(zombie);
   }

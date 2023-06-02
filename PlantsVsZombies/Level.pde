@@ -12,10 +12,11 @@ public class Level extends World{
   int gameState;
   Camera cam;
   DebugCamera debugCam;
-  
   private static final int SEEDSELECTION = 0;
   private static final int INVASION = 1; 
   private static final int REWARD = 2;
+  private static final int DEFEAT = 3;
+
 
   //TO BE DONE: incorporate music into each level
   //TO BE DONE: 
@@ -71,6 +72,15 @@ public class Level extends World{
       
     }
     
+    List<Zombie> zomList = getObjects(Zombie.class);
+    for(int i=0; i < zomList.size(); i++){
+      if(zomList.get(i).getX() < 100){
+       gameState = DEFEAT;
+      }
+    }
+    if(gameState == DEFEAT){
+      this.background = loadImage("Sprites/GameOver.png");
+    }
     if (gameState == INVASION){
       cam.setX(1300);
       //tell zombies to move

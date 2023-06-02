@@ -19,7 +19,7 @@ public class Plant extends Actor{
 
 
 public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, int projectileID, boolean aquatic, boolean grounded){
-   super(x, y, loadImage("Sprites/Plants/" + name + ".png"), 0.5f);
+   super(x, y, loadImage("Sprites/Plants/" +  "Peashooter.png"), 0.5f);
    green = Green.getInstance(); 
    this.name = name;
    this.health = health;
@@ -52,5 +52,28 @@ public class Peashooter extends Plant{
  public Peashooter(int x, int y){
    super("Peashooter",x,y,100,50,new Timer(1), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
  }
-  
+}
+public class SnowShooter extends Plant{
+ public SnowShooter(int x, int y){
+   super("SnowShooter",x,y,100,50,new Timer(1), PEA_PROJECTILE, false, true);
+ }
+}
+public class Repeater extends Plant{
+  public Repeater(int x, int y){
+    super("Repeater",x,y,100,50,new Timer(1), PEA_PROJECTILE, false, true);
+  }
+  @Override
+  public void act(float deltaTime){
+   if(ICD.done() == true){
+     Projectile x = new Projectile(projectileTemplates[projectileID]);
+     Projectile y = new Projectile(projectileTemplates[projectileID]);
+     getWorld().addObject(x);
+     getWorld().addObject(y);
+     x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
+     y.setZ(-10);
+     x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
+     y.arm((int) getX(), (int) getY()-20);
+     ICD.reset();
+   }
+ }
 }

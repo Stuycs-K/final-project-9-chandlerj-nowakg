@@ -93,7 +93,7 @@ public class Level extends World{
      }
      if (green.isMouseButtonDown(RIGHT)){
       //generateSun(mouseX, mouseY, false, seed); 
-         System.out.println(" " + mouseX + " " + mouseY);
+        spawnZombie("regular", 1);
      }
     
    
@@ -160,8 +160,10 @@ public class Level extends World{
   //ZOMBIE STUFF VVVVVVV /////
   
   public void spawnZombie(String name, int row){
-    int rowThickness = (bottomRightCoord[1] - bottomLeftCoord[1]) / 5;
-    Zombie zombie = new Regular(rowThickness * row + bottomLeftCoord[1]);
+    int rowThickness = (bottomRightCoord[1] - topLeftCoord[1]) / 5;
+    System.out.println(rowThickness * row + topLeftCoord[1]);
+    Zombie zombie = new Regular(1300, rowThickness * (row - 0.5) + topLeftCoord[1]);
+    addObject(zombie);
   }
   
   //ZOMBIE STUFF ^^^^^^ ///////

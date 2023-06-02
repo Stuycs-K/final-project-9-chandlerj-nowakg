@@ -17,11 +17,19 @@ public class Projectile extends Actor {
 
   //will change depending on the plant but for now, let's just assume its a peashooter
   public void act(float deltaTime){
-    if(//the intersects() method requires two actors, but obv we don't have a way of getting the zombie. Maybe we could add a target instance variable to Projectile?){
-      xPos+=10;
+    
+    if(isAtEdge()){
+      getWorld().removeObject(this);
+      return; //Since this no longer 'exists'
     }
-    Zombie victim = this.getOneObjectAtOffset(Zombie.class);
+    //Check for whether a zombie has been hit
+    Zombie victim = getOneIntersectingObject(Zombie.class);
+    if(victim != null){ //on hit
     victim.setHealth(victim.health - damage);
     getWorld().removeObject(this);
+    }
+
+      
+    }
+    
   }
-}

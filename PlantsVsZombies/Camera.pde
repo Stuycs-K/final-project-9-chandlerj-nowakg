@@ -10,10 +10,6 @@ public class Camera extends Actor {
     green = Green.getInstance();
   }
 
-  public void prepare() {
-  }
-
-
   public void act(float deltaTime) {
 
     if (green.isKeyDown(RIGHT) && getX() + width/2 < Green.getWorld().getWidth()) {
@@ -34,11 +30,6 @@ public class DebugCamera extends Camera {
     green = Green.getInstance();
     Green.getWorld().addObject(this);
   }
-
-  public void prepare() {
-  }
-
-
   public void act(float deltaTime) {
     if (green.isKeyDown(RIGHT)) {
       moveGlobal(8, 0);

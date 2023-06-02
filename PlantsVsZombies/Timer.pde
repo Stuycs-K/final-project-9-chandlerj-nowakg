@@ -1,8 +1,9 @@
-public class Timer{
+public class Timer extends Actor{
   int internalCooldown;
   int currentTime;
   
   public Timer(int interval){
+    super(width/2, height/2, 0, 0);
     this.internalCooldown = interval;
     currentTime = (internalCooldown*60);
   }

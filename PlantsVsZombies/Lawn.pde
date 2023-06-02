@@ -47,8 +47,8 @@ public class Lawn{
   
 
     
-    float placementX = col * tileXSize + topLeftCoord[0];
-    float placementY = row * tileYSize + topLeftCoord[1];
+    int placementX = col * tileXSize + topLeftCoord[0];
+    int placementY = row * tileYSize + topLeftCoord[1];
     
     System.out.println("x tile " + tileXSize);
     System.out.println("y tile " + tileYSize);

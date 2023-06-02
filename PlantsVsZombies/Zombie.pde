@@ -12,7 +12,7 @@ public class Zombie extends Actor{
   
   
 public Zombie(String name, float x, float y, int health, float walkSpeed){
-  super(1300, height/2, loadImage("Sprites/Plants/Peashooter.png"));
+  super(500, height/2, loadImage("Sprites/Plants/Peashooter.png"));
   this.name = name;
   this.health = health;
   this.walkSpeed = walkSpeed;
@@ -23,8 +23,12 @@ public Zombie(String name, float x, float y, int health, float walkSpeed){
 public void setHealth(int health){
  this.health = health;
 }
-public  void act(){
- //gotta make the zombies actually move
+
+public void addedToWorld(){
+ turn(-180f); 
+}
+public  void act(float deltaTime){
+ move(walkSpeed);
  if(this.health < 0){
   getWorld().removeObject(this);
  }

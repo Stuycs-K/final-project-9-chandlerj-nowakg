@@ -25,7 +25,7 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, bo
    this.xPos = x;
    this.yPos = y;
 } 
-  public void prepare(){
+  public void addedToWorld(){
     sprite = getImage();
     sprite.resize(100,100);
     setImage(sprite);
@@ -43,9 +43,8 @@ public void act(float deltaTime){
 }
 
 public class Peashooter extends Plant{
-     private Timer ICD = new Timer(1);
  public Peashooter(int x, int y){
-   super("Peashooter",x,y,100,100,100,100,false, true);
+   super("Peashooter",x,y,100,100,new Timer(1),false, true);
  }
   
 }

@@ -14,7 +14,7 @@ public class Projectile extends Actor {
   
   
   public Projectile(int dmg, float speed, PImage image) {
-    super(width/2,20, image, 0.333333f); //these shouldn't be touching the edge nor should they be touching the first lawn row
+    super(width/2,20, image, 1f); //these shouldn't be touching the edge nor should they be touching the first lawn row
     green = Green.getInstance();
     this.damage = dmg;
     this.sprite = image;
@@ -54,7 +54,7 @@ public class Projectile extends Actor {
  
  public class Pea extends Projectile{
   public Pea(){
-   super(20, 10, loadImage("Sprites/Collectables/sun.png")); //it does 20 damage. speed of 10
+   super(20, 10, loadImage("Sprites/Projectiles/Pea.png")); //it does 20 damage. speed of 10
   }
    
  }

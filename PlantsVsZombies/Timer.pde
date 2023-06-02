@@ -6,19 +6,21 @@ public class Timer extends Actor{
     super(width/2, height/2, 0, 0);
     this.internalCooldown = interval;
     currentTime = (internalCooldown*60);
+    Green.getWorld().addObject(this);
   }
   
-  public boolean getStatus(){
-   if(this.currentTime == 0){
-    return true; 
-   }
-    return false;
+  public boolean done(){
+   return this.currentTime == 0;
+  }
+  
+  public void reset(){
+    if(currentTime == 0){
+     currentTime = (internalCooldown*60); 
+     System.out.println("reset!");
+    }
   }
   
   public void act(float deltaTime){
     currentTime--;
-    if(currentTime == 0){
-     currentTime = (internalCooldown*60); 
-    }
   }
 }

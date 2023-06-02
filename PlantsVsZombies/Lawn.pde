@@ -8,8 +8,8 @@ private static final int SOIL = 0;
 private static final int LILYPAD = 1;
 private static final int PLANT = 2;
 private static final int PUMPKIN = 3;
-private static final int[] topLeftCoord = {30, 110}; //includes mowers
-private static final int[] bottomRightCoord = {1130, 750};
+private static final int[] topLeftCoord = {90, 110}; //includes mowers
+private static final int[] bottomRightCoord = {1240, 780};
 
 public class Lawn{
   private int[][] originalLawn;
@@ -32,9 +32,6 @@ public class Lawn{
   
 
   private boolean placePlant(String name, int row, int col){ 
-    System.out.println(" x? " + row );
-   System.out.println(" y? " + col); 
-
     if (col <= 0 || col >= lawn[0].length){
      return false; //its less than or equal to 0 because you can't place on a mower tile 
     }
@@ -47,13 +44,9 @@ public class Lawn{
   
 
     
-    int placementX = col * tileXSize + topLeftCoord[0];
-    int placementY = row * tileYSize + topLeftCoord[1];
+    int placementX = col * tileXSize + (int) topLeftCoord[0] + tileXSize / 2;
+    int placementY = row * tileYSize + (int) topLeftCoord[1] + tileYSize / 2;
     
-    System.out.println("x tile " + tileXSize);
-    System.out.println("y tile " + tileYSize);
-    System.out.println("placementX " + placementX);
-    System.out.println("placementY " + placementY);
     
     Plant plant = new Peashooter(placementX, placementY);
     Green.getWorld().addObject(plant); 

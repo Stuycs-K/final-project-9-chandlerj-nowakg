@@ -12,11 +12,11 @@ Level activeLevel;
 int coins = 0;
 
 void enterNextLevel() {
-  if (activeLevel.getID() + 1 > 5) {
+  if (activeLevel.levelID + 1 > 5) {
     changeLevel(MENU);
     return;
   }
-  changeLevel(activeLevel.getID() + 1);
+  changeLevel(activeLevel.levelID + 1);
 }
 
 
@@ -70,7 +70,7 @@ void draw() {
   //dont touch these 4
 
   //level stuff
-  if (activeLevel.isFinished() == true && activeLevel.getID() != MENU) {
+  if (activeLevel.finished == true && activeLevel.levelID != MENU) {
     enterNextLevel();
   }
 
@@ -93,6 +93,7 @@ void draw() {
     changeLevel(ROOF);
   }
 
+  fill(255);
   text(frameRate, 40, 120);
 }
 

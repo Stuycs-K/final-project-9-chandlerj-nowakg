@@ -32,16 +32,16 @@ public class DebugCamera extends Camera {
   }
   public void act(float deltaTime) {
     if (green.isKeyDown(RIGHT)) {
-      moveGlobal(8, 0);
+      moveGlobal(4, 0);
     }
     if (green.isKeyDown(LEFT)) {
-      moveGlobal(-8, 0);
+      moveGlobal(-4, 0);
     }
     if (green.isKeyDown(UP)) {
-      moveGlobal(0, -12);
+      moveGlobal(0, -4);
     }
     if (green.isKeyDown(DOWN)) {
-      moveGlobal(0, 12);
+      moveGlobal(0, 4);
     }
     if (green.isKeyDown('z')) {
       System.out.println(getX() + ", " + getY());

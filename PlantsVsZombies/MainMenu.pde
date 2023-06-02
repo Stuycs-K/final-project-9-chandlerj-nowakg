@@ -10,15 +10,10 @@ public class MainMenu extends Level{
   
   public void act(float deltaTime){
     if (green.isMouseButtonDown(LEFT)){
-        deload();
         changeLevel(DAY);
      }
   }
    
-  public void deload(){
-    //get rid of all the buttons
-   finished = true;
-  }
   
   public boolean isFinished(){
     return true;

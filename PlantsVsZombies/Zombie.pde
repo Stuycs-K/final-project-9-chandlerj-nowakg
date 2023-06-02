@@ -11,8 +11,8 @@ public class Zombie extends Actor{
   PImage sprite;
   
   
-public Zombie(String name, float x, float y, int health, float walkSpeed){
-  super(500, height/2, loadImage("Sprites/Plants/Peashooter.png"));
+public Zombie(String name, float y, int health, float walkSpeed){
+  super(1300, y, loadImage("Sprites/Zombies/" + name + ".png"), 0.25f);
   this.name = name;
   this.health = health;
   this.walkSpeed = walkSpeed;
@@ -22,14 +22,12 @@ public Zombie(String name, float x, float y, int health, float walkSpeed){
 
 public void setHealth(int health){
  this.health = health;
+ System.out.println("set: "+health);
 }
 
-public void addedToWorld(){
- turn(-180f); 
-}
 public  void act(float deltaTime){
- move(walkSpeed);
- if(this.health < 0){
+ move(-1 * walkSpeed);
+ if(health <= 0){
   getWorld().removeObject(this);
  }
 }
@@ -40,12 +38,12 @@ public void inflictDamage(Plant plant, int amount){
 }
 
 public class Regular extends Zombie{
- public Regular(float x, float y){
-   super("Peashooter",x,y, 200, 10);
+ public Regular(float y){
+   super("Regular",y, 200, 1);
  }
 }
 public class Conehead extends Zombie{
- public Conehead(float x, float y){
-   super("Peashooter",x,y, 640, 20);
+ public Conehead(float y){
+   super("Conehead",y, 640, 1);
  }
 }

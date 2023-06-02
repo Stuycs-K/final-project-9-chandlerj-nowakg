@@ -19,7 +19,7 @@ public class Plant extends Actor{
 
 
 public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, int projectileID, boolean aquatic, boolean grounded){
-   super(x, y, loadImage("Sprites/Plants/" + name + ".png"), 0.333333f);
+   super(x, y, loadImage("Sprites/Plants/" + name + ".png"), 0.5f);
    green = Green.getInstance(); 
    this.name = name;
    this.health = health;
@@ -29,16 +29,18 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
    this.grounded = grounded;
    this.ICD = Cooldown;
 } 
-  public void addedToWorld(){
+  public void addedToWorld(World world){
     sprite = getImage();
     sprite.resize(100,100);
     setImage(sprite);
   }
 
 public void act(float deltaTime){
-   if(ICD.getStatus() == true){
+   if(ICD.done() == true){
      Projectile x = new Projectile(projectileTemplates[projectileID]);
      getWorld().addObject(x);
+     x.arm((int) getX(), (int) getY());
+     ICD.reset();
    }
  }
 

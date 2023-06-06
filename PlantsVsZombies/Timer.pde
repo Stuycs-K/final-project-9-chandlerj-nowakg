@@ -5,7 +5,7 @@ public class Timer extends Actor{
   public Timer(int interval){
     super(width/2, height/2, 0, 0);
     this.internalCooldown = interval;
-    currentTime = (internalCooldown*60);
+    currentTime = (internalCooldown);
     Green.getWorld().addObject(this);
   }
   

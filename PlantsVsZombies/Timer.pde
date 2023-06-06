@@ -15,7 +15,7 @@ public class Timer extends Actor{
   
   public void reset(){
     if(currentTime == 0){
-     currentTime = (internalCooldown*60); 
+     currentTime = (internalCooldown); 
     }
   }
   

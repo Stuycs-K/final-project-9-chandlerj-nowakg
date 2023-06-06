@@ -61,17 +61,17 @@ public void act(float deltaTime){
 
 public class Peashooter extends Plant{
  public Peashooter(int x, int y){
-   super("Peashooter",x,y,100,50,new Timer(1), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Peashooter",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
 public class SnowShooter extends Plant{
  public SnowShooter(int x, int y){
-   super("SnowShooter",x,y,100,50,new Timer(1), PEA_PROJECTILE, false, true);
+   super("SnowShooter",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true);
  }
 }
 public class Repeater extends Plant{
   public Repeater(int x, int y){
-    super("Repeater",x,y,100,50,new Timer(1), PEA_PROJECTILE, false, true);
+    super("Repeater",x,y,100,50,new Timer(60),PEA_PROJECTILE, false, true);
   }
   @Override
   public void act(float deltaTime){

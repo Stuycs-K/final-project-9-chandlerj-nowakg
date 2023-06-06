@@ -29,6 +29,8 @@ public void setHealth(int health){
  this.health = health;
 }
 
+Plant victim;
+
 public  void act(float deltaTime){
 
    if(health <= 0){
@@ -37,7 +39,7 @@ public  void act(float deltaTime){
    }
    
  
-  Plant victim = getOneIntersectingObject(Plant.class);
+   victim = getOneIntersectingObject(Plant.class);
       
     if(victim != null){ //on hit
       bite(victim);

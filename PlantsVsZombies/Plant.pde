@@ -21,8 +21,9 @@ public class Plant extends Actor{
 
 
 public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, int projectileID, boolean aquatic, boolean grounded){
-   super(x, y, loadImage("Sprites/Plants/" +  "Peashooter.png"), 0.5f);
+   super(x, y, loadImage("Sprites/Plants/" + name + ".png"), 0.5f);
    green = Green.getInstance(); 
+   this.sprite = loadImage("Sprites/Plants/" + name + ".png");
    this.name = name;
    this.health = health;
    this.cost = cost;
@@ -54,6 +55,13 @@ public void act(float deltaTime){
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      ICD.reset();
    }
+ }
+ 
+ public void addedToWorld(){
+   
+ }
+ public void draw(){
+   image(sprite, 0, 0, getWidth(), getHeight()); 
  }
 
 

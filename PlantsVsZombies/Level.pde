@@ -2,7 +2,7 @@ import java.util.*;
 public class Level extends World{
   int levelID;
   PImage background;
-  PImage seedSelect = loadImage("Sprites/seedselect.jpg");
+  //PImage seedSelect = loadImage("Sprites/seedselect.jpg");
   PImage seedSlots = loadImage("Sprites/seedslots.jpg");
   boolean finished = false;
   int sun;
@@ -88,7 +88,6 @@ public class Level extends World{
       //tell zombies to move
       //tell plants to fire
       
-      
     }
     
     if (gameState == REWARD){
@@ -101,7 +100,7 @@ public class Level extends World{
     
     if (green.isMouseButtonDown(LEFT)){
       //
-      lawn.placePlant("Peashooter", mouseX, mouseY, true);
+      lawn.placePlant("ShowShooter", mouseX, mouseY, true);
      }
      if (green.isMouseButtonDown(RIGHT)){
       //generateSun(mouseX, mouseY, false, seed); 

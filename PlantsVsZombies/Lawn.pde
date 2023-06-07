@@ -47,8 +47,22 @@ public class Lawn{
     int placementX = col * tileXSize + (int) topLeftCoord[0] + tileXSize / 2;
     int placementY = row * tileYSize + (int) topLeftCoord[1] + tileYSize / 2;
     
+    Plant plant;
+    System.out.println(name);
+    if (name.equals("Peashooter")){
+     plant = new Peashooter(placementX, placementY); 
+    }
+    else if (name.equals("ShowShooter")){
+      plant = new SnowShooter(placementX, placementY); 
+    }
+    else{
+      plant = new Peashooter(placementX, placementY);
+      System.out.println("Error name isn't an actual plant name");
+    }
+      
     
-    Plant plant = new Peashooter(placementX, placementY);
+    
+     
     Green.getWorld().addObject(plant); 
     lawn[row][col] = PLANT;
     

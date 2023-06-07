@@ -1,9 +1,10 @@
 import java.lang.reflect.*;
 public class Plant extends Actor{
   
-   Projectile[] projectileTemplates = {new Pea(), new Pea(), new Pea()}; //they won't ALL Be pea but you get the idea
+   Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new Pea()}; //they won't ALL Be pea but you get the idea
    static final int PEA_PROJECTILE = 0;
-   static final int SPORE_PROJECTILE = 1;
+   static final int SNOW_PEA_PROJECTILE = 1;
+   static final int SPORE_PROJECTILE = 2;
    //... etc
   
    String name;
@@ -46,7 +47,6 @@ public void act(float deltaTime){
     level.removeObject(this);
    }
   
-  
    if(ICD.done() == true){
      Projectile x = new Projectile(projectileTemplates[projectileID]);
      level.addObject(x);
@@ -66,7 +66,7 @@ public class Peashooter extends Plant{
 }
 public class SnowShooter extends Plant{
  public SnowShooter(int x, int y){
-   super("SnowShooter",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true);
+   super("SnowShooter",x,y,100,50,new Timer(60), SNOW_PEA_PROJECTILE, false, true);
  }
 }
 public class Repeater extends Plant{

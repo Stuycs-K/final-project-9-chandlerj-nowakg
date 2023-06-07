@@ -1,4 +1,7 @@
 public class Camera extends Actor {
+  
+  
+  
   Green green;
   public Camera(boolean dot) {
     super(width/2, height/2, 10, 10);
@@ -20,6 +23,15 @@ public class Camera extends Actor {
     }
   }
 }
+
+
+
+
+
+
+
+
+
 
 public class DebugCamera extends Camera {
 

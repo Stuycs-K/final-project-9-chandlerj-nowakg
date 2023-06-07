@@ -48,10 +48,12 @@ public class Level extends World{
     //camera stuff
     cam = new Camera();
     debugCam = new DebugCamera();
-    setCamFollowActor(debugCam);
+    setCamFollowActor(cam);
     setUnbounded(true);
     cam.setX(width/2);
-    addObject(debugCam);
+    addObject(cam);
+    
+    image(seedSlots, 110, 110);
     
       
     //seedSlots.resize(940,130);

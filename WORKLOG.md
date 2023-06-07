@@ -52,6 +52,16 @@ incorporated projectiles into plants and made it so that plants could be constru
 zombies now bite plants
 finalized demo branch
 
+
+### june / 2
+
+moved everything to demo branch and made it compile
+
+### june/5
+sick
+
+### june/6 worked on incorporating snow pea projectile with snow pea plant and some worked on UI stuff for the seed packets
+
 ### date y
 
 info

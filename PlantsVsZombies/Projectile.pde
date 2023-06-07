@@ -56,12 +56,17 @@ public class Projectile extends Actor {
  
  public class Pea extends Projectile{
   public Pea(){
-   super(20, 7, loadImage("Sprites/Projectiles/Pea.png")); //it does 20 damage. speed of 10
+   super(20, 10, loadImage("Sprites/Projectiles/Pea.png")); //it does 20 damage. speed of 10
   }
  }
  
  public class SnowPea extends Projectile{
    public SnowPea(){
-     super(45,10,loadImage("Sprites/Projectiles/SnowPea.png"));
+     super(20,10,loadImage("Sprites/Projectiles/SnowPea.png"));
    }
+ }
+  public class FirePea extends Projectile{
+  public FirePea(){
+   super(40, 10, loadImage("Sprites/Projectiles/FirePea.png")); //it does 20 damage. speed of 10
+  }
  }

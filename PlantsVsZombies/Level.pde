@@ -53,11 +53,11 @@ public class Level extends World{
     cam.setX(width/2);
     addObject(cam);
     
-    image(seedSlots, 110, 110);
+
     
       
-    //seedSlots.resize(940,130);
-    //image(seedSlots,180,0);
+    seedSlots.resize(940,130);
+    image(seedSlots,180,0);
     //image(seedSelect, 300, 300);
     
     gameState = INVASION;

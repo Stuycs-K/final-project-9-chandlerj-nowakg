@@ -1,10 +1,10 @@
 import java.lang.reflect.*;
 public class Plant extends Actor{
   
-   Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new Pea()}; //they won't ALL Be pea but you get the idea
+   Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new FirePea()}; //they won't ALL Be pea but you get the idea
    static final int PEA_PROJECTILE = 0;
    static final int SNOW_PEA_PROJECTILE = 1;
-   static final int SPORE_PROJECTILE = 2;
+   static final int FIRE_PEA_PROJECTILE = 2;
    //... etc
   
    String name;

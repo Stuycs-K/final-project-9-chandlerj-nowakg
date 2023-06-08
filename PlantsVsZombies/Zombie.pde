@@ -14,7 +14,7 @@ public class Zombie extends Actor{
   
   
 public Zombie(String name, float y, int health, float walkSpeed){
-  super(1300, y, loadImage("Sprites/Zombies/" + name + ".png"), 0.25f);
+  super(1300, y, 10, 10);
   this.name = name;
   this.health = health;
   this.walkSpeed = walkSpeed;
@@ -25,9 +25,17 @@ public Zombie(String name, float y, int health, float walkSpeed){
   //sprite = "Basic.png"; //placeholder name for the gif we end up using
 }
 
+public void addedToWorld(){
+ sprite = loadImage("Sprites/Zombies/" + name + ".png");
+ this.setWidth(sprite.width); 
+ this.setHeight(sprite.height);
+ setImage(sprite);
+}
+
 public void setHealth(int health){
  this.health = health;
 }
+
 
 Plant victim;
 

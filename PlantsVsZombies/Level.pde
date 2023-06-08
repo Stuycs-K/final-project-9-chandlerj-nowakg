@@ -12,6 +12,10 @@ public class Level extends World{
   int gameState;
   Camera cam;
   DebugCamera debugCam;
+  
+  
+  public Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new FirePea()}; //they won't ALL Be pea but you get the idea
+  
   private static final int SEEDSELECTION = 0;
   private static final int INVASION = 1; 
   private static final int REWARD = 2;
@@ -100,7 +104,7 @@ public class Level extends World{
     
     if (green.isMouseButtonDown(LEFT)){
       //
-      lawn.placePlant("ShowShooter", mouseX, mouseY, true);
+      lawn.placePlant("Peashooter", mouseX, mouseY, true);
      }
      if (green.isMouseButtonDown(RIGHT)){
       //generateSun(mouseX, mouseY, false, seed); 
@@ -171,7 +175,7 @@ public class Level extends World{
 
 
   
-
+  
 } //END OF LEVEL CLASS
 
 //DIFFERENT INSTANCES OF LEVEL  (SO WE DONT HAVE 9000 FILES)

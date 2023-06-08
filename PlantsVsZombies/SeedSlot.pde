@@ -7,27 +7,6 @@ public class SeedSlot extends Actor{
     timer = new Timer(cd);
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   public void act(float deltaTime){
     if (isMouseButtonDownHere(LEFT) && timer.done() == true){
       //send the plant

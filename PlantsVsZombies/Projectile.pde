@@ -8,6 +8,8 @@ public class Projectile extends Actor {
   Green green;
   World level;
   
+  
+  
   public Projectile(Projectile template){
     this(template.damage,template.speed,template.getImage());
   }
@@ -15,7 +17,8 @@ public class Projectile extends Actor {
   
   
   public Projectile(int dmg, float speed, PImage image) {
-    super(width/2,20, image, 1f); //these shouldn't be touching the edge nor should they be touching the first lawn row
+    super(width/2,20, image); //these shouldn't be touching the edge nor should they be touching the first lawn row
+    System.out.println(""+ image.width);
     green = Green.getInstance();
     this.damage = dmg;
     this.sprite = image;
@@ -23,6 +26,7 @@ public class Projectile extends Actor {
     armed = false;
     level = Green.getWorld();
   }
+  
   
   public void arm(int xPos, int yPos){
    setX(xPos);
@@ -57,6 +61,7 @@ public class Projectile extends Actor {
  public class Pea extends Projectile{
   public Pea(){
    super(20, 10, loadImage("Sprites/Projectiles/Pea.png")); //it does 20 damage. speed of 10
+   System.out.println("pea:");
   }
  }
  

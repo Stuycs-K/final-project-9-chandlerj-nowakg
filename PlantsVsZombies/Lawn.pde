@@ -41,8 +41,6 @@ public class Lawn{
     if ((lawn[row][col] == PLANT || lawn[row][col] == LILYPAD) && !name.equals("pumpkin")){
      return false; 
     }
-  
-
     
     int placementX = col * tileXSize + (int) topLeftCoord[0] + tileXSize / 2;
     int placementY = row * tileYSize + (int) topLeftCoord[1] + tileYSize / 2;

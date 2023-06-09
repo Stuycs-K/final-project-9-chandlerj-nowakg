@@ -34,9 +34,11 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
    level = (Level) Green.getWorld();
 } 
   public void addedToWorld(World world){
-    sprite.resize(100,100);
+    
     setImage(sprite);
+    System.out.println("" + getX() + " " + getY());
   }
+  
   
   public void setHealth(int health){
  this.health = health;
@@ -54,13 +56,6 @@ public void act(float deltaTime){
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      ICD.reset();
    }
- }
- 
- public void addedToWorld(){
-   
- }
- public void draw(){
-   image(sprite, 0, 0, getWidth(), getHeight()); 
  }
 
 

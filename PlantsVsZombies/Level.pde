@@ -3,7 +3,6 @@ public class Level extends World{
   int levelID;
   PImage background;
   //PImage seedSelect = loadImage("Sprites/seedselect.jpg");
-  PImage seedSlots = loadImage("Sprites/seedslots.jpg");
   boolean finished = false;
   int sun;
   boolean isDay;
@@ -51,18 +50,13 @@ public class Level extends World{
   public void prepare(){
     //camera stuff
     cam = new Camera();
-    debugCam = new DebugCamera();
+   // debugCam = new DebugCamera();
     setCamFollowActor(cam);
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
+    addObject(new SeedUI());
     
-
-    
-      
-    seedSlots.resize(940,130);
-    image(seedSlots,180,0);
-    //image(seedSelect, 300, 300);
     
     gameState = INVASION;
     //gameState = INVASION; //for testing purposes
@@ -71,6 +65,8 @@ public class Level extends World{
   }
   
   public void act(float deltaTime){  
+   
+
     if (gameState == SEEDSELECTION){
       
       //this is just for testing purposes

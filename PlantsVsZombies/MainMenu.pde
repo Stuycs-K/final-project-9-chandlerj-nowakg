@@ -1,7 +1,6 @@
 public class MainMenu extends Level{
  public MainMenu(){
    super(0, loadImage("Sprites/main_menu_background.jpg"));
-      System.out.println("ehlh");
  }
   
   public void prepare(){

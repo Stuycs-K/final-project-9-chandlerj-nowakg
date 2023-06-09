@@ -25,11 +25,11 @@ public Zombie(String name, float y, int health, float walkSpeed){
   //sprite = "Basic.png"; //placeholder name for the gif we end up using
 }
 
-public void addedToWorld(){
+public void addedToWorld(World world){
  sprite = loadImage("Sprites/Zombies/" + name + ".png");
- this.setWidth(sprite.width); 
- this.setHeight(sprite.height);
  setImage(sprite);
+ setDimensions((int) (sprite.width * 0.25), (int) (sprite.height * 0.25));
+ 
 }
 
 public void setHealth(int health){

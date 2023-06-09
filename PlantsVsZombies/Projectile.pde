@@ -18,7 +18,7 @@ public class Projectile extends Actor {
   
   public Projectile(int dmg, float speed, PImage image) {
     super(width/2,20, image); //these shouldn't be touching the edge nor should they be touching the first lawn row
-    System.out.println(""+ image.width);
+    //System.out.println(""+ image.width);
     green = Green.getInstance();
     this.damage = dmg;
     this.sprite = image;

@@ -60,7 +60,7 @@ public class Level extends World{
     background = b;
     lawn = l;
     isDay = d;
-    sun = 0;
+    sun = 50;
   }
   
   
@@ -110,6 +110,10 @@ public class Level extends World{
   
   
   public void act(float deltaTime){  
+    textSize(64);
+    fill(0);
+    text("" + sun, 222, 64);
+    
     switch (gameState){
       case SEEDSELECTION:
        

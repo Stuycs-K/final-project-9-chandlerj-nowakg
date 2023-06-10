@@ -8,7 +8,7 @@
 
   int value;
   Green green;
-
+  Level level = (Level) Green.getWorld();
 
   public Collectable(float x, float y, PImage sp, int val) {
     super(x, y, sp);
@@ -46,6 +46,9 @@ public class Sun extends Collectable {
     }
     if (this.isMouseButtonDownHere(LEFT)) {
       System.out.println("ive been clicked!");
+      level.sun += 25;
+      System.out.println("" + level.sun);
+      level.removeObject(this);
     }
   }
 }

@@ -18,29 +18,25 @@ public class SeedSlot extends Actor{
     this.timer = timer;
     this.name = name;
     this.sprite = sprite;
+    plantGhost = new PlantGhost(loadImage("Sprites/Plants/" + name + ".png")); 
+    level.addObject(plantGhost);  
   }
   
   
   public void act(float deltaTime){
     //System.out.println(timer.currentTime);
- 
     
-    if(inPlacement && !green.isMouseButtonDown(LEFT)){
+    
+    if(plantGhost.inPlacement && !green.isMouseButtonDown(LEFT)){
       
-        //System.out.println("Up)");
+        plantGhost.inPlacement = false;
         
-        
-        inPlacement = false;
-        
-        level.removeObject(plantGhost);
-        level.lawn.placePlant(name, mouseX, mouseY, true); //kinda jank but whatever
+        level.lawn.placePlant(name, mouseX, mouseY, true); 
         timer.reset();
       }
     
     if (timer.done() == true && isMouseButtonDownHere(LEFT)){
-      inPlacement = true;
-      plantGhost = new PlantGhost(loadImage("Sprites/Plants/" + name + ".png")); 
-      level.addObject(plantGhost);  
+      plantGhost.inPlacement = true;
     }
     else{
       setOpacity(( (float) (timer.internalCooldown - timer.currentTime) / (float) timer.internalCooldown) * 150f + 75f);

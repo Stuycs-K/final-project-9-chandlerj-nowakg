@@ -3,10 +3,21 @@ public class Timer extends Actor{
   int currentTime;
   
   public Timer(int interval){
+    this(interval, false);
+  }
+  
+  public Timer(int interval, boolean startAtZero){
     super(width/2, height/2, 0, 0);
     this.internalCooldown = interval;
-    currentTime = (internalCooldown);
-    Green.getWorld().addObject(this);
+    
+    if(startAtZero){
+     currentTime = 0; 
+    }
+    else{
+      currentTime = internalCooldown;
+    }
+    
+    Green.getWorld().addObject(this);   
   }
   
   
@@ -15,12 +26,12 @@ public class Timer extends Actor{
   }
   
   public void reset(){
-    if(currentTime == 0){
-     currentTime = (internalCooldown); 
-    }
+    currentTime = internalCooldown; 
   }
   
   public void act(float deltaTime){
-    currentTime--;
+    if (currentTime > 0){
+      currentTime--;
+    }    
   }
 }

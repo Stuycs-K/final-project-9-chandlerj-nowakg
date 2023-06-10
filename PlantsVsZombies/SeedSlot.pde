@@ -17,30 +17,30 @@ public class SeedSlot extends Actor{
   
   
   public void act(float deltaTime){
+    //System.out.println(timer.currentTime);
     if (isMouseButtonDownHere(LEFT) && timer.done() == true){
       //send the plant
-      tint(0);
-      System.out.println("HI"  );
       timer.reset();
     }
+   setOpacity(( (float) (timer.internalCooldown - timer.currentTime) / (float) timer.internalCooldown) * 150f + 75f);
   }
   
 }
 
 public class PeashooterSeed extends SeedSlot{
  public PeashooterSeed(){
-   super("Peashooter", new Timer(5), loadImage("Sprites/Seedslots/Peashooter.png"));
+   super("Peashooter", new Timer(120, true), loadImage("Sprites/Seedslots/Peashooter.png"));
  }
 }
 
 public class SunflowerSeed extends SeedSlot{
  public SunflowerSeed(){
-   super("Sunflower", new Timer(5), loadImage("Sprites/Seedslots/Sunflower.png"));
+   super("Sunflower", new Timer(120, true), loadImage("Sprites/Seedslots/Sunflower.png"));
  }
 }
 
 public class CherrybombSeed extends SeedSlot{
  public CherrybombSeed(){
-   super("Cherrybomb", new Timer(5), loadImage("Sprites/Seedslots/Cherrybomb.png"));
+   super("Cherrybomb", new Timer(120, true), loadImage("Sprites/Seedslots/Cherrybomb.png"));
  }
 }

@@ -17,11 +17,9 @@ public class SeedUI extends Actor{
       
       slot = new SeedSlot(selection[n]);
       level.addObject(slot);
-      System.out.println(" " + slot);
       slot.setX(TOPLEFTCOORD[0] + 52 * n);
       slot.setY(TOPLEFTCOORD[1]);
       slot.setZ(10);
-      System.out.println("" + slot.getX() +  " " + slot.getY());
     }
   }
   

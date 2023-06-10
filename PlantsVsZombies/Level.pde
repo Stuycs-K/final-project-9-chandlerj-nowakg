@@ -15,6 +15,8 @@ public class Level extends World{
   
   public Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new FirePea()}; //they won't ALL Be pea but you get the idea
   
+    public SeedSlot[] selectedSeeds;
+  
   private static final int SEEDSELECTION = 0;
   private static final int INVASION = 1; 
   private static final int REWARD = 2;
@@ -55,7 +57,10 @@ public class Level extends World{
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
-    addObject(new SeedUI());
+    selectedSeeds = new SeedSlot[9];
+    selectedSeeds[0] = new PeashooterSeed();
+    selectedSeeds[1] = new SunflowerSeed();
+    addObject(new SeedUI(selectedSeeds));
     
     
     gameState = INVASION;
@@ -105,6 +110,7 @@ public class Level extends World{
      if (green.isMouseButtonDown(RIGHT)){
       //generateSun(mouseX, mouseY, false, seed); 
         spawnZombie("regular", seed.nextInt(5));
+        System.out.println("" + mouseX + " " + mouseY);
      }
        if (green.isKeyDown('s')){
       generateSun(mouseX, 0, true, seed);

@@ -9,7 +9,7 @@ private static final int LILYPAD = 1;
 private static final int PLANT = 2;
 private static final int PUMPKIN = 3;
 private static final int[] topLeftCoord = {90, 110}; //includes mowers
-private static final int[] bottomRightCoord = {1240, 780};
+private static final int[] bottomRightCoord = {1220, 755};
 
 public class Lawn{
   private int[][] originalLawn;

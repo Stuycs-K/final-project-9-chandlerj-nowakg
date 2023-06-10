@@ -1,7 +1,32 @@
 public class SeedUI extends Actor{
-  public SeedUI(){
-    super(width/2,65, 940, 130);
-  setImage(loadImage("Sprites/seedslots.jpg"));
+  
+  //public SeedSlot[] seedSlotTemplates = {new PeashooterSeed(), new SunflowerSeed(), new CherrybombSeed()}; //more to come
+  
+  Level level = (Level) Green.getWorld();
+  
+  private final int[] TOPLEFTCOORD = {280, 35};
+  
+  public SeedUI(SeedSlot[] selection){
+    super(450,35, loadImage("Sprites/seedslots.jpg"), 0.55f);
+    SeedSlot slot;
+    for (int n = 0; n < selection.length; n++){
+      
+      if (selection[n] == null){
+       break; 
+      }
+      
+      slot = new SeedSlot(selection[n]);
+      level.addObject(slot);
+      System.out.println(" " + slot);
+      slot.setX(TOPLEFTCOORD[0] + 52 * n);
+      slot.setY(TOPLEFTCOORD[1]);
+      slot.setZ(10);
+      System.out.println("" + slot.getX() +  " " + slot.getY());
+    }
+  }
+  
+  public void addedToWorld(World world){
+    
   }
   
   public void act(float deltaTime){

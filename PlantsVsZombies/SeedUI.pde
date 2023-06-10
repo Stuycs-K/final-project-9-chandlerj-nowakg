@@ -1,13 +1,11 @@
 public class SeedUI extends Actor{
   
-  //public SeedSlot[] seedSlotTemplates = {new PeashooterSeed(), new SunflowerSeed(), new CherrybombSeed()}; //more to come
-  
   Level level = (Level) Green.getWorld();
   
   private final int[] TOPLEFTCOORD = {280, 35};
   
-  public SeedUI(SeedSlot[] selection){
-    super(450,35, loadImage("Sprites/seedslots.jpg"), 0.55f);
+  public void load(SeedSlot[] selection){
+    
     SeedSlot slot;
     for (int n = 0; n < selection.length; n++){
       
@@ -22,9 +20,9 @@ public class SeedUI extends Actor{
       slot.setZ(10);
     }
   }
-  
-  public void addedToWorld(World world){
-    
+
+  public SeedUI(){
+    super(450,35, loadImage("Sprites/seedslots.jpg"), 0.55f);
   }
   
   public void act(float deltaTime){

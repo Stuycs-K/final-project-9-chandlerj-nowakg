@@ -10,18 +10,22 @@ public class SeedSlot extends Actor{
   Green green = Green.getInstance();
   
   public SeedSlot(SeedSlot template){
-    this(template.name, template.timer, template.getImage());
+    this(template.name, template.timer);
   }
   
-  public SeedSlot(String name, Timer timer, PImage sprite){
-    super(0, 0, sprite);
+  public SeedSlot(String name, Timer timer, int x, int y){
+    super(x, y, 50, 70);
     this.timer = timer;
     this.name = name;
-    this.sprite = sprite;
+    this.sprite = loadImage("Sprites/Seedslots/" + name + ".png");
+    setImage(sprite);
     plantGhost = new PlantGhost(loadImage("Sprites/Plants/" + name + ".png")); 
     level.addObject(plantGhost);  
   }
   
+  public SeedSlot(String name, Timer timer){
+    this(name, timer, 0, 0);
+  }
   
   public void act(float deltaTime){
     //System.out.println(timer.currentTime);
@@ -48,18 +52,18 @@ public class SeedSlot extends Actor{
 
 public class PeashooterSeed extends SeedSlot{
  public PeashooterSeed(){
-   super("Peashooter", new Timer(120, true), loadImage("Sprites/Seedslots/Peashooter.png"));
+   super("Peashooter", new Timer(120, true));
  }
 }
 
 public class SunflowerSeed extends SeedSlot{
  public SunflowerSeed(){
-   super("Sunflower", new Timer(120, true), loadImage("Sprites/Seedslots/Sunflower.png"));
+   super("Sunflower", new Timer(120, true));
  }
 }
 
 public class CherrybombSeed extends SeedSlot{
  public CherrybombSeed(){
-   super("Cherrybomb", new Timer(120, true), loadImage("Sprites/Seedslots/Cherrybomb.png"));
+   super("Cherrybomb", new Timer(120, true));
  }
 }

@@ -13,7 +13,22 @@ public class Level extends World{
   DebugCamera debugCam;
   
   
+  SeedUI seedUI;
+  
+  final int[] seedSelectPlacement = {200, 200};
+  
+  
   public Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new FirePea()}; //they won't ALL Be pea but you get the idea
+  //in the order of the seedselect.jpg in the sprites flolder
+  public String[] seeds = {"Peashooter", "Sunflower", "Cherrybomb", "Walnut", "Potatomine", "Snowpea", "Chomper", "Repeater",
+                          "Puffshroom", "Sunshroom", "Fumeshroom", "Gravebuster", "Hypnoshroom", "Scaredyshroom", "Iceshroom", "Doomshroom",
+                          "Lilypad", "Squash", "Threepeater", "Tanglekelp","Jalepeno", "Spikeweed", "Torchwood", "Tallnut", 
+                          "Seashroom", "Plantern", "Cactus", "Blover", "Splitpea", "Starfruit", "Pumpkin", "Magnetshroom",
+                          "Cabbagepult", "Flowerpot", "Kernelpult", "Coffebean", "Garlic", "Umbrellaleaf", "Marigold", "Melonpult",
+                          "Gatlingpea", "Twinsunflower", "Gloomshroom", "Cattail", "Wintermelon", "Goldmagnet", "Spikerock", "Cobcannon"};
+                          
+  
+  
   
     public SeedSlot[] selectedSeeds;
   
@@ -58,70 +73,78 @@ public class Level extends World{
     cam.setX(width/2);
     addObject(cam);
     selectedSeeds = new SeedSlot[9];
-    selectedSeeds[0] = new PeashooterSeed();
-    selectedSeeds[1] = new SunflowerSeed();
-    addObject(new SeedUI(selectedSeeds));
     
+    seedUI = new SeedUI();
+    addObject(seedUI);
+    loadSeedSelection();
     
-    gameState = INVASION;
+    gameState = SEEDSELECTION;
     //gameState = INVASION; //for testing purposes
 
     
   }
   
-  public void act(float deltaTime){  
-   
-
-    if (gameState == SEEDSELECTION){
-      
-      //this is just for testing purposes
-      
-      
-    }
-    
-    List<Zombie> zomList = getObjects(Zombie.class);
-    for(int i=0; i < zomList.size(); i++){
-      if(zomList.get(i).getX() < 100){
-       gameState = DEFEAT;
-      }
-    }
-    if(gameState == DEFEAT){
-      this.background = loadImage("Sprites/GameOver.png");
-    }
-    if (gameState == INVASION){
-      cam.setX(1300);
-      //tell zombies to move
-      //tell plants to fire
-      
-    }
-    
-    if (gameState == REWARD){
-      
-      //spawn a moneybag
-      //when the money bag is clicked... 
-          //enter the coins (cool animation maybe)
-      finished = true;
-    }
-    
-    if (green.isMouseButtonDown(LEFT)){
-      //
-      
-     }
-     if (green.isMouseButtonDown(RIGHT)){
-      //generateSun(mouseX, mouseY, false, seed); 
-        spawnZombie("regular", seed.nextInt(5));
-        System.out.println("" + mouseX + " " + mouseY);
-     }
-       if (green.isKeyDown('s')){
+  
+  public void invasion(){ //this can get overrided to change the way the waves get thrown at the player
+    if (green.isKeyDown('s')){
       generateSun(mouseX, 0, true, seed);
       }
       if (green.isKeyDown('c')){
         spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
       }
       
-   
+     List<Zombie> zomList = getObjects(Zombie.class);
+    for(int i=0; i < zomList.size(); i++){
+      if(zomList.get(i).getX() < 100){
+       gameState = DEFEAT;
+      }
+    }
+    if (green.isMouseButtonDown(RIGHT)){
+      //generateSun(mouseX, mouseY, false, seed); 
+        spawnZombie("regular", seed.nextInt(5));
+        System.out.println("" + mouseX + " " + mouseY);
+     }
+     
+     
   }
-
+  
+  
+  public void act(float deltaTime){  
+    switch (gameState){
+      case SEEDSELECTION:
+       
+        if (green.isKeyDown(ENTER)){     
+          deloadSeedSelection();
+          selectedSeeds[0] = new PeashooterSeed();
+          selectedSeeds[1] = new SunflowerSeed();
+          seedUI.load(selectedSeeds);
+          
+         gameState = INVASION;           
+        }
+        break;
+      
+      case INVASION:
+        lawn.gameState = INVASION;
+        invasion();
+        break;
+        
+      case REWARD:
+        //to be implemented
+        finished = true;
+        break;
+        
+       case DEFEAT:
+         this.background = loadImage("Sprites/GameOver.png");
+         break;
+       
+       default:
+         System.out.println("error, bad gameState");
+         break;
+        
+    }    
+  }
+  
+  
   
   ///COLLECTABLE STUFF VVVVVVVVVVVVVVV //////////////////////////
   
@@ -176,6 +199,32 @@ public class Level extends World{
   //ZOMBIE STUFF ^^^^^^ ///////
 
 
+ //LOAD SEEDS VVVV //////
+ 
+ public void loadSeedSelection(){
+   int n = 0;
+   for (int r = 0; r < 6; r++){
+     for (int c = 0; c < 8; c++){
+         try{
+           addObject(new SeedSlot(seeds[n], new Timer(10), seedSelectPlacement[0] + c * 51, seedSelectPlacement[1] + r * 71));
+         }catch(Exception e){
+           
+         }
+       
+         n++;
+     }
+   }
+ }
+ 
+ public void deloadSeedSelection(){
+   List<SeedSlot> seeds;
+    seeds = getObjects(SeedSlot.class);
+   for (int n = 0; n < seeds.size(); n++){
+        removeObject(seeds.get(n));
+   }
+ }
+ 
+ ///////////LOADSEEDS ^^^^ ////////
   
   
 } //END OF LEVEL CLASS

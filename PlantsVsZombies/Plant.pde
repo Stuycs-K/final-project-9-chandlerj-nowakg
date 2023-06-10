@@ -32,9 +32,9 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
    this.grounded = grounded;
    this.ICD = Cooldown;
    level = (Level) Green.getWorld();
+   level.addObject(this);
 } 
   public void addedToWorld(World world){
-    
     setImage(sprite);
     System.out.println("" + getX() + " " + getY());
   }

@@ -12,10 +12,13 @@ private static final int[] topLeftCoord = {90, 100}; //includes mowers
 private static final int[] bottomRightCoord = {1220, 755};
 
 public class Lawn{
+  Level level = (Level) Green.getWorld();
   private int[][] originalLawn;
   public int[][] lawn;
   int tileXSize;
   int tileYSize;
+  
+  int gameState = 0; //gets set by level, not the best way of doing things but it works
   
   public Lawn(int[][] levelLawn){
     originalLawn = levelLawn; //dont change this one because this will be the reference that it will go back to when a plant is killed 
@@ -34,7 +37,10 @@ public class Lawn{
   }
   
 
-  private boolean placePlant(String name, int row, int col){ 
+  private boolean placePlant(String name, int row, int col){    
+    if (gameState != level.INVASION){
+       return false;     
+     }
     if (col <= 0 || col >= lawn[0].length){
      return false; //its less than or equal to 0 because you can't place on a mower tile 
     }
@@ -60,20 +66,16 @@ public class Lawn{
       plant = new Peashooter(placementX, placementY);
       System.out.println("Error name isn't an actual plant name");
     }
-      
-    
-    
-     
-    Green.getWorld().addObject(plant); 
-    lawn[row][col] = PLANT;
-    
-    
+
+   lawn[row][col] = PLANT;
+   
+   return true;
     //check based on plant's info
     //if plant is grounded, can't be placed on lilypads
     //if plant is aquatic, can't be placed on SOIL or lilypad
     //if plant is a pumpkin, it can be placed on plants
     //if plant is a coffeebean, it can be placed on plants but wont update the number of lawn
-    return true;
+    
   }
   
   

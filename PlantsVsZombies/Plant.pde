@@ -51,7 +51,7 @@ public void act(float deltaTime){
    }
   
    if(projectileID != NO_SHOOT && ICD.done() == true){
-     shoot();
+     shoot();  
    }
  }
  

@@ -51,12 +51,16 @@ public void act(float deltaTime){
    }
   
    if(projectileID != NO_SHOOT && ICD.done() == true){
-     Projectile x = new Projectile(level.projectileTemplates[projectileID]);
+     shoot();
+   }
+ }
+ 
+ void shoot(){
+   Projectile x = new Projectile(level.projectileTemplates[projectileID]);
      level.addObject(x);
      x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      ICD.reset();
-   }
  }
 
 

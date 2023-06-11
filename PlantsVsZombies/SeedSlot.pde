@@ -5,7 +5,6 @@ public class SeedSlot extends Actor{
   PImage sprite;
   PlantGhost plantGhost;
   Level level = (Level) Green.getWorld();
-  boolean inPlacement;
   
   Green green = Green.getInstance();
   
@@ -29,18 +28,16 @@ public class SeedSlot extends Actor{
   
   public void act(float deltaTime){
     //System.out.println(timer.currentTime);
-    
-    
-    if(plantGhost.inPlacement && !green.isMouseButtonDown(LEFT)){
-      
+    if(plantGhost.inPlacement && !green.isMouseButtonDown(LEFT)){  
         plantGhost.inPlacement = false;
-        
         level.lawn.placePlant(name, mouseX, mouseY, true); 
+        level.oneSlotSelected = false; 
         timer.reset();
       }
     
-    if (timer.done() == true && isMouseButtonDownHere(LEFT)){
+    if (timer.done() == true && isMouseButtonDownHere(LEFT) && level.oneSlotSelected == false){
       plantGhost.inPlacement = true;
+      level.oneSlotSelected = true; 
     }
     else{
       setOpacity(( (float) (timer.internalCooldown - timer.currentTime) / (float) timer.internalCooldown) * 150f + 75f);

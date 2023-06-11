@@ -69,13 +69,111 @@ public void bite(Plant plant){
   }
 }
 
+
+ //NEED TO ADJUST SPEED OF ALL THESE LATER
+ 
 public class Regular extends Zombie{
  public Regular(float y){
-   super("Regular",y, 200, 1);
+   super("Regular",y, 100, 1);
  }
 }
 public class Conehead extends Zombie{
  public Conehead(float y){
-   super("Conehead",y, 640, 1);
+   super("Conehead",y, 280, 1);
+ }
+}
+public class Buckethead extends Zombie{
+ public Buckethead(float y){
+   super("Buckethead",y, 650, 1);
+ }
+}
+public class Polevaulter extends Zombie{
+ public Polevaulter(float y){
+   super("Polevaulter",y, 170, 2);
+ }
+}
+public class Newspaper extends Zombie{
+ public Newspaper(float y){
+   super("Newspaper",y, 170, 1);
+ }
+}
+public class Screendoor extends Zombie{
+ public Screendoor(float y){
+   super("Screendoor",y, 650, 1);
+ }
+}
+public class Football extends Zombie{
+ public Football(float y){
+   super("Football",y, 800, 2);
+ }
+}
+public class Disco extends Zombie{
+ public Disco(float y){
+   super("Disco",y, 170, 1);
+ }
+}
+public class Backupdancer extends Zombie{
+ public Backupdancer(float y){
+   super("Backupdancer",y, 100, 1);
+ }
+}
+public class Duckytube extends Zombie{
+ public Duckytube(float y){
+   super("Duckytube",y, 100, 1);
+ }
+}
+public class Dolphinrider extends Zombie{
+ public Dolphinrider(float y){
+   super("Dolphinrider",y, 170, 3);
+ }
+}
+public class Jackinthebox extends Zombie{
+ public Jackinthebox(float y){
+   super("Jackinthebox",y, 170, 1);
+ }
+}
+public class Balloon extends Zombie{
+ public Balloon(float y){
+   super("Balloon",y, 110, 1);
+ }
+}
+public class Digger extends Zombie{
+ public Digger(float y){
+   super("Digger",y, 150, 1);
+ }
+}
+public class Pogo extends Zombie{
+ public Pogo(float y){
+   super("Pogo",y, 170, 1);
+ }
+}
+public class Yeti extends Zombie{
+ public Yeti(float y){
+   super("Yeti",y, 460, 1);
+ }
+}
+public class Bungee extends Zombie{
+ public Bungee(float y){
+   super("Bungee",y, 230, 0); //might need to change speed bc it doens't move horizontally
+ }
+}
+public class Ladder extends Zombie{
+ public Ladder(float y){
+   super("Ladder",y, 420, 1);
+ }
+}
+public class Catapult extends Zombie{
+ public Catapult(float y){
+   super("Ladder",y, 330, 1);
+ }
+}
+public class Gargantuar extends Zombie{
+ public Gargantuar(float y){
+   super("Gargantuar",y, 1500, 1);
+ }
+}
+public class Imp extends Zombie{
+ public Imp(float y){
+   super("Imp",y, 100, 2);
  }
 }

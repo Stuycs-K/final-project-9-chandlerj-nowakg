@@ -60,7 +60,7 @@ public class Lawn{
      plant = new Peashooter(placementX, placementY); 
     }
     else if (name.equals("ShowShooter")){
-      plant = new SnowShooter(placementX, placementY); 
+      plant = new Snowpea(placementX, placementY); 
     }
     else{
       plant = new Peashooter(placementX, placementY);

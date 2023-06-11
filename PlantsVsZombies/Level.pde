@@ -12,13 +12,15 @@ public class Level extends World{
   Camera cam;
   DebugCamera debugCam;
   
+  boolean oneSlotSelected = false; //a little wonky solution to the multiple seed selection bug but whatever
+  
   
   SeedUI seedUI;
   
   final int[] seedSelectPlacement = {200, 200};
   
   
-  public Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new FirePea()}; //they won't ALL Be pea but you get the idea
+  public Projectile[] projectileTemplates = {new Pea(), new IcePea(), new FirePea()}; //they won't ALL Be pea but you get the idea
   
     public SeedSlot[] selectedSeeds;
   

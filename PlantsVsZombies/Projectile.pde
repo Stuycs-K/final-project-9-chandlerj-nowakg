@@ -60,18 +60,18 @@ public class Projectile extends Actor {
  
  public class Pea extends Projectile{
   public Pea(){
-   super(20, 10, loadImage("Sprites/Projectiles/Pea.png")); //it does 20 damage. speed of 10
+   super(10, 10, loadImage("Sprites/Projectiles/Pea.png")); //it does 10 damage. speed of 10
    System.out.println("pea:");
   }
  }
  
- public class SnowPea extends Projectile{
-   public SnowPea(){
-     super(20,10,loadImage("Sprites/Projectiles/SnowPea.png"));
+ public class IcePea extends Projectile{
+   public IcePea(){
+     super(10,10,loadImage("Sprites/Projectiles/SnowPea.png"));
    }
  }
   public class FirePea extends Projectile{
   public FirePea(){
-   super(40, 10, loadImage("Sprites/Projectiles/FirePea.png")); //it does 20 damage. speed of 10
+   super(20, 10, loadImage("Sprites/Projectiles/FirePea.png")); //it does 20 damage. speed of 10
   }
  }

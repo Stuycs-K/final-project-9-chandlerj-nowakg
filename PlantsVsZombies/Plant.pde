@@ -44,6 +44,10 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
  this.health = health;
 }
 
+ void animate(){
+   
+ }
+
 public void act(float deltaTime){
   if(health <= 0){
     level.removeObject(this);

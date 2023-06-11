@@ -19,16 +19,6 @@ public class Level extends World{
   
   
   public Projectile[] projectileTemplates = {new Pea(), new SnowPea(), new FirePea()}; //they won't ALL Be pea but you get the idea
-  //in the order of the seedselect.jpg in the sprites flolder
-  public String[] seeds = {"Peashooter", "Sunflower", "Cherrybomb", "Walnut", "Potatomine", "Snowpea", "Chomper", "Repeater",
-                          "Puffshroom", "Sunshroom", "Fumeshroom", "Gravebuster", "Hypnoshroom", "Scaredyshroom", "Iceshroom", "Doomshroom",
-                          "Lilypad", "Squash", "Threepeater", "Tanglekelp","Jalepeno", "Spikeweed", "Torchwood", "Tallnut", 
-                          "Seashroom", "Plantern", "Cactus", "Blover", "Splitpea", "Starfruit", "Pumpkin", "Magnetshroom",
-                          "Cabbagepult", "Flowerpot", "Kernelpult", "Coffebean", "Garlic", "Umbrellaleaf", "Marigold", "Melonpult",
-                          "Gatlingpea", "Twinsunflower", "Gloomshroom", "Cattail", "Wintermelon", "Goldmagnet", "Spikerock", "Cobcannon"};
-                          
-  
-  
   
     public SeedSlot[] selectedSeeds;
   

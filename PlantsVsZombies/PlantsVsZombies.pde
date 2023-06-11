@@ -7,6 +7,17 @@ private static final int POOL = 3;
 private static final int FOG = 4;
 private static final int ROOF = 5;
 
+
+
+//in the order of the seedselect.jpg in the sprites flolder
+public final String[] seeds = {"Peashooter", "Sunflower", "Cherrybomb", "Walnut", "Potatomine", "Snowpea", "Chomper", "Repeater",
+                          "Puffshroom", "Sunshroom", "Fumeshroom", "Gravebuster", "Hypnoshroom", "Scaredyshroom", "Iceshroom", "Doomshroom",
+                          "Lilypad", "Squash", "Threepeater", "Tanglekelp","Jalepeno", "Spikeweed", "Torchwood", "Tallnut", 
+                          "Seashroom", "Plantern", "Cactus", "Blover", "Splitpea", "Starfruit", "Pumpkin", "Magnetshroom",
+                          "Cabbagepult", "Flowerpot", "Kernelpult", "Coffeebean", "Garlic", "Umbrellaleaf", "Marigold", "Melonpult",
+                          "Gatlingpea", "Twinsunflower", "Gloomshroom", "Cattail", "Wintermelon", "Goldmagnet", "Spikerock", "Cobcannon"};
+                          
+
 Green green;
 Level activeLevel;
 int coins = 0;
@@ -55,7 +66,6 @@ void changeLevel(int levelID) {
 void setup() {
   size(1280, 800);
   System.out.println("setup:  running level menu.");
-
 
   green = new Green(this);
   activeLevel = new MainMenu();

@@ -50,9 +50,15 @@ public void act(float deltaTime){
     level.removeObject(this);
    }
   
-   if(projectileID != NO_SHOOT && ICD.done() == true){
+  if (ICD.done() == true){
+    if(projectileID != NO_SHOOT){
      shoot();  
    }
+   else{
+    damage(); 
+   }
+  }
+   
  }
  
  void shoot(){
@@ -62,8 +68,44 @@ public void act(float deltaTime){
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      ICD.reset();
  }
+ void damage(){
+   int damage = 10;
+   Zombie victim = getOneIntersectingObject(Zombie.class);
+      
+      if(victim != null){ //on hit
+        victim.setHealth(victim.health - damage);
+        ICD.reset();
+      }
+ }
 
 
+}
+
+public class Lawnmower extends Plant{
+ public Lawnmower(int x, int y){
+  super("Lawnmower",  x, y, 0, 100000000, new Timer(1), NO_SHOOT, true, false);
+ }
+ 
+  boolean triggered = false;
+ //overrided
+ void damage(){
+   int damage = 100000000;
+   if (triggered){
+     move(10f);
+   }
+   
+   Zombie victim = getOneIntersectingObject(Zombie.class);
+    
+    if(victim != null){ //on hit
+      victim.setHealth(victim.health - damage); 
+      triggered = true;
+    }
+  if (getX() > width){
+    level.removeObject(this);
+  }
+  ICD.reset();
+   
+ }
 }
 
 public class Peashooter extends Plant{
@@ -96,8 +138,7 @@ public class Repeater extends Plant{
     super("Repeater",x,y,100,50,new Timer(60),PEA_PROJECTILE, false, true);
   }
   @Override
-  public void act(float deltaTime){
-   if(ICD.done() == true){
+  public void shoot(){
      Projectile x = new Projectile(level.projectileTemplates[projectileID]);
      Projectile y = new Projectile(level.projectileTemplates[projectileID]);
      getWorld().addObject(x);
@@ -105,9 +146,8 @@ public class Repeater extends Plant{
      x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
      y.setZ(-10);
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
-     y.arm((int) getX(), (int) getY()-20);
+     y.arm((int) getX() + 25, (int) getY()-20);
      ICD.reset();
-   }
  }
 }
 public class Snowpea extends Plant{

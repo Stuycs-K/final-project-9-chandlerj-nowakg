@@ -96,7 +96,7 @@ public class Level extends World{
     }
     if (green.isMouseButtonDown(RIGHT)){
       //generateSun(mouseX, mouseY, false, seed); 
-        spawnZombie("regular", seed.nextInt(5));
+        spawnZombie("Dolphinrider", seed.nextInt(5));
         System.out.println("" + mouseX + " " + mouseY);
      }
      
@@ -114,6 +114,7 @@ public class Level extends World{
           deloadSeedSelection();        
          gameState = INVASION;  
          seedUI.load(selectedSeeds);
+         setupLawnmowers();
         }
         break;
       
@@ -186,7 +187,7 @@ public class Level extends World{
   
   public void spawnZombie(String name, int row){
     int rowThickness = (bottomRightCoord[1] - topLeftCoord[1]) / lawn.lawn.length;
-    Zombie zombie = new Regular(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    Zombie zombie = new Dolphinrider(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
     addObject(zombie);
   }
   
@@ -228,6 +229,15 @@ public class Level extends World{
  }
  
  ///////////LOADSEEDS ^^^^ ////////
+ 
+ ///////// LAWN MOWERS VVV ////////
+ 
+ public void setupLawnmowers(){
+   for (int row = 0; row < lawn.lawn.length; row++){
+     lawn.placePlant("Lawnmower", row, 0); 
+   }
+  
+ }
   
   
 } //END OF LEVEL CLASS

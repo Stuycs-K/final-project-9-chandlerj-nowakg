@@ -38,11 +38,14 @@ public class Lawn{
   
 
   private boolean placePlant(String name, int row, int col){    
-    if (gameState != level.INVASION){
+    if (gameState != level.INVASION && !name.equals("Lawnmower")){
        return false;     
      }
-    if (col <= 0 || col >= lawn[0].length){
-     return false; //its less than or equal to 0 because you can't place on a mower tile 
+    if (col < 0 || col >= lawn[0].length){
+     return false; 
+    }
+    if (col == 0 && !name.equals("Lawnmower")){
+     return false; //equal to 0 because you can't place on a mower tile 
     }
     if (row < 0 || row >= lawn.length){ //row can be 0, col cannot
      return false; 
@@ -58,36 +61,49 @@ public class Lawn{
     
     System.out.println(name);
     
-    if (name.equals("Peashooter")){
+    if (name.equals("Lawnmower")){
+     plant = new Lawnmower(placementX, placementY); 
+     lawn[row][col] = MOWER;
+    }
+    else if (name.equals("Peashooter")){
      plant = new Peashooter(placementX, placementY); 
+     lawn[row][col] = PLANT;
     }
     else if (name.equals("Sunflower")){
       plant = new Sunflower(placementX, placementY); 
+      lawn[row][col] = PLANT;
     }
     else if (name.equals("Cherrybomb")){
-      plant = new Cherrybomb(placementX, placementY); 
+      plant = new Cherrybomb(placementX, placementY);
+      lawn[row][col] = PLANT;
     }
     else if (name.equals("Chomper")){
       plant = new Chomper(placementX, placementY); 
+      lawn[row][col] = PLANT;
     }
     else if (name.equals("Walnut")){
       plant = new Walnut(placementX, placementY); 
+      lawn[row][col] = PLANT;
     }
     else if (name.equals("Snowpea")){
       plant = new Snowpea(placementX, placementY); 
+      lawn[row][col] = PLANT;
     }
     else if (name.equals("Potatomine")){
       plant = new Potatomine(placementX, placementY); 
+      lawn[row][col] = PLANT;
     }
     else if (name.equals("Repeater")){
       plant = new Repeater(placementX, placementY); 
+      lawn[row][col] = PLANT;
     }
     else{
       plant = new Peashooter(placementX, placementY);
+      lawn[row][col] = PLANT;
       System.out.println("Error name isn't an actual plant name");
     }
 
-   lawn[row][col] = PLANT;
+   
    
    return true;
     //check based on plant's info

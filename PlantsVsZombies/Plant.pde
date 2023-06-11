@@ -1,6 +1,6 @@
 import java.lang.reflect.*;
 public class Plant extends Actor{
-  
+   static final int NO_SHOOT = -1;
    static final int PEA_PROJECTILE = 0;
    static final int SNOW_PEA_PROJECTILE = 1;
    static final int FIRE_PEA_PROJECTILE = 2;
@@ -44,16 +44,13 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
  this.health = health;
 }
 
- void animate(){
-   
- }
 
 public void act(float deltaTime){
   if(health <= 0){
     level.removeObject(this);
    }
   
-   if(ICD.done() == true){
+   if(projectileID != NO_SHOOT && ICD.done() == true){
      Projectile x = new Projectile(level.projectileTemplates[projectileID]);
      level.addObject(x);
      x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
@@ -70,9 +67,24 @@ public class Peashooter extends Plant{
    super("Peashooter",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
-public class SnowShooter extends Plant{
- public SnowShooter(int x, int y){
-   super("SnowShooter",x,y,100,50,new Timer(60), SNOW_PEA_PROJECTILE, false, true);
+public class Sunflower extends Plant{ //needs to generate sun
+ public Sunflower(int x, int y){
+   super("Sunflower",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
+ }
+}
+public class Cherrybomb extends Plant{ //needs to not shoot and explode
+ public Cherrybomb(int x, int y){
+   super("Cherrybomb",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
+ }
+}
+public class Chomper extends Plant{ //needs to not shoot
+ public Chomper(int x, int y){
+   super("Chomper",x,y,100,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+ }
+}
+public class Potatomine extends Plant{ //needs to not shoot
+ public Potatomine(int x, int y){
+   super("Potatomine",x,y,100,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
 public class Repeater extends Plant{
@@ -92,5 +104,20 @@ public class Repeater extends Plant{
      y.arm((int) getX(), (int) getY()-20);
      ICD.reset();
    }
+ }
+}
+public class Snowpea extends Plant{
+ public Snowpea(int x, int y){
+   super("Snowpea",x,y,100,50,new Timer(60), SNOW_PEA_PROJECTILE, false, true);
+ }
+}
+public class Walnut extends Plant{ //needs to not shoot
+ public Walnut(int x, int y){
+   super("Walnut",x,y,100,50,new Timer(60), NO_SHOOT, false, true);
+ }
+}
+public class Torchwood extends Plant{ //needs to not shoot
+ public Torchwood(int x, int y){
+   super("Torchwood",x,y,100,50,new Timer(60), NO_SHOOT, false, true);
  }
 }

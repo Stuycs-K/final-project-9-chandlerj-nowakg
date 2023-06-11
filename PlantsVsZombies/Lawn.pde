@@ -64,6 +64,15 @@ public class Lawn{
     else if (name.equals("Sunflower")){
       plant = new Sunflower(placementX, placementY); 
     }
+    else if(name.equals("Squash")){
+     plant = new Squash(placementX, placementY); 
+    }
+    else if(name.equals("FumeShroom")){
+       plant = new Squash(placementX, placementY); 
+    }
+    else if(name.equals("SunShroom")){
+       plant = new SunShroom(placementX, placementY); 
+    }
     else if (name.equals("Cherrybomb")){
       plant = new Cherrybomb(placementX, placementY); 
     }
@@ -78,6 +87,12 @@ public class Lawn{
     }
     else if (name.equals("Repeater")){
       plant = new Repeater(placementX, placementY); 
+    }
+    else if(name.equals("Wallnut")){
+      plant = new Wallnut(placementX, placementY); 
+    }
+    else if(name.equals("Tallnut")){
+      plant = new Tallnut(placementX, placementY); 
     }
     else{
       plant = new Peashooter(placementX, placementY);

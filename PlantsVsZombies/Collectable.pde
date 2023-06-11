@@ -26,7 +26,6 @@
   }
 }
 
-
 public class Sun extends Collectable {
   boolean fromSky;
   int yFloor = 20;

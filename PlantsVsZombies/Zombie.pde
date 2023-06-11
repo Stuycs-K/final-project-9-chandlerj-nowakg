@@ -18,7 +18,7 @@ public Zombie(String name, float y, int health, float walkSpeed){
   this.name = name;
   this.health = health;
   this.walkSpeed = walkSpeed;
-  this.biteCoolDown = 1;
+  this.biteCoolDown = 60;
   biteTimer= new Timer(biteCoolDown);
   level = Green.getWorld();
 
@@ -44,6 +44,10 @@ public  void act(float deltaTime){
    if(health <= 0){
     level.removeObject(this);
     
+   }
+   
+   if(this.getX() < 125){
+    ((Level) getWorld()).gameOver();
    }
    
  

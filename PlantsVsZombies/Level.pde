@@ -64,6 +64,7 @@ public class Level extends World{
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
+    text(""+sun, 225,400);
     selectedSeeds = new ArrayList<SeedSlot>(9);
     
     seedUI = new SeedUI();
@@ -105,6 +106,7 @@ public class Level extends World{
     textSize(64);
     fill(0);
     text("" + sun, 222, 64);
+    text("PRESS ENTER TO SPAWN THE ZOMBIES!", 500,500);
     
     switch (gameState){
       case SEEDSELECTION:
@@ -133,7 +135,6 @@ public class Level extends World{
        default:
          System.out.println("error, bad gameState");
          break;
-        
     }    
   }
   
@@ -177,6 +178,11 @@ public class Level extends World{
     addObject(sun);
   }
   
+  public void gameOver(){
+   System.out.println("THE ZOMBIES ATE YOUR BRAINS!");
+   delay(3000);
+   exit();
+  }
   
   
   //COLLECTABLE STUFF ^^^^^^^^^^^ /////////////////////////

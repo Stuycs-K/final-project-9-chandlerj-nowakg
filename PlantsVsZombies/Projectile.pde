@@ -75,3 +75,9 @@ public class Projectile extends Actor {
    super(20, 10, loadImage("Sprites/Projectiles/FirePea.png")); //it does 20 damage. speed of 10
   }
  }
+ 
+ public class noProjectile extends Projectile{
+   public noProjectile(){
+     super(0,0,loadImage("Sprites/Projectiles/noProjectile.png"));
+   }
+ }

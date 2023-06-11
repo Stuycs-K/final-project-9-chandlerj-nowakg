@@ -1,5 +1,4 @@
 public class SeedSlot extends Actor{
- 
   Timer timer;
   String name; //of plant it spawns
   PImage sprite;
@@ -66,9 +65,9 @@ public class CherrybombSeed extends SeedSlot{
    super("Cherrybomb", new Timer(120, true));
  }
 }
-public class WalnutSeed extends SeedSlot{
- public WalnutSeed(){
-   super("Walnut", new Timer(120, true));
+public class WallnutSeed extends SeedSlot{
+ public WallnutSeed(){
+   super("Wallnut", new Timer(120, true));
  }
 }
 public class PotatomineSeed extends SeedSlot{

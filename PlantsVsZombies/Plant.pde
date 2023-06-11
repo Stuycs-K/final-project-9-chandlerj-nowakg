@@ -18,7 +18,7 @@ public class Plant extends Actor{
    Green green;
    Level level;
 
-
+//fix sun costs for plants
 
 public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, int projectileID, boolean aquatic, boolean grounded){
    super(x, y, 100, 100);

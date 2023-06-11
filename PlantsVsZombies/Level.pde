@@ -11,6 +11,7 @@ public class Level extends World{
   int gameState;
   Camera cam;
   DebugCamera debugCam;
+  SunCounter sunCounter;
   
   boolean oneSlotSelected = false; //a little wonky solution to the multiple seed selection bug but whatever
   
@@ -64,8 +65,10 @@ public class Level extends World{
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
-    selectedSeeds = new ArrayList<SeedSlot>(9);
     
+    sunCounter = new SunCounter(this);
+    
+    selectedSeeds = new ArrayList<SeedSlot>(9);
     seedUI = new SeedUI();
     addObject(seedUI);
     loadSeedSelection();
@@ -102,9 +105,7 @@ public class Level extends World{
   
   
   public void act(float deltaTime){  
-    textSize(64);
-    fill(0);
-    text("" + sun, 222, 64);
+    
     
     switch (gameState){
       case SEEDSELECTION:

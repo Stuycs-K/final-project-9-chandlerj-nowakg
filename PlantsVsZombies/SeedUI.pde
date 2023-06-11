@@ -2,7 +2,7 @@ public class SeedUI extends Actor{
   
   Level level = (Level) Green.getWorld();
   
-  public final SeedSlot[] seedSlotTemplates = {new PeashooterSeed(), new SunflowerSeed(), new CherrybombSeed(), new WallnutSeed(), new PotatomineSeed(), new SnowpeaSeed(), new ChomperSeed(), new RepeaterSeed(),
+  public final SeedSlot[] seedSlotTemplates = {new PeashooterSeed(), new SunflowerSeed(), new CherrybombSeed(), new WalnutSeed(), new PotatomineSeed(), new SnowpeaSeed(), new ChomperSeed(), new RepeaterSeed(),
                           new PuffshroomSeed(), new SunshroomSeed(), new FumeshroomSeed(), new GravebusterSeed(), new HypnoshroomSeed(), new ScaredyshroomSeed(), new IceshroomSeed(), new DoomshroomSeed(),
                           new LilypadSeed(), new SquashSeed(), new ThreepeaterSeed(), new TanglekelpSeed(),new JalepenoSeed(), new SpikeweedSeed(), new TorchwoodSeed(), new TallnutSeed(), 
                           new SeashroomSeed(), new PlanternSeed(), new CactusSeed(), new BloverSeed(), new SplitpeaSeed(), new StarfruitSeed(), new PumpkinSeed(), new MagnetshroomSeed(),

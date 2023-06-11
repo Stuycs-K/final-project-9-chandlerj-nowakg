@@ -18,7 +18,7 @@ public class Plant extends Actor{
    Green green;
    Level level;
 
-
+//fix sun costs for plants
 
 public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, int projectileID, boolean aquatic, boolean grounded){
    super(x, y, 100, 100);
@@ -48,20 +48,23 @@ public int getCost(){
   return this.cost;
 }
 
-
-public void act(float deltaTime){
-  if(health <= 0){
-    level.removeObject(this);
-   }
-  
-   if(projectileID != NO_SHOOT && ICD.done() == true){
-     Projectile x = new Projectile(level.projectileTemplates[projectileID]);
+public void shoot(){
+   Projectile x = new Projectile(level.projectileTemplates[projectileID]);
      level.addObject(x);
      x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      ICD.reset();
    }
-   if(this.name == "Sunflower" || this.name == "Twinsunflower" || this.name == "SunShroom"){
+   
+public void act(float deltaTime){
+  if(health <= 0){
+    level.removeObject(this);
+   }
+  
+  if (ICD.done() == true && projectileID != NO_SHOOT){
+     shoot();  
+  }
+  if(this.name == "Sunflower" || this.name == "Twinsunflower" || this.name == "SunShroom"){
      if(ICD.done()){
        float z = this.getX();
        Random seed = new Random();
@@ -107,8 +110,33 @@ public void act(float deltaTime){
      
    }
  }
+}
 
 
+public class Lawnmower extends Plant{
+  boolean triggered;
+ public Lawnmower(int x, int y){
+  super("Lawnmower",  x, y, 0, 100000000, new Timer(1), NO_SHOOT, true, false);
+   triggered = false;
+ }
+ //overrided
+   public void act(float deltaTime){
+   if (triggered){
+     move(10f);
+   }
+   
+   Zombie victim = getOneIntersectingObject(Zombie.class);
+    
+    if(victim != null){ //on hit
+      victim.setHealth(victim.health - 100000000); 
+      triggered = true;
+    }
+  if (getX() > width){
+    level.removeObject(this);
+  }
+  ICD.reset();
+   
+ }
 }
 
 public class Peashooter extends Plant{
@@ -157,8 +185,7 @@ public class Repeater extends Plant{
     super("Repeater",x,y,100,50,new Timer(60),PEA_PROJECTILE, false, true);
   }
   @Override
-  public void act(float deltaTime){
-   if(ICD.done() == true){
+  public void shoot(){
      Projectile x = new Projectile(level.projectileTemplates[projectileID]);
      Projectile y = new Projectile(level.projectileTemplates[projectileID]);
      getWorld().addObject(x);
@@ -166,9 +193,8 @@ public class Repeater extends Plant{
      x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
      y.setZ(-10);
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
-     y.arm((int) getX(), (int) getY()-20);
+     y.arm((int) getX() + 25, (int) getY()-20);
      ICD.reset();
-   }
  }
 }
 public class Snowpea extends Plant{
@@ -176,9 +202,9 @@ public class Snowpea extends Plant{
    super("Snowpea",x,y,100,50,new Timer(60), SNOW_PEA_PROJECTILE, false, true);
  }
 }
-public class Wallnut extends Plant{ //needs to not shoot
- public Wallnut(int x, int y){
-   super("Wallnut",x,y,100,150,new Timer(60), NO_SHOOT, false, true);
+public class Walnut extends Plant{ //needs to not shoot
+ public Walnut(int x, int y){
+   super("Walnut",x,y,100,150,new Timer(60), NO_SHOOT, false, true);
  }
 }
 

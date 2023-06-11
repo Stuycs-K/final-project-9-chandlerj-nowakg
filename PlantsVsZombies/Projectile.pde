@@ -101,8 +101,11 @@ public class Projectile extends Actor {
     super(30,10,loadImage("Sprites/Projectiles/Spore.png"));
     hitcount = 2;
   }
-  
+  @Override
   public void act(float deltaTime){
+    if(hitcount == 0){
+     level.removeObject(this); 
+    }
     if (isArmed()){
        if(isAtEdge()){
         level.removeObject(this);
@@ -115,7 +118,7 @@ public class Projectile extends Actor {
       
       if(victim != null){ //on hit
         victim.setHealth(victim.health - this.getDamage());
-        level.removeObject(this);
+        hitcount--;
       }
 
       move(this.getSpeed());

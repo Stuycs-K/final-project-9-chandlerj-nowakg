@@ -11,23 +11,23 @@ public class SeedUI extends Actor{
   
   private final int[] TOPLEFTCOORD = {280, 35};
   
-  public void load(SeedSlot[] selection){
+  public void load(ArrayList<SeedSlot> selection){
     
     SeedSlot slot;
-    for (int n = 0; n < selection.length; n++){
+    for (int n = 0; n < selection.size(); n++){
       
-      if (selection[n] == null){
+      if (selection.get(n) == null){
        break; 
       }
       
-      slot = new SeedSlot(selection[n]);
+      slot = new SeedSlot(selection.get(n));
       level.addObject(slot);
-      slot.setX(TOPLEFTCOORD[0] + 52 * n);
+      slot.setX(TOPLEFTCOORD[0] + 51 * n);
       slot.setY(TOPLEFTCOORD[1]);
       slot.setZ(10);
     }
   }
-
+  
   public SeedUI(){
     super(450,35, loadImage("Sprites/seedslots.jpg"), 0.55f);
   }

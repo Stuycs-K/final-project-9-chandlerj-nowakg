@@ -22,7 +22,7 @@ public class Level extends World{
   
   public Projectile[] projectileTemplates = {new Pea(), new IcePea(), new FirePea()}; //they won't ALL Be pea but you get the idea
   
-    public SeedSlot[] selectedSeeds;
+    public ArrayList <SeedSlot> selectedSeeds;
   
   private static final int SEEDSELECTION = 0;
   private static final int INVASION = 1; 
@@ -64,7 +64,7 @@ public class Level extends World{
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
-    selectedSeeds = new SeedSlot[9];
+    selectedSeeds = new ArrayList<SeedSlot>(9);
     
     seedUI = new SeedUI();
     addObject(seedUI);
@@ -110,12 +110,9 @@ public class Level extends World{
       case SEEDSELECTION:
        
         if (green.isKeyDown(ENTER)){     
-          deloadSeedSelection();
-          selectedSeeds[0] = new PeashooterSeed();
-          selectedSeeds[1] = new SunflowerSeed();
-          seedUI.load(selectedSeeds);
-          
-         gameState = INVASION;           
+          deloadSeedSelection();        
+         gameState = INVASION;  
+         seedUI.load(selectedSeeds);
         }
         break;
       
@@ -218,6 +215,15 @@ public class Level extends World{
    for (int n = 0; n < seeds.size(); n++){
         removeObject(seeds.get(n));
    }
+ }
+ 
+ public boolean addSeed(SeedSlot seed){
+   if (gameState == SEEDSELECTION && selectedSeeds.size() < 9){
+    selectedSeeds.add(seed); 
+    seedUI.load(selectedSeeds);
+    return true;
+   }
+   return false;
  }
  
  ///////////LOADSEEDS ^^^^ ////////

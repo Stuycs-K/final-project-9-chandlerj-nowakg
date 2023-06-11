@@ -32,6 +32,7 @@ public class SeedSlot extends Actor{
     if(plantGhost.inPlacement && !green.isMouseButtonDown(LEFT)){  
         plantGhost.inPlacement = false;
         level.lawn.placePlant(name, mouseX, mouseY, true); 
+        level.addSeed(this);
         level.oneSlotSelected = false; 
         timer.reset();
       }

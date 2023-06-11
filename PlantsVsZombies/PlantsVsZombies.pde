@@ -16,7 +16,7 @@ public final String[] seeds = {"Peashooter", "Sunflower", "Cherrybomb", "Walnut"
                           "Seashroom", "Plantern", "Cactus", "Blover", "Splitpea", "Starfruit", "Pumpkin", "Magnetshroom",
                           "Cabbagepult", "Flowerpot", "Kernelpult", "Coffeebean", "Garlic", "Umbrellaleaf", "Marigold", "Melonpult",
                           "Gatlingpea", "Twinsunflower", "Gloomshroom", "Cattail", "Wintermelon", "Goldmagnet", "Spikerock", "Cobcannon"};
-                          
+
 
 Green green;
 Level activeLevel;

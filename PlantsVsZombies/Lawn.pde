@@ -55,12 +55,29 @@ public class Lawn{
     int placementY = row * tileYSize + (int) topLeftCoord[1] + tileYSize / 2;
     
     Plant plant;
+    
     System.out.println(name);
+    
     if (name.equals("Peashooter")){
      plant = new Peashooter(placementX, placementY); 
     }
-    else if (name.equals("ShowShooter")){
+    else if (name.equals("Sunflower")){
+      plant = new Sunflower(placementX, placementY); 
+    }
+    else if (name.equals("Cherrybomb")){
+      plant = new Cherrybomb(placementX, placementY); 
+    }
+    else if (name.equals("Chomper")){
+      plant = new Chomper(placementX, placementY); 
+    }
+    else if (name.equals("Snowpea")){
       plant = new Snowpea(placementX, placementY); 
+    }
+    else if (name.equals("Potatomine")){
+      plant = new Potatomine(placementX, placementY); 
+    }
+    else if (name.equals("Repeater")){
+      plant = new Repeater(placementX, placementY); 
     }
     else{
       plant = new Peashooter(placementX, placementY);

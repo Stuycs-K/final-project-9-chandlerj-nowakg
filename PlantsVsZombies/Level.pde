@@ -64,7 +64,6 @@ public class Level extends World{
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
-    text(""+sun, 225,400);
     selectedSeeds = new ArrayList<SeedSlot>(9);
     
     seedUI = new SeedUI();

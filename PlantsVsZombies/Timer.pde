@@ -32,6 +32,6 @@ public class Timer extends Actor{
   public void act(float deltaTime){
     if (currentTime > 0){
       currentTime--;
-    }
+    }    
   }
 }

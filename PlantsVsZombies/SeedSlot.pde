@@ -1,4 +1,5 @@
 public class SeedSlot extends Actor{
+ 
   Timer timer;
   String name; //of plant it spawns
   PImage sprite;

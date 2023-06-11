@@ -64,6 +64,9 @@ public class Lawn{
     else if (name.equals("Sunflower")){
       plant = new Sunflower(placementX, placementY); 
     }
+    else if(name.equals("Twinsunflower")){
+     plant = new Twinsunflower(placementX, placementY); 
+    }
     else if(name.equals("Squash")){
      plant = new Squash(placementX, placementY); 
     }
@@ -75,6 +78,9 @@ public class Lawn{
     }
     else if (name.equals("Cherrybomb")){
       plant = new Cherrybomb(placementX, placementY); 
+    }
+    else if(name.equals("cobCannon")){
+      plant = new cobCannon(placementX, placementY); 
     }
     else if (name.equals("Chomper")){
       plant = new Chomper(placementX, placementY); 

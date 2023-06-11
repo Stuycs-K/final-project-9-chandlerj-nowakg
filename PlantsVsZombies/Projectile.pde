@@ -34,6 +34,20 @@ public class Projectile extends Actor {
    armed = true;
   }
   
+  public boolean isArmed(){
+   if(armed){
+    return true; 
+   }
+   else{
+     return false;
+   }
+  }
+  public float getSpeed(){
+    return speed;
+  }
+  public int getDamage(){
+    return damage;
+  }
 
   //will change depending on the plant but for now, let's just assume its a peashooter
   public void act(float deltaTime){
@@ -53,7 +67,6 @@ public class Projectile extends Actor {
       }
 
       move(speed);
-      
     } 
    }
   }
@@ -80,4 +93,32 @@ public class Projectile extends Actor {
    public noProjectile(){
      super(0,0,loadImage("Sprites/Projectiles/noProjectile.png"));
    }
+ }
+ 
+ public class Spore extends Projectile{
+  int hitcount;
+  public Spore(){
+    super(30,10,loadImage("Sprites/Projectiles/Spore.png"));
+    hitcount = 2;
+  }
+  
+  public void act(float deltaTime){
+    if (isArmed()){
+       if(isAtEdge()){
+        level.removeObject(this);
+        return; //Since this no longer 'exists'
+      }
+      
+      //Check for whether a zombie has been hit
+    
+      Zombie victim = getOneIntersectingObject(Zombie.class);
+      
+      if(victim != null){ //on hit
+        victim.setHealth(victim.health - this.getDamage());
+        level.removeObject(this);
+      }
+
+      move(this.getSpeed());
+    } 
+  }
  }

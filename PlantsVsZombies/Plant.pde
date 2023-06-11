@@ -44,6 +44,10 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
  this.health = health;
 }
 
+public int getCost(){
+  return this.cost;
+}
+
 
 public void act(float deltaTime){
   if(health <= 0){
@@ -57,13 +61,14 @@ public void act(float deltaTime){
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      ICD.reset();
    }
-   if(this.name == "Sunflower"){
+   if(this.name == "Sunflower" || this.name == "Twinsunflower" || this.name == "SunShroom"){
      if(ICD.done()){
        float z = this.getX();
        Random seed = new Random();
        z += seed.nextInt(10); //so there's a little variation on where it spawns from the sky and from the plant 
       Collectable sun = new Sun(z, this.getY(), false, seed);
       level.addObject(sun);
+      ICD.reset();
      }
    }
    else if(this.name == "Chomper"){
@@ -72,6 +77,7 @@ public void act(float deltaTime){
       
       if(victim != null){ //on hit
         victim.setHealth(victim.health - 999999);
+        ICD.reset();
       }
      }
    }
@@ -115,6 +121,12 @@ public class Sunflower extends Plant{ //needs to generate sun
    super("Sunflower",x,y,100,50,new Timer(300), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
+
+public class Twinsunflower extends Plant{
+  public Twinsunflower(int x, int y){
+       super("Twinsunflower",x,y,150,50,new Timer(150), NO_SHOOT, false, true); //50 health, 200 sun cost, Pea projectile 
+  }
+}
 public class Cherrybomb extends Plant{ //needs to not shoot and explode
  public Cherrybomb(int x, int y){
    super("Cherrybomb",x,y,100,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
@@ -134,6 +146,11 @@ public class Potatomine extends Plant{ //needs to not shoot
  public Potatomine(int x, int y){
    super("Potatomine",x,y,100,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
+}
+public class cobCannon extends Plant{
+  public cobCannon(int x, int y){
+   super("cobCannon",x,y,500,250,new Timer(600), PEA_PROJECTILE, false, true);   
+  }
 }
 public class Repeater extends Plant{
   public Repeater(int x, int y){

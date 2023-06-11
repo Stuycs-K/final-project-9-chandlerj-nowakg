@@ -106,6 +106,10 @@ void draw() {
 
   fill(255);
   text(frameRate, 40, 120);
+  
+  fill(0);
+  textSize(20);
+  text("" + activeLevel.sun, 205,70);
 }
 
 

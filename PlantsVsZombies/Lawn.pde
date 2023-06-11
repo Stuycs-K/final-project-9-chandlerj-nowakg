@@ -70,6 +70,9 @@ public class Lawn{
     else if (name.equals("Chomper")){
       plant = new Chomper(placementX, placementY); 
     }
+    else if (name.equals("Walnut")){
+      plant = new Walnut(placementX, placementY); 
+    }
     else if (name.equals("Snowpea")){
       plant = new Snowpea(placementX, placementY); 
     }

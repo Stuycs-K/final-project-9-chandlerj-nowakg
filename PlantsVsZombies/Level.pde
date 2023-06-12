@@ -5,6 +5,7 @@ public class Level extends World{
   //PImage seedSelect = loadImage("Sprites/seedselect.jpg");
   boolean finished = false;
   int sun;
+  int balance;
   boolean isDay;
   Lawn lawn;
   Random seed;
@@ -21,7 +22,7 @@ public class Level extends World{
   final int[] seedSelectPlacement = {200, 200};
   
   
-  public Projectile[] projectileTemplates = {new Pea(), new IcePea(), new FirePea()}; //they won't ALL Be pea but you get the idea
+  public Projectile[] projectileTemplates = {new Pea(), new IcePea(), new FirePea(), new Spore(), new Cawb(), new invisProjectile(), new Spike()}; //they won't ALL Be pea but you get the idea
   
     public ArrayList <SeedSlot> selectedSeeds;
   
@@ -54,6 +55,7 @@ public class Level extends World{
     lawn = l;
     isDay = d;
     sun = 50;
+    balance = 0;
   }
   
   

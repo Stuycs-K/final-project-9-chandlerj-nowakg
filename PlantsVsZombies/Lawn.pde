@@ -79,18 +79,27 @@ public class Lawn{
     else if(name.equals("Squash")){
      plant = new Squash(placementX, placementY); 
     }
-    else if(name.equals("FumeShroom")){
+    else if(name.equals("Fumeshroom")){
+       plant = new Fumeshroom(placementX, placementY); 
+    }
+    else if(name.equals("Puffshroom")){
        plant = new Squash(placementX, placementY); 
     }
-    else if(name.equals("SunShroom")){
-       plant = new SunShroom(placementX, placementY); 
+    else if(name.equals("Sunshroom")){
+       plant = new Sunshroom(placementX, placementY); 
     }
     else if (name.equals("Cherrybomb")){
       plant = new Cherrybomb(placementX, placementY);
       lawn[row][col] = PLANT;
     }
-    else if(name.equals("cobCannon")){
-      plant = new cobCannon(placementX, placementY); 
+    else if(name.equals("Cobcannon")){
+      plant = new Cobcannon(placementX, placementY); 
+    }
+    else if(name.equals("Spikerock")){
+      plant = new Spikerock(placementX, placementY); 
+    }
+    else if(name.equals("Spikeweed")){
+      plant = new Spikeweed(placementX, placementY); 
     }
     else if (name.equals("Chomper")){
       plant = new Chomper(placementX, placementY); 
@@ -117,6 +126,18 @@ public class Lawn{
     }
     else if(name.equals("Tallnut")){
       plant = new Tallnut(placementX, placementY); 
+    }
+    else if(name.equals("Gatlingpea")){
+     plant = new Gatlingpea(placementX, placementY); 
+    }
+    else if(name.equals("Blover")){
+      plant = new Blover(placementX,placementY);
+    }
+    else if(name.equals("Cactus")){
+     plant = new Cactus(placementX,placementY); 
+    }
+    else if(name.equals("Marigold")){
+      plant = new Marigold(placementX,placementY);
     }
     else{
       plant = new Peashooter(placementX, placementY);

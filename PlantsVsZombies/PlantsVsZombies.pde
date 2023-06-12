@@ -110,6 +110,9 @@ void draw() {
   fill(0);
   textSize(20);
   text("" + activeLevel.sun, 205,70);
+  fill(0,0,255);
+  textSize(50);
+  text("Money: " + activeLevel.balance, 1000,70);
 }
 
 

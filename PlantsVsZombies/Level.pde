@@ -142,7 +142,11 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
          gameState = INVASION;  
          seedUI.load(selectedSeeds);
          setupLawnmowers();
+<<<<<<< HEAD
          beginWaves = new Timer(60); 
+=======
+         beginWaves = new Timer(1200); 
+>>>>>>> origin/Alpha
         }
         break;
       
@@ -302,8 +306,13 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
   }
   
   //ZOMBIE STUFF ^^^^^^ ///////
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> origin/Alpha
  //LOAD SEEDS VVVV //////
  
  public void loadSeedSelection(){
@@ -397,6 +406,7 @@ public class PoolLevel extends Level{
     })
     );
  }
+<<<<<<< HEAD
 }
 
 public class FogLevel extends Level{
@@ -428,4 +438,37 @@ public class RoofLevel extends Level{
     );
  }
   
+=======
+>>>>>>> origin/Alpha
 }
+
+public class FogLevel extends Level{
+  public FogLevel(){
+   super(4, loadImage("Sprites/main_menu_background.jpg"), 
+   new Lawn (new int[][]{
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL},
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL},
+      {MOWER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER},
+      {MOWER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER,WATER},
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL},
+      {MOWER,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL,SOIL}
+    })
+    );
+ }
+  
+}
+  
+public class RoofLevel extends Level{
+  public RoofLevel(){
+    super(5, loadImage("Sprites/main_menu_background.jpg"), 
+    new Lawn(new int[][]{
+      {MOWER,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE},
+      {MOWER,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE},
+      {MOWER,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE},  
+      {MOWER,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE},
+      {MOWER,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE,ROOFTILE},
+    })
+    );
+ }
+  
+}  

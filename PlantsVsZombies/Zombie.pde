@@ -43,6 +43,7 @@ Plant victim;
 public  void act(float deltaTime){
 
    if(health <= 0){
+<<<<<<< HEAD
      Collectable drop;
     int r = (int)(Math.random()*10)+1;
     if(r % 2 == 0){
@@ -54,6 +55,10 @@ public  void act(float deltaTime){
       level.addObject(drop);
     }
      level.removeObject(this);
+=======
+    level.removeObject(this);
+    
+>>>>>>> origin/Alpha
    }
    
    if(this.getX() < 125){

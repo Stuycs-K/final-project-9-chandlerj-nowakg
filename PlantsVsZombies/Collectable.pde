@@ -1,4 +1,8 @@
+<<<<<<< HEAD
  public class Collectable extends Actor {
+=======
+  public class Collectable extends Actor {
+>>>>>>> origin/Alpha
 
   static final int  SUN = 0;
   static final int  SILVERCOIN = 1;

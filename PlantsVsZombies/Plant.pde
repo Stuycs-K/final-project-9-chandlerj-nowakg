@@ -134,7 +134,11 @@ public class Peashooter extends Plant{
 }
 public class Sunflower extends Plant{ 
  public Sunflower(int x, int y){
+<<<<<<< HEAD
    super("Sunflower",x,y,50,50,new Timer(300), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+=======
+   super("Sunflower",x,y,50,50,new Timer(420), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+>>>>>>> origin/Alpha
  }
  void damage(){
    level.generateSun(getX(), getY(), false, randomSeed); 

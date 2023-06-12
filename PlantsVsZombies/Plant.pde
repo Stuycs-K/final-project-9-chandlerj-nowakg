@@ -38,8 +38,15 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
 } 
   public void addedToWorld(World world){
     setImage(sprite);
-    //System.out.println("" + getX() + " " + getY());
+    if (level.sun < cost){ //yes you are reading this right we place the plant, then check the cost, then kill it if its actually too expensive. i dont like this either
+      setHealth(-100);
+    }
+    else{
+      level.addSun(cost * -1);
+    }
+    
   }
+  
   
   
   public void setHealth(int health){
@@ -73,6 +80,9 @@ public void act(float deltaTime){
     level.removeObject(this);
     level.lawn.removePlant((int) getX(), (int) getY());
    }
+   if (isMouseButtonDownHere(LEFT) && green.isKeyDown('s')){ //the "shovel"
+       setHealth(-100);
+     }
   
   if (ICD.done()){
     if (projectileID == NO_SHOOT){

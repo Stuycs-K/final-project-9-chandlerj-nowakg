@@ -134,13 +134,7 @@ public class Lawn{
     
     lawn[row][col] = PLANT;
      
-    if (level.sun < plant.cost){    //yes if you are reading this we place the plant, then check the cost, then kill it if its actually too expensive. i dont like it either
-      plant.setHealth(plant.health - 1000000);
-      System.out.println("not enough sun : " + level.getSun());
-      return false;
-    }
-    System.out.println("LAWN " + level.getSun());
-    level.sun -= plant.cost;
+    
 
    return true;
     //check based on plant's info

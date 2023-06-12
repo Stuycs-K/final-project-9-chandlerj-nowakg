@@ -12,10 +12,17 @@ public class Level extends World{
   Camera cam;
   DebugCamera debugCam;
   Timer skySunCD;
-  
+  Timer beginWaves;
+  Timer waveTimer;
   boolean oneSlotSelected = false; //a little wonky solution to the multiple seed selection bug but whatever
+  int wave = 0;
   
   
+public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevaulter",
+                      "Newspaper", "Screendoor", "Football","Disco", "Backupdancer",
+                    "Duckytube", "Snorkel", "Dolphinrider", 
+                  "Jackinthebox", "Balloon", "Digger", "Pogo", "Yeti",
+                "Bungee", "Ladder", "Guarantuar"};
   SeedUI seedUI;
   
   final int[] seedSelectPlacement = {200, 200};
@@ -53,7 +60,6 @@ public class Level extends World{
     background = b;
     lawn = l;
     isDay = d;
-    sun = 50;
     
   }
   
@@ -66,7 +72,8 @@ public class Level extends World{
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
-    
+    addSun(50);
+    System.out.println("sun" + getSun());
     selectedSeeds = new ArrayList<SeedSlot>(9);
     seedUI = new SeedUI();
     addObject(seedUI);
@@ -76,31 +83,46 @@ public class Level extends World{
     //gameState = INVASION; //for testing purposes
 
     skySunCD = new Timer(600);
+    
   }
   
+  public void zombieWaves(){
+    wave++;
+    beginWaves.internalCooldown = randomSeed.nextInt(1000) + 600;
+       beginWaves.reset();
+       spawnZombie(zombies[randomSeed.nextInt(zombies.length)], randomSeed.nextInt((int) wave * (int) Math.pow(2, wave)));
+       
+    System.out.println("wave" + wave);
+  }
   
   public void invasion(){ //this can get overrided to change the way the waves get thrown at the player
-    if (green.isKeyDown('s')){
+    if (green.isKeyDown('a')){
       generateSun(mouseX, 0, true, randomSeed);
       }
       if (green.isKeyDown('c')){
         spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
       }
-      
-    if (green.isMouseButtonDown(RIGHT)){
-      //generateSun(mouseX, mouseY, false, seed); 
-        spawnZombie("Dolphinrider", randomSeed.nextInt(5));
-        //System.out.println("" + mouseX + " " + mouseY);
-     }
+      if (green.isKeyDown('0')){
+        for (int n = 0; n < zombies.length; n++){
+          spawnZombie(zombies[n], randomSeed.nextInt(lawn.lawn.length));
+        }
+      }
+    
      
-     if (skySunCD.done()){
+     if (isDay && skySunCD.done()){
       generateSkySun();
       skySunCD.reset();
      }
+     if (beginWaves.done()){
+       zombieWaves();
+     }
+     
+     
+     
      
   }
   
-  
+
   public void act(float deltaTime){  
    // textSize(64);
     //fill(0); i dont think these work...
@@ -115,6 +137,7 @@ public class Level extends World{
          gameState = INVASION;  
          seedUI.load(selectedSeeds);
          setupLawnmowers();
+         beginWaves = new Timer(1200); 
         }
         break;
       
@@ -141,7 +164,6 @@ public class Level extends World{
   
   
   ///COLLECTABLE STUFF VVVVVVVVVVVVVVV //////////////////////////
-  
 
   
   public void spawnCoin(float x, float y, int type){
@@ -167,9 +189,12 @@ public class Level extends World{
     }
     addObject(collectable); 
   }
-  
+
+  public void addSun(int amount){
+    sun += amount;
+  }
   public int getSun(){
-   return sun; 
+    return sun;
   }
   
   public void generateSkySun(){
@@ -178,8 +203,8 @@ public class Level extends World{
   
   public void generateSun(float x, float y, boolean fromSky, Random seed){
     x += seed.nextInt(30); //so there's a little variation on where it spawns from the sky and from the plant 
-    Collectable sun = new Sun(x, y, fromSky, seed);
-    addObject(sun);
+    Collectable sunCollectable = new Sun(x, y, fromSky, seed);
+    addObject(sunCollectable);
   }
   
   public void gameOver(){
@@ -195,7 +220,76 @@ public class Level extends World{
   
   public void spawnZombie(String name, int row){
     int rowThickness = (bottomRightCoord[1] - topLeftCoord[1]) / lawn.lawn.length;
-    Zombie zombie = new Dolphinrider(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    Zombie zombie;
+    
+    if(name.equals("Regular")){
+      zombie = new Regular(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Conehead")){
+      zombie = new Conehead(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Buckethead")){
+      zombie = new Buckethead(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Polevaulter")){
+      zombie = new Polevaulter(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Screendoor")){
+      zombie = new Screendoor(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Football")){
+      zombie = new Football(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Disco")){
+      zombie = new Disco(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Backupdancer")){
+      zombie = new Backupdancer(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Duckytube")){
+      zombie = new Duckytube(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Snorkel")){
+      zombie = new Snorkel(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Dolphinrider")){
+      zombie = new Dolphinrider(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Jackinthebox")){
+      zombie = new Jackinthebox(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Balloon")){
+      zombie = new Balloon(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Digger")){
+      zombie = new Digger(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Pogo")){
+      zombie = new Pogo(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Yeti")){
+      zombie = new Yeti(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Bungee")){
+      zombie = new Bungee(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Ladder")){
+      zombie = new Ladder(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Catapult")){
+      zombie = new Catapult(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Gargantuar")){
+      zombie = new Gargantuar(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Imp")){
+      zombie = new Imp(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else{
+     zombie =  new Imp(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+     System.out.println("error: zombie name not an actual name: " + name);
+    }
+    
     addObject(zombie);
   }
   

@@ -18,6 +18,7 @@ public final String[] seeds = {"Peashooter", "Sunflower", "Cherrybomb", "Walnut"
                           "Gatlingpea", "Twinsunflower", "Gloomshroom", "Cattail", "Wintermelon", "Goldmagnet", "Spikerock", "Cobcannon"};
 
 
+
 Green green;
 Level activeLevel;
 int coins = 0;

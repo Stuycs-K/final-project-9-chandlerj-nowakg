@@ -28,7 +28,7 @@ public Zombie(String name, float y, int health, float walkSpeed){
 public void addedToWorld(World world){
  sprite = loadImage("Sprites/Zombies/" + name + ".png");
  setImage(sprite);
- setDimensions((int) (sprite.width * 0.25), (int) (sprite.height * 0.25));
+ setDimensions(100, 140);
  
 }
 
@@ -124,6 +124,11 @@ public class Backupdancer extends Zombie{
 public class Duckytube extends Zombie{
  public Duckytube(float y){
    super("Duckytube",y, 100, 1);
+ }
+}
+public class Snorkel extends Zombie{
+ public Snorkel(float y){
+   super("Snorkel",y, 100, 1);
  }
 }
 public class Dolphinrider extends Zombie{

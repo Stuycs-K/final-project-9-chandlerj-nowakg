@@ -54,7 +54,7 @@ public  void act(float deltaTime){
  
    victim = getOneIntersectingObject(Plant.class);
       
-    if(victim != null){ //on hit
+    if(victim != null && victim.name != "Spikeweed" && victim.name != "Spikerock"){ //on hit
       bite(victim);
       //play eating animation?
     }
@@ -179,11 +179,11 @@ public class Catapult extends Zombie{
 }
 public class Gargantuar extends Zombie{
  public Gargantuar(float y){
-   super("Gargantuar",y, 1500, 1);
+   super("Gargantuar",y, 1500, .5);
  }
 }
 public class Imp extends Zombie{
  public Imp(float y){
-   super("Imp",y, 100, 2);
+   super("Imp",y, 50, 2);
  }
 }

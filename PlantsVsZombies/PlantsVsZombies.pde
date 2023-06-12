@@ -67,7 +67,7 @@ void changeLevel(int levelID) {
 void setup() {
   size(1280, 800);
   System.out.println("setup:  running level menu.");
-
+  frameRate(30);
   green = new Green(this);
   activeLevel = new MainMenu();
   green.loadWorld(activeLevel);
@@ -108,9 +108,13 @@ void draw() {
   fill(255);
   text(frameRate, 40, 120);
   
+  
   fill(0);
   textSize(20);
   text("" + activeLevel.sun, 205,70);
+  fill(0,0,255);
+  textSize(50);
+  text("Money: " + activeLevel.balance, 1000,70);
 }
 
 

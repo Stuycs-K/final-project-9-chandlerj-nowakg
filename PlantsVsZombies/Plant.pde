@@ -4,6 +4,10 @@ public class Plant extends Actor{
    static final int PEA_PROJECTILE = 0;
    static final int SNOW_PEA_PROJECTILE = 1;
    static final int FIRE_PEA_PROJECTILE = 2;
+   static final int SPORE_PROJECTILE = 3;
+   static final int CORN_NUKE = 4;
+   static final int INVISIBLE_PROJECTILE = 5;
+   static final int SPIKE_PROJECTILE = 6;
    
    //... etc
   
@@ -56,16 +60,7 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
 public int getCost(){
   return this.cost;
 }
-
-public void shoot(){
-   Projectile x = new Projectile(level.projectileTemplates[projectileID]);
-     level.addObject(x);
-     x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
-     x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
-     ICD.reset();
-   }
-   
-  Zombie victim;
+Zombie victim;
 public void damage(){
   int damage = 10;
       victim = getOneIntersectingObject(Zombie.class);
@@ -75,6 +70,16 @@ public void damage(){
         ICD.reset();
       }
    }
+
+public void shoot(){
+   Projectile x = new Projectile(level.projectileTemplates[projectileID]);
+     level.addObject(x);
+     x.setZ(-10); //so it looks to be behind the peashooter and comes out of its mouse
+     x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
+     ICD.reset();
+   }
+   
+
 public void act(float deltaTime){
   if(health <= 0){
     level.removeObject(this);
@@ -92,8 +97,6 @@ public void act(float deltaTime){
      shoot(); 
     }
   }
-  
-  
  }
 }
 
@@ -129,7 +132,7 @@ public class Peashooter extends Plant{
    super("Peashooter",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
-public class Sunflower extends Plant{ //needs to generate sun
+public class Sunflower extends Plant{ 
  public Sunflower(int x, int y){
    super("Sunflower",x,y,50,50,new Timer(420), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
@@ -148,6 +151,11 @@ public class Twinsunflower extends Plant{
    level.generateSun(getX() + 25, getY(), false, randomSeed); 
       ICD.reset();
  }
+}
+public class Cactus extends Plant{
+  public Cactus(int x, int y){
+    super("Cactus",x,y,125,100,new Timer(60), SPIKE_PROJECTILE, false, true);
+  }
 }
 public class Cherrybomb extends Plant{ //needs to not shoot and explode
  public Cherrybomb(int x, int y){
@@ -198,12 +206,11 @@ Zombie victim;
         level.removeObject(this);
       }
    }
-     
-    
 }
-public class CobCannon extends Plant{
-  public CobCannon(int x, int y){
-   super("CobCannon",x,y,500,250,new Timer(600), PEA_PROJECTILE, false, true);   
+
+public class Cobcannon extends Plant{
+  public Cobcannon(int x, int y){
+   super("Cobcannon",x,y,500,250,new Timer(600), CORN_NUKE, false, true);   
   }
 }
 public class Repeater extends Plant{
@@ -221,7 +228,41 @@ public class Repeater extends Plant{
      x.arm((int) getX(), (int) getY() - 20); //so it lines up with the opening of the peashooter a lil more
      y.arm((int) getX() + 25, (int) getY()-20);
      ICD.reset();
- }
+   }
+  }
+
+public class Gatlingpea extends Plant{
+  public Gatlingpea(int x, int y){
+    super("Gatlingpea", x,y,100,50,new Timer(20), PEA_PROJECTILE, false, true);
+  }
+    public void shoot(){
+     Projectile x;
+     for (int n = 0; n < 4; n++){
+       x = new Projectile(level.projectileTemplates[projectileID]);
+       getWorld().addObject(x);
+       x.setZ(-10);
+       x.arm((int) getX() + 25 * n, (int) getY() - 20);
+     }
+     ICD.reset();
+   }
+  
+}
+
+public class Threepeater extends Plant{
+  public Threepeater(int x, int y){
+    super("Threepeater", x,y,100,50,new Timer(20), PEA_PROJECTILE, false, true);
+  }
+    public void shoot(){
+     Projectile x;
+     for (int n = 0; n < 3; n++){
+       x = new Projectile(level.projectileTemplates[projectileID]);
+       getWorld().addObject(x);
+       x.setZ(-10);
+       x.arm((int) getX(), (int) getY() - (n - 1) * level.lawn.tileYSize);
+     }
+     ICD.reset();
+   }
+  
 }
 public class Snowpea extends Plant{
  public Snowpea(int x, int y){
@@ -249,12 +290,53 @@ public class Fumeshroom extends Plant{
     super("Fumeshroom",x,y,75,100,new Timer(60), NO_SHOOT, false, true);
   }
 }
+public class Puffshroom extends Plant{
+  public Puffshroom(int x, int y){
+   super("Puffshroom",x,y,0,30,new Timer(30), SPORE_PROJECTILE,false,true); 
+  }
+}
 public class Sunshroom extends Plant{
   public Sunshroom(int x, int y){
-    super("Sunshroom",x,y,25,100,new Timer(540), NO_SHOOT, false, true);
+    super("Sunshroom",x,y,150,100,new Timer(360), NO_SHOOT, false, true);
+  }
+}
+public class Spikeweed extends Plant{
+  public Spikeweed(int x, int y){
+    super("Spikeweed",x,y,50,1000000, new Timer(20), NO_SHOOT, false, true);
+  }
+}
+public class Spikerock extends Plant{
+  public Spikerock(int x, int y){
+    super("Spikerock",x,y,125,1000000, new Timer(20), NO_SHOOT, false, true);
+  }
+}
+public class Blover extends Plant{
+  public Blover(int x, int y){
+    super("Blover",x,y,125,100, new Timer(120), PEA_PROJECTILE, false ,true);
+  }
+}
+
+public class Marigold extends Plant{
+  public Marigold(int x, int y){
+    super("Marigold",x,y,50,50, new Timer(300), NO_SHOOT, false, true);
   }
   void damage(){
-   level.generateSun(getX(), getY(), false, randomSeed); 
+    Collectable y;
+       float z = this.getX();
+       int x  = randomSeed.nextInt(100);
+       if(x < 50){
+         y = new SilverCoin(z, this.getY());
+       }
+       else if(x < 75){
+         y = new GoldCoin(z, this.getY());
+       }
+       else if(x < 95){
+         y = new Diamond(z, this.getY());
+       }
+       else{
+         y = new MoneyBag(z,this.getY(),500);
+       }
+      level.addObject(y);
       ICD.reset();
  }
 }

@@ -22,7 +22,7 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
                       "Newspaper", "Screendoor", "Football","Disco", "Backupdancer",
                     "Duckytube", "Snorkel", "Dolphinrider", 
                   "Jackinthebox", "Balloon", "Digger", "Pogo", "Yeti",
-                "Bungee", "Ladder", "Guarantuar"};
+                "Bungee", "Ladder", "Gargantuar"};
   SeedUI seedUI;
   
   final int[] seedSelectPlacement = {200, 200};
@@ -233,6 +233,9 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
     }
     else if (name.equals("Polevaulter")){
       zombie = new Polevaulter(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
+    }
+    else if (name.equals("Newspaper")){
+      zombie = new Newspaper(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);
     }
     else if (name.equals("Screendoor")){
       zombie = new Screendoor(rowThickness * row + topLeftCoord[1] + lawn.tileYSize * 0.4);

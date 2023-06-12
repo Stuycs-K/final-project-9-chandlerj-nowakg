@@ -19,6 +19,7 @@ public Zombie(String name, float y, int health, float walkSpeed){
   this.health = health;
   this.walkSpeed = walkSpeed;
   this.biteCoolDown = 60;
+  this.sprite =loadImage("Sprites/Zombies/" + name + ".png");
   biteTimer= new Timer(biteCoolDown);
   level = Green.getWorld();
 
@@ -26,7 +27,7 @@ public Zombie(String name, float y, int health, float walkSpeed){
 }
 
 public void addedToWorld(World world){
- sprite = loadImage("Sprites/Zombies/" + name + ".png");
+
  setImage(sprite);
  setDimensions(100, 140);
  

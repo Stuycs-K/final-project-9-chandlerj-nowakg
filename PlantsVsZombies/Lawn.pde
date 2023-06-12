@@ -98,7 +98,7 @@ public class Lawn{
        plant = new Fumeshroom(placementX, placementY); 
     }
     else if(name.equals("Puffshroom")){
-       plant = new Squash(placementX, placementY); 
+       plant = new Puffshroom(placementX, placementY); 
     }
     else if(name.equals("Sunshroom")){
        plant = new Sunshroom(placementX, placementY); 

@@ -32,15 +32,9 @@ public class SeedUI extends Actor{
     super(450,35, loadImage("Sprites/seedslots.jpg"), 0.55f);
   }
   
-<<<<<<< HEAD
-  void act(float deltaTime){
-    
-  }
-=======
   public void act(float deltaTime){
     
     
   }
   
->>>>>>> origin/Alpha
 }

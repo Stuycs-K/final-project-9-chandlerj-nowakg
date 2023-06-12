@@ -18,7 +18,7 @@ public Zombie(String name, float y, int health, float walkSpeed){
   this.name = name;
   this.health = health;
   this.walkSpeed = walkSpeed;
-  this.biteCoolDown = 60;
+  this.biteCoolDown = 30;
   this.sprite =loadImage("Sprites/Zombies/" + name + ".png");
   biteTimer= new Timer(biteCoolDown);
   level = Green.getWorld();
@@ -43,22 +43,20 @@ Plant victim;
 public  void act(float deltaTime){
 
    if(health <= 0){
-<<<<<<< HEAD
-     Collectable drop;
-    int r = (int)(Math.random()*10)+1;
-    if(r % 2 == 0){
-     drop = new SilverCoin(this.getX(),this.getY()); 
-     level.addObject(drop);
-    }
-    else if(r == 9){
-      drop = new Diamond(this.getX(),this.getY());
-      level.addObject(drop);
-    }
-     level.removeObject(this);
-=======
     level.removeObject(this);
-    
->>>>>>> origin/Alpha
+    int r = (int)(Math.random()*50)+1;
+    if(r == 50){
+     Collectable dia = new Diamond(this.getX(),this.getY());
+     level.addObject(dia);
+    }
+    else if(r == 49){
+     Collectable GoldCoin = new GoldCoin(this.getX(),this.getY()); 
+     level.addObject(GoldCoin);
+    }
+    else if(r >= 40 && r <= 45){
+     Collectable SilverCoin = new SilverCoin(this.getX(),this.getY());
+     level.addObject(SilverCoin);
+    }
    }
    
    if(this.getX() < 125){

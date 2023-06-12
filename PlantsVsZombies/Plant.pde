@@ -129,16 +129,12 @@ public class Lawnmower extends Plant{
 
 public class Peashooter extends Plant{
  public Peashooter(int x, int y){
-   super("Peashooter",x,y,100,50,new Timer(60), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Peashooter",x,y,100,50,new Timer(30), PEA_PROJECTILE, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
 public class Sunflower extends Plant{ 
  public Sunflower(int x, int y){
-<<<<<<< HEAD
-   super("Sunflower",x,y,50,50,new Timer(300), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
-=======
-   super("Sunflower",x,y,50,50,new Timer(420), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
->>>>>>> origin/Alpha
+   super("Sunflower",x,y,50,50,new Timer(210), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
  void damage(){
    level.generateSun(getX(), getY(), false, randomSeed); 
@@ -148,7 +144,7 @@ public class Sunflower extends Plant{
 
 public class Twinsunflower extends Plant{
   public Twinsunflower(int x, int y){
-       super("Twinsunflower",x,y,150,50,new Timer(420), NO_SHOOT, false, true); //50 health, 200 sun cost, Pea projectile 
+       super("Twinsunflower",x,y,150,50,new Timer(210), NO_SHOOT, false, true); //50 health, 200 sun cost, Pea projectile 
   }
   void damage(){
    level.generateSun(getX() - 25, getY(), false, randomSeed); 
@@ -158,17 +154,17 @@ public class Twinsunflower extends Plant{
 }
 public class Cactus extends Plant{
   public Cactus(int x, int y){
-    super("Cactus",x,y,125,100,new Timer(60), SPIKE_PROJECTILE, false, true);
+    super("Cactus",x,y,125,100,new Timer(30), SPIKE_PROJECTILE, false, true);
   }
 }
 public class Cherrybomb extends Plant{ //needs to not shoot and explode
  public Cherrybomb(int x, int y){
-   super("Cherrybomb",x,y,150,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Cherrybomb",x,y,150,50,new Timer(30), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
 public class Chomper extends Plant{ //needs to not shoot
  public Chomper(int x, int y){
-   super("Chomper",x,y,150,50,new Timer(3600, true), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Chomper",x,y,150,50,new Timer(1800, true), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
  Zombie victim;
    
@@ -198,7 +194,7 @@ public class Squash extends Plant{
 }
 public class Potatomine extends Plant{ //needs to not shoot
  public Potatomine(int x, int y){
-   super("Potatomine",x,y,25,50,new Timer(60), NO_SHOOT, false, true); 
+   super("Potatomine",x,y,25,50,new Timer(30), NO_SHOOT, false, true); 
  }
 Zombie victim;
    
@@ -214,12 +210,12 @@ Zombie victim;
 
 public class Cobcannon extends Plant{
   public Cobcannon(int x, int y){
-   super("Cobcannon",x,y,500,250,new Timer(600), CORN_NUKE, false, true);   
+   super("Cobcannon",x,y,500,250,new Timer(300), CORN_NUKE, false, true);   
   }
 }
 public class Repeater extends Plant{
   public Repeater(int x, int y){
-    super("Repeater",x,y,200,50,new Timer(60),PEA_PROJECTILE, false, true);
+    super("Repeater",x,y,200,50,new Timer(30),PEA_PROJECTILE, false, true);
   }
   @Override
   public void shoot(){
@@ -237,7 +233,7 @@ public class Repeater extends Plant{
 
 public class Gatlingpea extends Plant{
   public Gatlingpea(int x, int y){
-    super("Gatlingpea", x,y,100,50,new Timer(20), PEA_PROJECTILE, false, true);
+    super("Gatlingpea", x,y,100,50,new Timer(10), PEA_PROJECTILE, false, true);
   }
     public void shoot(){
      Projectile x;
@@ -254,7 +250,7 @@ public class Gatlingpea extends Plant{
 
 public class Threepeater extends Plant{
   public Threepeater(int x, int y){
-    super("Threepeater", x,y,100,50,new Timer(20), PEA_PROJECTILE, false, true);
+    super("Threepeater", x,y,100,50,new Timer(10), PEA_PROJECTILE, false, true);
   }
     public void shoot(){
      Projectile x;
@@ -270,64 +266,64 @@ public class Threepeater extends Plant{
 }
 public class Snowpea extends Plant{
  public Snowpea(int x, int y){
-   super("Snowpea",x,y,175,50,new Timer(60), SNOW_PEA_PROJECTILE, false, true);
+   super("Snowpea",x,y,175,50,new Timer(30), SNOW_PEA_PROJECTILE, false, true);
  }
 }
 public class Walnut extends Plant{ //needs to not shoot
  public Walnut(int x, int y){
-   super("Walnut",x,y,50,150,new Timer(60), NO_SHOOT, false, true);
+   super("Walnut",x,y,50,150,new Timer(30), NO_SHOOT, false, true);
  }
 }
 
 public class Tallnut extends Plant{ //needs to not shoot
  public Tallnut(int x, int y){
-   super("Tallnut",x,y,125,300,new Timer(60), NO_SHOOT, false, true);
+   super("Tallnut",x,y,125,300,new Timer(30), NO_SHOOT, false, true);
  }
 }
 public class Torchwood extends Plant{ //needs to not shoot
  public Torchwood(int x, int y){
-   super("Torchwood",x,y,175,50,new Timer(60), NO_SHOOT, false, true);
+   super("Torchwood",x,y,175,50,new Timer(30), NO_SHOOT, false, true);
  }
 }
 public class Fumeshroom extends Plant{
   public Fumeshroom(int x, int y){
-    super("Fumeshroom",x,y,75,100,new Timer(60), NO_SHOOT, false, true);
+    super("Fumeshroom",x,y,75,100,new Timer(30), NO_SHOOT, false, true);
   }
 }
 public class Puffshroom extends Plant{
   public Puffshroom(int x, int y){
-   super("Puffshroom",x,y,0,30,new Timer(30), SPORE_PROJECTILE,false,true); 
+   super("Puffshroom",x,y,0,30,new Timer(15), SPORE_PROJECTILE,false,true); 
   }
 }
 public class Sunshroom extends Plant{
   public Sunshroom(int x, int y){
-    super("Sunshroom",x,y,150,100,new Timer(360), NO_SHOOT, false, true);
+    super("Sunshroom",x,y,25,100,new Timer(180), NO_SHOOT, false, true);
   }
 }
 public class Spikeweed extends Plant{
   public Spikeweed(int x, int y){
-    super("Spikeweed",x,y,50,1000000, new Timer(20), NO_SHOOT, false, true);
+    super("Spikeweed",x,y,50,1000000, new Timer(10), NO_SHOOT, false, true);
   }
 }
 public class Spikerock extends Plant{
   public Spikerock(int x, int y){
-    super("Spikerock",x,y,125,1000000, new Timer(20), NO_SHOOT, false, true);
+    super("Spikerock",x,y,125,1000000, new Timer(10), NO_SHOOT, false, true);
   }
 }
 public class Blover extends Plant{
   public Blover(int x, int y){
-    super("Blover",x,y,125,100, new Timer(120), PEA_PROJECTILE, false ,true);
+    super("Blover",x,y,125,100, new Timer(60), PEA_PROJECTILE, false ,true);
   }
 }
 public class Pumpkin extends Plant{
   public Pumpkin(int x, int y){
-    super("Pumpkin",x,y,125,500, new Timer(120), PEA_PROJECTILE, false ,true);
+    super("Pumpkin",x,y,125,500, new Timer(60), PEA_PROJECTILE, false ,true);
   }
 }
 
 public class Marigold extends Plant{
   public Marigold(int x, int y){
-    super("Marigold",x,y,50,50, new Timer(300), NO_SHOOT, false, true);
+    super("Marigold",x,y,50,50, new Timer(150), NO_SHOOT, false, true);
   }
   void damage(){
     Collectable y;

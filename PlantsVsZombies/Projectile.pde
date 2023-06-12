@@ -50,7 +50,12 @@ public class Projectile extends Actor {
   public int getDamage(){
     return damage;
   }
-
+  public int getHitcount(){
+    return hitcount;
+  }
+  public void setHitcount(int val){
+    hitcount-= val;
+  }
   //will change depending on the plant but for now, let's just assume its a peashooter
   public void act(float deltaTime){
     if(hitcount == 0){
@@ -112,10 +117,40 @@ public class Projectile extends Actor {
  }
  
  public class Spore extends Projectile{
+   float original;
   public Spore(){
     super(30,10,loadImage("Sprites/Projectiles/Spore.png"), 2);
+    original = this.getX();
   }
- }
+    public void act(float deltaTime){
+    if(getHitcount() == 0){
+     level.removeObject(this); 
+    }
+    if (isArmed()){
+       if(original +200 < this.getX()){
+        level.removeObject(this);
+        return; //Since this no longer 'exists'
+      }
+      
+      //Check for whether a zombie has been hit
+    
+      Zombie victim = getOneIntersectingObject(Zombie.class);
+      
+      if(victim != null){ //on hit
+        victim.setHealth(victim.health - getDamage());
+        this.setHitcount(1);
+        if(getHitcount() == 0){
+           level.removeObject(this); 
+        }
+        else if(getHitcount() > 0){
+        this.setX(this.getX()+25);
+        }
+      }
+
+      move(getSpeed());
+    } 
+   } 
+  }
  
  public class Spike extends Projectile{
   public Spike(){

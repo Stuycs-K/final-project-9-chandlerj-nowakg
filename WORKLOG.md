@@ -119,3 +119,38 @@ No promises, but I'm trying to add a Game Over screen as well as some new plants
 
 (I'll make an actual entry later I swear)
 STREET FIGHTER SIX IS TODAY WOOOOOO YEAAAAAAH 
+
+Ok; My job over the next few days is to add as MANY PLANTS AS POSSIBLE. I'll also be adding a Game over screen as well as a bunch of Zombies, projectiles, and other stuff. Right now, the only plants that we have working are peashooters. Going to try to have sunflowers working by tomorrow.
+
+6/5
+
+Not able to push from my laptop for some reason- keeps telling me i'm already "up to date" yet it won't let me switch branches because I need to "commit or stash" my changes. I couldn't get everything done over the weekend, as i had to study for my finals, but I did finish the Game Over screen.
+
+6/6
+Sunflowers and Twin sunflowers are working- Small progress because I have a math final tmrw
+
+6/7
+Sunshroom working- Once again, small progress today due to my math test. 4th Quarter Clutch OTW this weekend.
+
+6/12
+
+Our final project is done. I have gone through unspeakable agonies to get this project working, but the godly combination of me and gaven proved too powerful for the dark magic of github. The only bug that we are still encountering is plants shooting even when there isn't a zombie.
+This weekend, I have made the following plants:
+*Blover (not fully functional)
+*Torchwood (not fully functional)
+*Cactus
+*Chomper
+*CobCannon
+*FumeShroom
+*Gatling Pea
+*Marigold
+*Potato Mine
+*Puffshrooms
+*Spikerock
+*spikeweed
+*Squash
+*Walnut
+*Tallnut
+Gaven helped SO MUCH with the sprites; Without him, the code I made would be undisplayable.
+I also made a Sun counter, which is displayed at the top left hand corner of the screen. Along with this, I helped create a Sun economy as well as an actual economy- i.e. this plant has x cost, which is subtracted from your current sun count. Additionally, Marigolds spawn coins and zombies have a small chance of dropping 'em when they die. Takes "run yo pockets" to another level.
+Also worked on a few zombies; most notably the gargantuan.

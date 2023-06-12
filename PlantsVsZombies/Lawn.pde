@@ -151,6 +151,11 @@ public class Lawn{
     else if(name.equals("Marigold")){
       plant = new Marigold(placementX,placementY);
     }
+    else if (name.equals("Pumpkin")){
+     plant = new Pumpkin(placementX, placementY);
+     lawn[row][col] = PUMPKIN;
+     return true;
+    }
     else{
       plant = new Peashooter(placementX, placementY);
       System.out.println("Error name isn't an actual plant name");

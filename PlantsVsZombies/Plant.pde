@@ -194,7 +194,7 @@ public class Squash extends Plant{
 }
 public class Potatomine extends Plant{ //needs to not shoot
  public Potatomine(int x, int y){
-   super("Potatomine",x,y,25,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Potatomine",x,y,25,50,new Timer(60), NO_SHOOT, false, true); 
  }
 Zombie victim;
    
@@ -313,6 +313,11 @@ public class Spikerock extends Plant{
 public class Blover extends Plant{
   public Blover(int x, int y){
     super("Blover",x,y,125,100, new Timer(120), PEA_PROJECTILE, false ,true);
+  }
+}
+public class Pumpkin extends Plant{
+  public Pumpkin(int x, int y){
+    super("Pumpkin",x,y,125,500, new Timer(120), PEA_PROJECTILE, false ,true);
   }
 }
 

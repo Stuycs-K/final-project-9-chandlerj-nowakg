@@ -1,27 +1,37 @@
-public class Timer{
-  int interval;
-  boolean isZero;
+public class Timer extends Actor{
+  int internalCooldown;
+  int currentTime;
   
   public Timer(int interval){
-    this.interval = (interval * 60);
-    isZero = false;
+    this(interval, false);
   }
   
-  public boolean runTime(){
-   interval--;
-   
-   if(interval == 0){
-     isZero = true;
-   }
-   return false;
+  public Timer(int interval, boolean startAtZero){
+    super(width/2, height/2, 0, 0);
+    this.internalCooldown = interval;
+    
+    if(startAtZero){
+     currentTime = 0; 
+    }
+    else{
+      currentTime = internalCooldown;
+    }
+    
+    Green.getWorld().addObject(this);   
   }
   
-  public int getTime(){
-    return this.interval;
+  
+  public boolean done(){
+   return this.currentTime == 0;
   }
   
-  public boolean checkFinished(){
-    return isZero;
+  public void reset(){
+    currentTime = internalCooldown; 
+  }
+  
+  public void act(float deltaTime){
+    if (currentTime > 0){
+      currentTime--;
+    }    
   }
 }
- 

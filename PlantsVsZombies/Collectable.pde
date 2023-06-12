@@ -1,4 +1,4 @@
-  public class Collectable extends Actor {
+ public class Collectable extends Actor {
 
   static final int  SUN = 0;
   static final int  SILVERCOIN = 1;
@@ -8,7 +8,7 @@
 
   int value;
   Green green;
-
+  Level level = (Level) Green.getWorld();
 
   public Collectable(float x, float y, PImage sp, int val) {
     super(x, y, sp);
@@ -21,11 +21,11 @@
 
   public void act(float deltaTime) {
     if (this.isMouseButtonDownHere(LEFT)) {
-      //System.out.println("ive been clicked!");
+      coins += value;
+      level.removeObject(this);
     }
   }
 }
-
 
 public class Sun extends Collectable {
   boolean fromSky;
@@ -45,7 +45,8 @@ public class Sun extends Collectable {
       moveGlobal(0, 8);
     }
     if (this.isMouseButtonDownHere(LEFT)) {
-      System.out.println("ive been clicked!");
+      level.sun += 25;  
+      level.removeObject(this);
     }
   }
 }

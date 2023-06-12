@@ -3,29 +3,20 @@ public class MainMenu extends Level{
    super(0, loadImage("Sprites/main_menu_background.jpg"));
  }
   
-  public void configure(){
-    background.resize(1920,1040);
-    image(background,0,0);
+  public void prepare(){
+    //background.resize(1920,1040); this was causing huge frame drops... might be something to look into...
+    //image(background,0,0);
   }
   
-  public void run(){
-   return; //override just so it doens't do regular level stuff like spawning sun and zombies 
+  public void act(float deltaTime){
+    if (green.isMouseButtonDown(LEFT)){
+        changeLevel(DAY);
+     }
   }
    
-  public void deload(){
-    //get rid of all the buttons
-   finished = true;
-  }
   
   public boolean isFinished(){
     return true;
-  }
-  
-  public void mouseClicked(){
-    //if on a button or something...
-    deload();
-    System.out.println(" " + activeLevel.getID());
-    changeLevel(DAY);
   }
   
 }

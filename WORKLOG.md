@@ -43,7 +43,7 @@ worked on fixing background so that it fit resolution
 
 ### may/31
 
-worked on laying out plant and projectile individually 
+worked on laying out plant and projectile individually
 
 
 ### june / 1
@@ -62,7 +62,17 @@ sick
 
 ### june/6 worked on incorporating snow pea projectile with snow pea plant and some worked on UI stuff for the seed packets
 
-### date y
+### june/7 worked on adding in some sprites for seed packets and begun zombie spawning with just a regular zombie
+
+### june/8 worked on adding in some sprites for seed packets and fixed Timer bug
+
+### june/9  worked on incorporating seed packet assets and mouse clicking so you could select them before the game and did some cleaning up of code in plant, projectile and zombie (more organization)
+
+### june/10  worked on incorporating seed packet assets and mouse clicking so you could select them before the game (and plant ghost class)
+
+
+### june/11 fixed money, sun collection and spending, imported the rest of plant and zombie assets and finalized zombie spawning
+
 
 info
 
@@ -75,7 +85,7 @@ My job is essentially to start the lawn class- Gonna try to use a 2D ArrayList t
 
 ### 5/23
 
-Still working on the lawn class, but also shifted gears towwards the Plants class and the Zombies class. For now, I'll just focus on the Peashooter and the regular zombie. 
+Still working on the lawn class, but also shifted gears towwards the Plants class and the Zombies class. For now, I'll just focus on the Peashooter and the regular zombie.
 
 ### 5/24
 
@@ -83,7 +93,7 @@ Went back to working on the lawn, made some pretty good progess (I think?) Don't
 
 ### 5/25
 
-I was able to complete the basic functions for plants and zombies, which include their respective constructors, instance variables, sprites, and actually allowing them to interact with the other classes we have in our world. 
+I was able to complete the basic functions for plants and zombies, which include their respective constructors, instance variables, sprites, and actually allowing them to interact with the other classes we have in our world.
 Both of these, sadly, kind of suck as of right now: If ran, they will most certainly throw 17 trillion syntax errors at you. However, now that we have a gameplan, I think it'll make moving forward much easier.
 ### 5/26
 
@@ -118,7 +128,7 @@ No promises, but I'm trying to add a Game Over screen as well as some new plants
 6/2
 
 (I'll make an actual entry later I swear)
-STREET FIGHTER SIX IS TODAY WOOOOOO YEAAAAAAH 
+STREET FIGHTER SIX IS TODAY WOOOOOO YEAAAAAAH
 
 Ok; My job over the next few days is to add as MANY PLANTS AS POSSIBLE. I'll also be adding a Game over screen as well as a bunch of Zombies, projectiles, and other stuff. Right now, the only plants that we have working are peashooters. Going to try to have sunflowers working by tomorrow.
 

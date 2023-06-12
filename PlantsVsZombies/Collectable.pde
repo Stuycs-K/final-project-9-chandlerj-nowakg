@@ -21,7 +21,8 @@
 
   public void act(float deltaTime) {
     if (this.isMouseButtonDownHere(LEFT)) {
-      //System.out.println("ive been clicked!");
+      coins += value;
+      level.removeObject(this);
     }
   }
 }
@@ -54,52 +55,19 @@ public class SilverCoin extends Collectable {
   public SilverCoin(float x, float y) {
     super(x, y, loadImage("Sprites/Collectables/silvercoin.png"), 10);
   }
-  
-  public void act(float deltaTime) {
-    if (this.isMouseButtonDownHere(LEFT)) {
-      System.out.println("ive been clicked!");
-      level.balance += 25;
-      System.out.println("" + level.balance);
-      level.removeObject(this);
-    }
-  }
 }
 public class GoldCoin extends Collectable {
   public GoldCoin(float x, float y) {
     super(x, y, loadImage("Sprites/Collectables/goldcoin.png"), 50);
-  }
-  public void act(float deltaTime) {
-    if (this.isMouseButtonDownHere(LEFT)) {
-      System.out.println("ive been clicked!");
-      level.balance += 50;
-      System.out.println("" + level.balance);
-      level.removeObject(this);
-    }
   }
 }
 public class Diamond extends Collectable {
   public Diamond(float x, float y) {
     super(x, y, loadImage("Sprites/Collectables/diamond.png"), 1000);
   }
-  public void act(float deltaTime) {
-    if (this.isMouseButtonDownHere(LEFT)) {
-      System.out.println("ive been clicked!");
-      level.balance += 100;
-      System.out.println("" + level.balance);
-      level.removeObject(this);
-    }
-  }
 }
 public class MoneyBag extends Collectable {
   public MoneyBag(float x, float y, int val) {
     super(x, y, loadImage("Sprites/Collectables/moneybag.png"), val);
-  }
-  public void act(float deltaTime) {
-    if (this.isMouseButtonDownHere(LEFT)) {
-      System.out.println("ive been clicked!");
-      level.balance += 500;
-      System.out.println("" + level.balance);
-      level.removeObject(this);
-    }
   }
 }

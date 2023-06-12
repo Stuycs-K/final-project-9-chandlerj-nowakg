@@ -5,7 +5,6 @@ public class Level extends World{
   //PImage seedSelect = loadImage("Sprites/seedselect.jpg");
   boolean finished = false;
   int sun;
-  int balance;
   boolean isDay;
   Lawn lawn;
   Random randomSeed;
@@ -62,7 +61,6 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
     lawn = l;
     isDay = d;
     sun = 50;
-    balance = 0;
   }
   
   

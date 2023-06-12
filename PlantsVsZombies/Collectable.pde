@@ -43,10 +43,9 @@ public class Sun extends Collectable {
     if (fromSky && getY() < yFloor) {
       moveGlobal(0, 8);
     }
-    if (this.isMouseButtonDownHere(LEFT)) {
-      System.out.println("ive been clicked!");
+    if (this.isMouseButtonDownThisFrameHere(LEFT)) {
       level.sun += 25;
-      System.out.println("" + level.sun);
+      System.out.println("COLLECTABLE" + level.sun);
       level.removeObject(this);
     }
   }

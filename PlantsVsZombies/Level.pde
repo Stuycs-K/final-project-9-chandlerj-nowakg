@@ -7,11 +7,11 @@ public class Level extends World{
   int sun;
   boolean isDay;
   Lawn lawn;
-  Random seed;
+  Random randomSeed;
   int gameState;
   Camera cam;
   DebugCamera debugCam;
-  SunCounter sunCounter;
+  Timer skySunCD;
   
   boolean oneSlotSelected = false; //a little wonky solution to the multiple seed selection bug but whatever
   
@@ -48,12 +48,13 @@ public class Level extends World{
   
   public Level(int id, PImage b, Lawn l, boolean d, Random sd){
     super(b.pixelWidth, b.pixelHeight, b); //the SCREEN SIZE is 1920 by 1040. the GAME AREA is going to be whatever the background's pixels are (day has 3000 by 1040)
-    seed = sd;
+    randomSeed = sd;
     levelID = id;
     background = b;
     lawn = l;
     isDay = d;
     sun = 50;
+    
   }
   
   
@@ -66,8 +67,6 @@ public class Level extends World{
     cam.setX(width/2);
     addObject(cam);
     
-    sunCounter = new SunCounter(this);
-    
     selectedSeeds = new ArrayList<SeedSlot>(9);
     seedUI = new SeedUI();
     addObject(seedUI);
@@ -76,39 +75,37 @@ public class Level extends World{
     gameState = SEEDSELECTION;
     //gameState = INVASION; //for testing purposes
 
-    
+    skySunCD = new Timer(600);
   }
   
   
   public void invasion(){ //this can get overrided to change the way the waves get thrown at the player
     if (green.isKeyDown('s')){
-      generateSun(mouseX, 0, true, seed);
+      generateSun(mouseX, 0, true, randomSeed);
       }
       if (green.isKeyDown('c')){
         spawnCoin(mouseX, mouseY, Collectable.SILVERCOIN);
       }
       
-     List<Zombie> zomList = getObjects(Zombie.class);
-    for(int i=0; i < zomList.size(); i++){
-      if(zomList.get(i).getX() < 100){
-       gameState = DEFEAT;
-      }
-    }
     if (green.isMouseButtonDown(RIGHT)){
       //generateSun(mouseX, mouseY, false, seed); 
-        spawnZombie("Dolphinrider", seed.nextInt(5));
-        System.out.println("" + mouseX + " " + mouseY);
+        spawnZombie("Dolphinrider", randomSeed.nextInt(5));
+        //System.out.println("" + mouseX + " " + mouseY);
      }
      
+     if (skySunCD.done()){
+      generateSkySun();
+      skySunCD.reset();
+     }
      
   }
   
   
   public void act(float deltaTime){  
-    textSize(64);
-    fill(0);
-    text("" + sun, 222, 64);
-    text("PRESS ENTER TO SPAWN THE ZOMBIES!", 500,500);
+   // textSize(64);
+    //fill(0); i dont think these work...
+    //text("" + sun, 222, 64);
+    //text("PRESS ENTER TO SPAWN THE ZOMBIES!", 500,500);
     
     switch (gameState){
       case SEEDSELECTION:
@@ -171,12 +168,16 @@ public class Level extends World{
     addObject(collectable); 
   }
   
+  public int getSun(){
+   return sun; 
+  }
+  
   public void generateSkySun(){
-   generateSun(seed.nextInt(width), -10, true, seed); 
+   generateSun(randomSeed.nextInt(width), -10, true, randomSeed); 
   }
   
   public void generateSun(float x, float y, boolean fromSky, Random seed){
-    x += seed.nextInt(10); //so there's a little variation on where it spawns from the sky and from the plant 
+    x += seed.nextInt(30); //so there's a little variation on where it spawns from the sky and from the plant 
     Collectable sun = new Sun(x, y, fromSky, seed);
     addObject(sun);
   }

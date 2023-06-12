@@ -21,10 +21,28 @@ public class Lawn{
   int gameState = 0; //gets set by level, not the best way of doing things but it works
   
   public Lawn(int[][] levelLawn){
-    originalLawn = levelLawn; //dont change this one because this will be the reference that it will go back to when a plant is killed 
+   originalLawn = new int[levelLawn.length][levelLawn[0].length];
+    for (int r = 0; r < levelLawn.length; r++){
+     for (int c = 0; c < levelLawn[0].length; c++){
+       originalLawn[r][c] = levelLawn[r][c];
+     }
+    }
+    
     lawn = levelLawn; 
     tileXSize = (bottomRightCoord[0] - topLeftCoord[0]) / lawn[0].length;
     tileYSize = (bottomRightCoord[1] - topLeftCoord[1]) / lawn.length; 
+  }
+  
+  public boolean removePlant(int x, int y){
+    int row = (y - topLeftCoord[1]) / tileYSize;
+    int col = (x - topLeftCoord[0]) / tileXSize;
+
+    if (lawn[row][col] > SOIL){
+      lawn[row][col] = originalLawn[row][col];
+      return true;
+    }
+    return false;
+    
   }
   
   
@@ -37,7 +55,7 @@ public class Lawn{
   }
   
 
-  private boolean placePlant(String name, int row, int col){    
+  private boolean placePlant(String name, int row, int col){     
     if (gameState != level.INVASION && !name.equals("Lawnmower")){
        return false;     
      }
@@ -59,19 +77,16 @@ public class Lawn{
     
     Plant plant;
     
-    System.out.println(name);
-    
     if (name.equals("Lawnmower")){
      plant = new Lawnmower(placementX, placementY); 
      lawn[row][col] = MOWER;
+     return true;
     }
     else if (name.equals("Peashooter")){
      plant = new Peashooter(placementX, placementY); 
-     lawn[row][col] = PLANT;
     }
     else if (name.equals("Sunflower")){
       plant = new Sunflower(placementX, placementY); 
-      lawn[row][col] = PLANT;
     }
     else if(name.equals("Twinsunflower")){
      plant = new Twinsunflower(placementX, placementY); 
@@ -79,40 +94,34 @@ public class Lawn{
     else if(name.equals("Squash")){
      plant = new Squash(placementX, placementY); 
     }
-    else if(name.equals("FumeShroom")){
-       plant = new Squash(placementX, placementY); 
+    else if(name.equals("Fumeshroom")){
+       plant = new Fumeshroom(placementX, placementY); 
     }
-    else if(name.equals("SunShroom")){
-       plant = new SunShroom(placementX, placementY); 
+    else if(name.equals("Sunshroom")){
+       plant = new Sunshroom(placementX, placementY); 
     }
     else if (name.equals("Cherrybomb")){
       plant = new Cherrybomb(placementX, placementY);
-      lawn[row][col] = PLANT;
     }
-    else if(name.equals("cobCannon")){
-      plant = new cobCannon(placementX, placementY); 
+    else if(name.equals("CobCannon")){
+      plant = new CobCannon(placementX, placementY); 
     }
     else if (name.equals("Chomper")){
       plant = new Chomper(placementX, placementY); 
-      lawn[row][col] = PLANT;
     }
     else if (name.equals("Walnut")){
       plant = new Walnut(placementX, placementY); 
-      lawn[row][col] = PLANT;
     }
     else if (name.equals("Snowpea")){
       plant = new Snowpea(placementX, placementY); 
-      lawn[row][col] = PLANT;
     }
     else if (name.equals("Potatomine")){
       plant = new Potatomine(placementX, placementY); 
-      lawn[row][col] = PLANT;
     }
     else if (name.equals("Repeater")){
       plant = new Repeater(placementX, placementY); 
-      lawn[row][col] = PLANT;
     }
-    else if(name.equals("Wallnut")){
+    else if(name.equals("Walnut")){
       plant = new Walnut(placementX, placementY); 
     }
     else if(name.equals("Tallnut")){
@@ -120,12 +129,19 @@ public class Lawn{
     }
     else{
       plant = new Peashooter(placementX, placementY);
-      lawn[row][col] = PLANT;
       System.out.println("Error name isn't an actual plant name");
     }
+    
+    lawn[row][col] = PLANT;
+     
+    if (level.sun < plant.cost){    //yes if you are reading this we place the plant, then check the cost, then kill it if its actually too expensive. i dont like it either
+      plant.setHealth(plant.health - 1000000);
+      System.out.println("not enough sun : " + level.getSun());
+      return false;
+    }
+    System.out.println("LAWN " + level.getSun());
+    level.sun -= plant.cost;
 
-   
-   
    return true;
     //check based on plant's info
     //if plant is grounded, can't be placed on lilypads

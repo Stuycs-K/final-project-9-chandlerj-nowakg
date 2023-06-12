@@ -74,7 +74,6 @@ public class Projectile extends Actor {
  public class Pea extends Projectile{
   public Pea(){
    super(10, 10, loadImage("Sprites/Projectiles/Pea.png")); //it does 10 damage. speed of 10
-   System.out.println("pea:");
   }
  }
  

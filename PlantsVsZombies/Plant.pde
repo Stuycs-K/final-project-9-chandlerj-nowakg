@@ -17,6 +17,7 @@ public class Plant extends Actor{
    int projectileID;
    Green green;
    Level level;
+   Random randomSeed;
 
 //fix sun costs for plants
 
@@ -33,10 +34,11 @@ public Plant(String name, int x, int y, int cost, int health, Timer Cooldown, in
    this.ICD = Cooldown;
    level = (Level) Green.getWorld();
    level.addObject(this);
+   randomSeed = level.randomSeed;
 } 
   public void addedToWorld(World world){
     setImage(sprite);
-    System.out.println("" + getX() + " " + getY());
+    //System.out.println("" + getX() + " " + getY());
   }
   
   
@@ -56,59 +58,32 @@ public void shoot(){
      ICD.reset();
    }
    
+  Zombie victim;
+public void damage(){
+  int damage = 10;
+      victim = getOneIntersectingObject(Zombie.class);
+      
+      if(victim != null){ //on hit
+        victim.setHealth(victim.health - damage);
+        ICD.reset();
+      }
+   }
 public void act(float deltaTime){
   if(health <= 0){
     level.removeObject(this);
+    level.lawn.removePlant((int) getX(), (int) getY());
    }
   
-  if (ICD.done() == true && projectileID != NO_SHOOT){
-     shoot();  
-  }
-  if(this.name == "Sunflower" || this.name == "Twinsunflower" || this.name == "SunShroom"){
-     if(ICD.done()){
-       float z = this.getX();
-       Random seed = new Random();
-       z += seed.nextInt(10); //so there's a little variation on where it spawns from the sky and from the plant 
-      Collectable sun = new Sun(z, this.getY(), false, seed);
-      level.addObject(sun);
-      ICD.reset();
-     }
-   }
-   else if(this.name == "Chomper"){
-     if(ICD.done()){
-      Zombie victim = getOneIntersectingObject(Zombie.class);
-      
-      if(victim != null){ //on hit
-        victim.setHealth(victim.health - 999999);
-        ICD.reset();
-      }
-     }
-   }
-   else if(this.name == "Squash"){
-      Zombie victim = getOneIntersectingObject(Zombie.class);
-      
-      if(victim != null){ //on hit
-        victim.setHealth(victim.health - 999999);
-        level.removeObject(this);
-      }
-   }
-   else if(this.name == "Potatomine"){
-    if(ICD.done()){
-      Zombie victim = getOneIntersectingObject(Zombie.class);
-      
-      if(victim != null){ //on hit
-        victim.setHealth(victim.health - 999999);
-        level.removeObject(this);
-      }
+  if (ICD.done()){
+    if (projectileID == NO_SHOOT){
+      damage();
+    }  
+    else{
+     shoot(); 
     }
-   }
-   
-   else if(this.name == "Cherrybomb"){
-     
-   }
-   else if(this.name == "Wallnut" || this.name == "Tallnut"){
-     
-   }
+  }
+  
+  
  }
 }
 
@@ -146,43 +121,84 @@ public class Peashooter extends Plant{
 }
 public class Sunflower extends Plant{ //needs to generate sun
  public Sunflower(int x, int y){
-   super("Sunflower",x,y,100,50,new Timer(300), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Sunflower",x,y,50,50,new Timer(420), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+ }
+ void damage(){
+   level.generateSun(getX(), getY(), false, randomSeed); 
+      ICD.reset();
  }
 }
 
 public class Twinsunflower extends Plant{
   public Twinsunflower(int x, int y){
-       super("Twinsunflower",x,y,150,50,new Timer(150), NO_SHOOT, false, true); //50 health, 200 sun cost, Pea projectile 
+       super("Twinsunflower",x,y,150,50,new Timer(420), NO_SHOOT, false, true); //50 health, 200 sun cost, Pea projectile 
   }
+  void damage(){
+   level.generateSun(getX() - 25, getY(), false, randomSeed); 
+   level.generateSun(getX() + 25, getY(), false, randomSeed); 
+      ICD.reset();
+ }
 }
 public class Cherrybomb extends Plant{ //needs to not shoot and explode
  public Cherrybomb(int x, int y){
-   super("Cherrybomb",x,y,100,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Cherrybomb",x,y,150,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
 }
 public class Chomper extends Plant{ //needs to not shoot
  public Chomper(int x, int y){
-   super("Chomper",x,y,100,50,new Timer(3600, true), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Chomper",x,y,150,50,new Timer(3600, true), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
+ Zombie victim;
+   
+   void damage(){
+      victim = getOneIntersectingObject(Zombie.class);
+      
+      if(victim != null){ //on hit
+        victim.setHealth(victim.health - 800);
+        level.removeObject(this);
+      }
+   }
 }
 public class Squash extends Plant{
   public Squash(int x, int y){
-    super("Squash",x,y,100,100,new Timer(0), NO_SHOOT, false, true);
+    super("Squash",x,y,50,100,new Timer(0), NO_SHOOT, false, true);
   }
+  Zombie victim;
+   
+   void damage(){
+      victim = getOneIntersectingObject(Zombie.class);
+      
+      if(victim != null){ //on hit
+        victim.setHealth(victim.health - 800);
+        level.removeObject(this);
+      }
+   }
 }
 public class Potatomine extends Plant{ //needs to not shoot
  public Potatomine(int x, int y){
-   super("Potatomine",x,y,100,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+   super("Potatomine",x,y,25,50,new Timer(60), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
  }
+Zombie victim;
+   
+   void damage(){
+      victim = getOneIntersectingObject(Zombie.class);
+      
+      if(victim != null){ //on hit
+        victim.setHealth(victim.health - 800);
+        level.removeObject(this);
+      }
+   }
+     
+    
 }
-public class cobCannon extends Plant{
-  public cobCannon(int x, int y){
-   super("cobCannon",x,y,500,250,new Timer(600), PEA_PROJECTILE, false, true);   
+public class CobCannon extends Plant{
+  public CobCannon(int x, int y){
+   super("CobCannon",x,y,500,250,new Timer(600), PEA_PROJECTILE, false, true);   
   }
 }
 public class Repeater extends Plant{
   public Repeater(int x, int y){
-    super("Repeater",x,y,100,50,new Timer(60),PEA_PROJECTILE, false, true);
+    super("Repeater",x,y,200,50,new Timer(60),PEA_PROJECTILE, false, true);
   }
   @Override
   public void shoot(){
@@ -199,32 +215,36 @@ public class Repeater extends Plant{
 }
 public class Snowpea extends Plant{
  public Snowpea(int x, int y){
-   super("Snowpea",x,y,100,50,new Timer(60), SNOW_PEA_PROJECTILE, false, true);
+   super("Snowpea",x,y,175,50,new Timer(60), SNOW_PEA_PROJECTILE, false, true);
  }
 }
 public class Walnut extends Plant{ //needs to not shoot
  public Walnut(int x, int y){
-   super("Walnut",x,y,100,150,new Timer(60), NO_SHOOT, false, true);
+   super("Walnut",x,y,50,150,new Timer(60), NO_SHOOT, false, true);
  }
 }
 
 public class Tallnut extends Plant{ //needs to not shoot
  public Tallnut(int x, int y){
-   super("Tallnut",x,y,100,300,new Timer(60), NO_SHOOT, false, true);
+   super("Tallnut",x,y,125,300,new Timer(60), NO_SHOOT, false, true);
  }
 }
 public class Torchwood extends Plant{ //needs to not shoot
  public Torchwood(int x, int y){
-   super("Torchwood",x,y,100,50,new Timer(60), NO_SHOOT, false, true);
+   super("Torchwood",x,y,175,50,new Timer(60), NO_SHOOT, false, true);
  }
 }
-public class FumeShroom extends Plant{
-  public FumeShroom(int x, int y){
-    super("FumeShroom",x,y,150,100,new Timer(60), NO_SHOOT, false, true);
+public class Fumeshroom extends Plant{
+  public Fumeshroom(int x, int y){
+    super("Fumeshroom",x,y,75,100,new Timer(60), NO_SHOOT, false, true);
   }
 }
-public class SunShroom extends Plant{
-  public SunShroom(int x, int y){
-    super("SunShroom",x,y,150,100,new Timer(360), NO_SHOOT, false, true);
+public class Sunshroom extends Plant{
+  public Sunshroom(int x, int y){
+    super("Sunshroom",x,y,25,100,new Timer(540), NO_SHOOT, false, true);
   }
+  void damage(){
+   level.generateSun(getX(), getY(), false, randomSeed); 
+      ICD.reset();
+ }
 }

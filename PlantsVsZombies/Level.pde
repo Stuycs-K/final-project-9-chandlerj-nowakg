@@ -60,7 +60,7 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
     background = b;
     lawn = l;
     isDay = d;
-    sun = 500;
+    sun = 50;
   }
   
   

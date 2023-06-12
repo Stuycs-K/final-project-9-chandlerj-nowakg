@@ -29,7 +29,7 @@ public Zombie(String name, float y, int health, float walkSpeed){
 public void addedToWorld(World world){
 
  setImage(sprite);
- setDimensions(100, 140);
+ setDimensions(100, 110);
  
 }
 

@@ -157,11 +157,6 @@ public class Cactus extends Plant{
     super("Cactus",x,y,125,100,new Timer(30), SPIKE_PROJECTILE, false, true);
   }
 }
-public class Cherrybomb extends Plant{ //needs to not shoot and explode
- public Cherrybomb(int x, int y){
-   super("Cherrybomb",x,y,150,50,new Timer(30), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
- }
-}
 public class Chomper extends Plant{ //needs to not shoot
  public Chomper(int x, int y){
    super("Chomper",x,y,150,50,new Timer(1800, true), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
@@ -318,6 +313,20 @@ public class Blover extends Plant{
 public class Pumpkin extends Plant{
   public Pumpkin(int x, int y){
     super("Pumpkin",x,y,125,500, new Timer(60), PEA_PROJECTILE, false ,true);
+  }
+}
+
+public class Cherrybomb extends Plant{ //needs to not shoot and explode
+ public Cherrybomb(int x, int y){
+   super("Cherrybomb",x,y,1500,50,new Timer(30), NO_SHOOT, false, true); //50 health, 100 sun cost, Pea projectile 
+ }
+ public void act(float deltaTime){
+   List<Zombie> list = this.getWorld().getObjects(Zombie.class);
+   for(int i=0; i < list.size(); i++){
+    list.get(i).setHealth(0);
+   }
+   System.out.println("KABOOM.");
+   level.removeObject(this);
   }
 }
 

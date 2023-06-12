@@ -90,7 +90,10 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
     wave++;
     beginWaves.internalCooldown = randomSeed.nextInt(1000) + 600;
        beginWaves.reset();
-       spawnZombie(zombies[randomSeed.nextInt(zombies.length)], randomSeed.nextInt((int) wave * (int) Math.pow(2, wave)));
+       for (int n = 0; n < wave; n++){
+         spawnZombie(zombies[randomSeed.nextInt(zombies.length)], randomSeed.nextInt(lawn.lawn.length));
+       }
+       
        
     System.out.println("wave" + wave);
   }
@@ -106,6 +109,9 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
         for (int n = 0; n < zombies.length; n++){
           spawnZombie(zombies[n], randomSeed.nextInt(lawn.lawn.length));
         }
+      }
+      if (green.isKeyDown('1')){
+        zombieWaves();
       }
     
      

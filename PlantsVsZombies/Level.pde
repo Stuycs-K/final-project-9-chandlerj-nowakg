@@ -74,7 +74,6 @@ public final String[] zombies = {"Regular", "Conehead", "Buckethead", "Polevault
     setUnbounded(true);
     cam.setX(width/2);
     addObject(cam);
-    addSun(50);
     System.out.println("sun" + getSun());
     selectedSeeds = new ArrayList<SeedSlot>(9);
     seedUI = new SeedUI();
